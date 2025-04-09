@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wave Optics - Unit 1</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #f0f2f5;
+      color: #333;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .header {
+      background-color: #343a40;
+      color: white;
+      padding: 20px;
+      text-align: center;
+      width: 100%;
+    }
+    .container {
+      display: flex;
+      max-width: 1300px;
+      width: 95%;
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      margin: 20px auto;
+    }
+    .sidebar {
+      background-color: #f8f9fa;
+      padding: 20px;
+      border-right: 1px solid #dee2e6;
+      width: 280px;
+      flex-shrink: 0;
+    }
+    .sidebar ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .sidebar li a {
+      display: block;
+      padding: 12px 18px;
+      text-decoration: none;
+      color: #495057;
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+      margin-bottom: 8px;
+      cursor: pointer;
+    }
+    .sidebar li a:hover,
+    .sidebar li a.active {
+      background-color: #e9ecef;
+      color: #007bff;
+    }
+    .main-content {
+      padding: 30px;
+      flex-grow: 1;
+    }
+    h1, h2, h3 {
+      color: #343a40;
+    }
+    ul, ol {
+      margin-left: 25px;
+    }
+    img.diagram {
+      max-width: 100%;
+      display: block;
+      margin: 20px auto;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+    p {
+      font-size: 1.1em;
+      line-height: 1.8;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1>Wave Optics - Unit 1</h1>
+  </div>
+
+  <div class="container">
+    <div class="sidebar">
+      <ul>
+        <li><a href="#interference">Interference</a></li>
+        <li><a href="#diffraction">Diffraction</a></li>
+        <li><a href="#polarization">Polarization</a></li>
+        <li><a href="#applications">Engineering Applications</a></li>
+      </ul>
+    </div>
+
+    <div class="main-content">
+      <section id="interference">
+        <h2>Interference</h2>
+        <p>Interference is a phenomenon observed when two or more coherent light waves overlap and produce a resultant intensity distribution due to their phase relationships. Depending on whether the interference is constructive or destructive, bright and dark fringes are observed.</p>
+        <h3>Mathematical Conditions</h3>
+        <ul>
+          <li><strong>Constructive Interference:</strong> Δ = nλ, δ = 2nπ</li>
+          <li><strong>Destructive Interference:</strong> Δ = (2n+1)λ/2, δ = (2n+1)π</li>
+        </ul>
+        <h3>Examples</h3>
+        <ul>
+          <li>Colors in soap bubbles</li>
+          <li>Oil films on water</li>
+          <li>Newton’s rings</li>
+          <li>Young’s double slit experiment</li>
+        </ul>
+        <h3>Thin Film Interference</h3>
+        <p>Light reflected from the top and bottom surfaces of a thin film can interfere, creating colorful patterns. The interference depends on the thickness of the film, refractive index, and wavelength of light.</p>
+        <h3>Newton’s Rings</h3>
+        <p>A pattern of concentric rings produced by interference of light between a spherical surface and an adjacent flat surface.</p>
+        <p><strong>Condition for dark fringe:</strong> 2t = nλ</p>
+        <p><strong>Condition for bright fringe:</strong> 2t = (2n−1)λ/2</p>
+      </section>
+
+      <section id="diffraction">
+        <h2>Diffraction</h2>
+        <p>Diffraction is the bending of waves around the corners of an obstacle or aperture. The effect becomes significant when the size of the aperture is comparable to the wavelength.</p>
+        <h3>Types of Diffraction</h3>
+        <ul>
+          <li><strong>Fresnel Diffraction:</strong> Occurs when the source or screen is at a finite distance from the aperture.</li>
+          <li><strong>Fraunhofer Diffraction:</strong> Occurs when both the source and screen are at infinity (or effectively collimated with lenses).</li>
+        </ul>
+        <h3>Single Slit Diffraction</h3>
+        <p>The central maximum is the brightest and widest. The intensity falls off rapidly for subsequent fringes.</p>
+        <p><strong>Condition for minima:</strong> a sin θ = mλ (m = ±1, ±2, ...)</p>
+        <h3>Double Slit Diffraction</h3>
+        <p>Combines diffraction and interference. The envelope is given by single slit diffraction and the inner fringes by interference.</p>
+        <p><strong>Intensity formula:</strong> I = I₀ (sinα/α)² cos²β</p>
+      </section>
+
+      <section id="polarization">
+        <h2>Polarization</h2>
+        <p>Polarization refers to the orientation of the oscillations of the electric field vector in a transverse wave like light.</p>
+        <h3>Types of Polarization</h3>
+        <ul>
+          <li><strong>Linear Polarization:</strong> Electric field oscillates in a single plane</li>
+          <li><strong>Circular Polarization:</strong> Electric field rotates in a circle as the wave propagates</li>
+          <li><strong>Elliptical Polarization:</strong> General case where electric field describes an ellipse</li>
+        </ul>
+        <h3>Methods to Achieve Polarization</h3>
+        <ul>
+          <li>Reflection</li>
+          <li>Refraction</li>
+          <li>Dichroism</li>
+          <li>Double refraction (birefringence)</li>
+        </ul>
+        <h3>Devices</h3>
+        <ul>
+          <li><strong>Nicol Prism:</strong> Used to produce and analyze polarized light</li>
+          <li><strong>Wave Plates:</strong> Half-wave and quarter-wave plates change the state of polarization</li>
+        </ul>
+      </section>
+
+      <section id="applications">
+        <h2>Engineering Applications</h2>
+        <ul>
+          <li>Measurement of refractive index</li>
+          <li>Measurement of wavelength of light</li>
+          <li>Anti-reflection coatings</li>
+          <li>Polarized sunglasses and 3D movie glasses</li>
+          <li>Optical instruments like interferometers</li>
+          <li>CD/DVD reading using interference</li>
+          <li>Strain analysis in materials</li>
+        </ul>
+      </section>
+
+    </div>
+  </div>
+</body>
+</html>

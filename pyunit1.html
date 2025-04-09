@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Programming - Unit 1</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 0;
+        }
+        .header {
+            background-color: #343a40;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+        .container {
+            display: flex;
+            max-width: 1200px;
+            margin: 20px auto;
+            background: white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .sidebar {
+            width: 300px;
+            background: #f1f1f1;
+            padding: 20px;
+        }
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+        }
+        .sidebar li {
+            margin-bottom: 10px;
+        }
+        .sidebar a {
+            text-decoration: none;
+            color: #333;
+            display: block;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .sidebar a:hover {
+            background-color: #ddd;
+        }
+        .main-content {
+            flex: 1;
+            padding: 30px;
+        }
+        h2 {
+            color: #2c3e50;
+        }
+        pre, code {
+            background-color: #f4f4f4;
+            padding: 10px;
+            display: block;
+            overflow-x: auto;
+            border-left: 4px solid #007bff;
+        }
+        ul, ol {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <h1>Introduction to python programming language</h1>
+    </div>
+    <div class="container">
+        <div class="sidebar">
+            <ul>
+                <li><a href="#introduction">Introduction to Python Programming Language</a></li>
+                <li><a href="#computational-problem">What is a Computational Problem?</a></li>
+                <li><a href="#problem-solving-process">Process of Computational Problem Solving</a></li>
+                <li><a href="#history">History of Python</a></li>
+                <li><a href="#whatispython">What is Python?</a></li>
+                <li><a href="#features">Features of Python</a></li>
+                <li><a href="#advantages">Advantages of Python</a></li>
+                <li><a href="#limitations">Limitations of Python</a></li>
+                <li><a href="#literals">Literals</a></li>
+                <li><a href="#variables">Variables and Identifiers</a></li>
+                <li><a href="#keywords">Python Keywords</a></li>
+                <li><a href="#operators">Operators</a></li>
+                <li><a href="#expressions">Expressions</a></li>
+                <li><a href="#datatypes">Data Types</a></li>
+                <li><a href="#indentation">Indentation in Loops</a></li>
+                <li><a href="#control">Control Structures</a></li>
+                <li><a href="#loopcontrol">Loop Control Statements</a></li>
+            </ul>
+        </div>
+        <div class="main-content">
+            <section id="introduction">
+                <h2>Introduction to Python</h2>
+                <p>Python is a high-level, interpreted, and dynamically typed programming language known for its simplicity and readability. It's used across various domains such as web development, data science, automation, and more. It emphasizes code readability and allows developers to write fewer lines of code to achieve the same task compared to other languages.</p>
+            </section>
+
+            <section id="computational-problem">
+                <h2>What is a Computational Problem?</h2>
+                <p>A computational problem is one that a computer can solve. It involves determining a solution using algorithms under resource constraints like time and memory. These problems are fundamental to theoretical computer science.</p>
+            </section>
+
+            <section id="problem-solving-process">
+                <h2>Process of Computational Problem Solving</h2>
+                <ul>
+                    <li><strong>Analyzing the Problem:</strong> Understanding the input, output, and constraints.</li>
+                    <li><strong>Developing an Algorithm:</strong> Creating a sequence of steps to solve the problem.</li>
+                    <li><strong>Coding:</strong> Translating the algorithm into Python code.</li>
+                    <li><strong>Testing and Debugging:</strong> Running test cases to validate and fix the code.</li>
+                </ul>
+            </section>
+
+            <section id="history">
+                <h2>History of Python</h2>
+                <p>Developed by Guido van Rossum at CWI in the Netherlands and released in 1991. Python 1.0 introduced lambda, map, filter. Python 2.0 added garbage collection and list comprehensions. Python 3.0 was a major revision. The name "Python" was inspired by the TV show “Monty Python’s Flying Circus.”</p>
+            </section>
+
+            <section id="whatispython">
+                <h2>What is Python?</h2>
+                <p>Python is a general-purpose, high-level, dynamically typed, interpreted, and object-oriented programming language. It supports multiple programming paradigms and promotes code readability.</p>
+            </section>
+
+            <section id="features">
+                <h2>Features of Python</h2>
+                <ul>
+                    <li>Simple and Easy to Learn</li>
+                    <li>Free and Open Source</li>
+                    <li>Platform Independent</li>
+                    <li>Dynamically Typed</li>
+                    <li>Both Procedure and Object-Oriented</li>
+                    <li>Extensible and Embeddable</li>
+                    <li>Extensive Library Support</li>
+                </ul>
+            </section>
+
+            <section id="advantages">
+                <h2>Advantages of Python</h2>
+                <ul>
+                    <li>Open-source and free</li>
+                    <li>Beginner-friendly syntax</li>
+                    <li>Third-party module support</li>
+                    <li>Platform-independent</li>
+                    <li>Great online community</li>
+                </ul>
+            </section>
+
+            <section id="limitations">
+                <h2>Limitations of Python</h2>
+                <ul>
+                    <li>Not ideal for mobile apps</li>
+                    <li>Slow execution due to interpretation</li>
+                    <li>High memory consumption</li>
+                    <li>Less efficient database connectivity</li>
+                </ul>
+            </section>
+
+            <section id="literals">
+                <h2>Literals</h2>
+                <p>Fixed values assigned directly to variables.</p>
+                <h4>Numeric:</h4>
+                <pre><code>a = 7
+b = 8.3
+c = -15
+d = 2+3j</code></pre>
+                <h4>String:</h4>
+                <pre><code>a = 'Hello'
+b = "Krishna"
+c = '''Python is good for learning'''</code></pre>
+                <h4>Boolean:</h4>
+                <pre><code>a = 3
+b = (a == 3)
+c = True + 10</code></pre>
+                <h4>Special:</h4>
+                <pre><code>var = None</code></pre>
+            </section>
+
+            <section id="variables">
+                <h2>Variables and Identifiers</h2>
+                <p>Variables are named memory locations. Identifiers are names given to program elements.</p>
+                <ul>
+                    <li>Start with a letter or underscore</li>
+                    <li>No special characters</li>
+                    <li>Cannot be keywords</li>
+                    <li>Case-sensitive</li>
+                </ul>
+            </section>
+
+            <section id="keywords">
+                <h2>Python Keywords</h2>
+                <p>Reserved words like <code>if</code>, <code>else</code>, <code>for</code>, <code>while</code>, <code>def</code>, etc. cannot be used as identifiers.</p>
+            </section>
+
+            <section id="operators">
+                <h2>Operators</h2>
+                <ul>
+                    <li>Arithmetic: +, -, *, /, //, %, **</li>
+                    <li>Comparison: ==, !=, >, <, >=, <=</li>
+                    <li>Assignment: =, +=, -=, *=, /=, %=, //=, **=</li>
+                    <li>Logical: and, or, not</li>
+                    <li>Identity: is, is not</li>
+                    <li>Membership: in, not in</li>
+                    <li>Bitwise: &, |, ^, ~, <<, >></li>
+                </ul>
+            </section>
+
+            <section id="expressions">
+                <h2>Expressions</h2>
+                <p>Combinations of literals, variables, and operators that evaluate to a value.</p>
+                <pre><code>5 + 3
+x * 2
+name == "Alice"
+len("hello")</code></pre>
+            </section>
+
+            <section id="datatypes">
+                <h2>Data Types</h2>
+                <ul>
+                    <li>Numeric: int, float, complex</li>
+                    <li>Sequence: str, list, tuple, range</li>
+                    <li>Set: set, frozenset</li>
+                    <li>Mapping: dict</li>
+                    <li>Boolean: bool</li>
+                    <li>Binary: bytes, bytearray, memoryview</li>
+                    <li>None: NoneType</li>
+                </ul>
+            </section>
+
+            <section id="indentation">
+                <h2>Indentation in Loops</h2>
+                <p>Python uses indentation to define blocks of code.</p>
+                <pre><code>for lang in ['Swift', 'Python', 'Go']:
+    print(lang)
+    print('-----')
+print('Last statement')</code></pre>
+            </section>
+
+            <section id="control">
+                <h2>Control Structures</h2>
+                <h4>Boolean Expressions:</h4>
+                <p>Evaluate to True or False. Used in conditional and loop statements.</p>
+                <h4>Selection Control:</h4>
+                <pre><code>if condition:
+    # code block
+elif condition:
+    # code block
+else:
+    # code block</code></pre>
+                <h4>Iterative Control:</h4>
+                <pre><code>for lang in ['Swift', 'Python']:
+    print(lang)
+
+while num != 0:
+    print(num)
+    num = int(input("Enter a number: "))</code></pre>
+            </section>
+
+            <section id="loopcontrol">
+                <h2>Loop Control Statements</h2>
+                <ul>
+                    <li><code>break</code>: Exits the loop immediately</li>
+                    <li><code>continue</code>: Skips to the next iteration</li>
+                    <li><code>pass</code>: Placeholder that does nothing</li>
+                </ul>
+                <pre><code>for lang in ['Swift', 'Python', 'Go']:
+    if lang == 'Go':
+        break
+    print(lang)</code></pre>
+            </section>
+        </div>
+    </div>
+</body>
+
+</html>

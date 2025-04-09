@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Programming - Unit 1</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 0;
+        }
+        .header {
+            background-color: #343a40;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+        .container {
+            display: flex;
+            max-width: 1200px;
+            margin: 20px auto;
+            background: white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .sidebar {
+            width: 300px;
+            background: #f1f1f1;
+            padding: 20px;
+        }
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+        }
+        .sidebar li {
+            margin-bottom: 10px;
+        }
+        .sidebar a {
+            text-decoration: none;
+            color: #333;
+            display: block;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .sidebar a:hover {
+            background-color: #ddd;
+        }
+        .main-content {
+            flex: 1;
+            padding: 30px;
+        }
+        h2 {
+            color: #2c3e50;
+        }
+        pre, code {
+            background-color: #f4f4f4;
+            padding: 10px;
+            display: block;
+            overflow-x: auto;
+            border-left: 4px solid #007bff;
+        }
+        ul, ol {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <h1>Functions</h1>
+    </div>
+    <div class="container">
+        <div class="sidebar">
+            <ul>
+                <li><a href="#functions">What is a Function?</a></li>
+                <li><a href="#types">Types of Functions</a></li>
+                <li><a href="#parameters">Function Parameters</a></li>
+                <li><a href="#return">Return Statement</a></li>
+                <li><a href="#default">Default Parameters</a></li>
+                <li><a href="#keyword">Keyword Arguments</a></li>
+                <li><a href="#varargs">Variable-Length Arguments</a></li>
+                <li><a href="#scope">Scope of Variables</a></li>
+                <li><a href="#modules">Modules</a></li>
+                <li><a href="#topdown">Top-Down Design</a></li>
+                <li><a href="#importing">Importing Modules</a></li>
+            </ul>
+        </div>
+        <div class="main-content">
+            <section id="functions">
+                <h2>What is a Function?</h2>
+                <p>A function is a named block of code designed to perform a specific task when it is called. Functions help in reducing repetition, increasing modularity, and making the code more organized and easier to debug.</p>
+                <h3>Program Routines</h3>
+                <p>Program routines are individual blocks of code (like functions or procedures) that perform specific tasks within a program. These routines are the building blocks of structured programming.</p>
+                <pre><code>def welcome():
+    print("Welcome to Python Programming!")
+
+welcome()</code></pre>
+            </section>
+
+            <section id="types">
+                <h2>Types of Functions</h2>
+                <ul>
+                    <li><strong>Built-in Functions:</strong> <code>print()</code>, <code>len()</code>, <code>type()</code></li>
+                    <li><strong>User-defined Functions:</strong> created using <code>def</code></li>
+                </ul>
+            </section>
+
+            <section id="parameters">
+                <h2>Function with Parameters</h2>
+                <pre><code>def greet(name):
+    print("Hello", name)
+
+greet("Alice")  # Output: Hello Alice</code></pre>
+            </section>
+
+            <section id="return">
+                <h2>Return Statement</h2>
+                <pre><code>def square(n):
+    return n * n
+
+print(square(6))  # Output: 36</code></pre>
+            </section>
+
+            <section id="default">
+                <h2>Default Parameters</h2>
+                <pre><code>def greet(name="Guest"):
+    print("Welcome", name)
+
+greet()  # Output: Welcome Guest</code></pre>
+            </section>
+
+            <section id="keyword">
+                <h2>Keyword Arguments</h2>
+                <pre><code>def profile(name, age):
+    print(f"{name} is {age} years old")
+
+profile(age=21, name="Sara")  # Output: Sara is 21 years old</code></pre>
+            </section>
+
+            <section id="varargs">
+                <h2>Variable-Length Arguments</h2>
+                <pre><code>def total(*nums):
+    return sum(nums)
+
+print(total(1, 2, 3, 4))  # Output: 10</code></pre>
+            </section>
+
+            <section id="scope">
+                <h2>Scope of Variables</h2>
+                <p><strong>Local Scope:</strong> Defined within a function.</p>
+                <p><strong>Global Scope:</strong> Defined outside all functions.</p>
+                <pre><code>x = 10  # Global
+
+def show():
+    x = 5  # Local
+    print(x)
+
+show()       # Output: 5
+print(x)     # Output: 10</code></pre>
+            </section>
+
+            <section id="modules">
+                <h2>Modules</h2>
+                <p>A module is a Python file (.py) containing code (functions, variables, or classes) that can be imported and reused in other programs.</p>
+                <h3>Creating a Custom Module</h3>
+                <pre><code># calculator.py
+def add(a, b):
+    return a + b</code></pre>
+                <h3>Using the Module</h3>
+                <pre><code>import calculator
+
+print(calculator.add(5, 3))  # Output: 8</code></pre>
+                <h3>Python Built-in Modules</h3>
+                <ul>
+                    <li><code>math</code> – Mathematical functions</li>
+                    <li><code>random</code> – Generate random numbers</li>
+                    <li><code>datetime</code> – Date and time operations</li>
+                    <li><code>os</code> – Operating system tasks</li>
+                </ul>
+                <pre><code>import math
+print(math.pi)              # Output: 3.141592653589793
+print(math.factorial(5))    # Output: 120</code></pre>
+            </section>
+
+            <section id="topdown">
+                <h2>Top-Down Design</h2>
+                <p>Top-down design is a problem-solving strategy where you break a large task (main function) into smaller sub-tasks (sub-functions), making development easier and more organized.</p>
+                <pre><code>def calculator():
+    a = int(input("Enter number 1: "))
+    b = int(input("Enter number 2: "))
+    print("Sum:", add(a, b))
+
+def add(x, y):
+    return x + y
+
+calculator()</code></pre>
+            </section>
+
+            <section id="importing">
+                <h2>Importing Modules</h2>
+                <h3>Importing Specific Functions</h3>
+                <pre><code>from math import sqrt
+print(sqrt(16))  # Output: 4.0</code></pre>
+                <h3>Using Aliases</h3>
+                <pre><code>import math as m
+print(m.pow(2, 3))  # Output: 8.0</code></pre>
+                <h3>Custom Module Example</h3>
+                <pre><code># myutils.py
+def welcome():
+    print("Welcome to custom module!")
+
+# main.py
+import myutils
+myutils.welcome()</code></pre>
+            </section>
+        </div>
+    </div>
+</body>
+
+</html>

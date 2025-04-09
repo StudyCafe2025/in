@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Matrix Concepts</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      font-family: 'Poppins', Arial, sans-serif;
+      background-color: #f0f2f5;
+      color: #333;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .header {
+      background-color: #343a40;
+      color: white;
+      padding: 20px 0;
+      text-align: center;
+      width: 100%;
+    }
+
+    .container {
+      display: flex;
+      max-width: 1200px;
+      width: 95%;
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      margin: 20px auto;
+    }
+
+    .sidebar {
+      background-color: #f8f9fa;
+      padding: 20px;
+      border-right: 1px solid #dee2e6;
+      width: 280px;
+      flex-shrink: 0;
+    }
+
+    .sidebar ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .sidebar li a {
+      display: block;
+      padding: 12px 18px;
+      text-decoration: none;
+      color: #495057;
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+      margin-bottom: 8px;
+      cursor: pointer;
+    }
+
+    .sidebar li a:hover,
+    .sidebar li a.active {
+      background-color: #e9ecef;
+      color: #007bff;
+    }
+
+    .main-content {
+      padding: 30px;
+      flex-grow: 1;
+    }
+
+    .main-content h2 {
+      color: #343a40;
+      font-size: 2.2em;
+      margin-bottom: 15px;
+    }
+
+    .main-content h3 {
+      color: #343a40;
+      font-size: 1.6em;
+      margin-top: 20px;
+      margin-bottom: 10px;
+    }
+
+    .main-content p {
+      color: #495057;
+      font-size: 1.1em;
+      margin-bottom: 20px;
+      line-height: 1.8;
+    }
+
+    .main-content ul,
+    .main-content ol {
+      padding-left: 25px;
+      margin-bottom: 20px;
+      color: #495057;
+      font-size: 1.1em;
+    }
+
+    .video-box {
+      margin: 20px 0;
+      padding: 10px;
+      background-color: #f9f9f9;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      text-align: center;
+    }
+
+    .video-box iframe {
+      width: 100%;
+      height: 360px;
+      border: none;
+      border-radius: 8px;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1>Matrix Concepts</h1>
+  </div>
+
+  <div class="container">
+    <div class="sidebar">
+      <ul>
+        <li><a href="#echelon">Echelon Form & Rank</a></li>
+        <li><a href="#normal-form">Normal Form</a></li>
+        <li><a href="#systems">Linear Equation Systems</a></li>
+        <li><a href="#eigen">Eigenvalues & Eigenvectors</a></li>
+      </ul>
+    </div>
+
+    <div class="main-content">
+      <div id="echelon">
+        <h2>Rank of a Matrix by Echelon Form</h2>
+        <p>To find the rank of a matrix using echelon form, reduce the matrix to row echelon form (or reduced row echelon form) and then count the number of non-zero rows; this count represents the rank of the matrix.</p>
+
+        <h3>1. What is Echelon Form?</h3>
+        <ul>
+          <li>All non-zero rows are above any zero rows.</li>
+          <li>The first non-zero entry (pivot) of each row is to the right of the one in the row above.</li>
+        </ul>
+
+        <p>In reduced row echelon form:</p>
+        <ul>
+          <li>The leading entry is 1.</li>
+          <li>It is the only non-zero entry in its column.</li>
+        </ul>
+
+        <h3>2. How to Find the Rank:</h3>
+        <ol>
+          <li>Reduce to (reduced) row echelon form using elementary row operations.</li>
+          <li>Count non-zero rows. This is the matrix's rank.</li>
+        </ol>
+
+        <div class="video-box">
+          <iframe src="https://www.youtube.com/embed/znfWfYvB3HU" allowfullscreen></iframe>
+        </div>
+      </div>
+
+      <div id="normal-form">
+        <h2>Normal Form of a Matrix</h2>
+        <p>The normal form (canonical form) is a simplified matrix using row and column operations where each row has at most one 1 and others are 0.</p>
+
+        <h3>Key Characteristics:</h3>
+        <ul>
+          <li>Only zeros and ones.</li>
+          <li>One non-zero (1) per row max.</li>
+          <li>Pivots are the 1s used to determine rank.</li>
+        </ul>
+
+        <div class="video-box">
+          <iframe src="https://www.youtube.com/embed/m9wFCoibN2k" allowfullscreen></iframe>
+        </div>
+      </div>
+
+      <div id="systems">
+        <h2>Solving Linear Equations</h2>
+        <p>To solve homogeneous and non-homogeneous systems, you can use row reduction or matrix methods.</p>
+
+        <h3>Homogeneous (Ax = 0)</h3>
+        <ul>
+          <li>Always has the trivial solution (x = 0).</li>
+          <li>If determinant = 0 → infinite solutions.</li>
+        </ul>
+
+        <h3>Non-homogeneous (Ax = b)</h3>
+        <ul>
+          <li>Consistent if rank(A) = rank(A|b).</li>
+          <li>Unique if rank = number of unknowns.</li>
+          <li>Infinite if rank < number of unknowns.</li>
+        </ul>
+
+        <div class="video-box">
+          <iframe src="https://www.youtube.com/embed/GQBA_iqVBFU" allowfullscreen></iframe>
+        </div>
+      </div>
+
+      <div id="eigen">
+        <h2>Eigenvalues & Eigenvectors</h2>
+        <p>These describe how a linear transformation scales vectors.</p>
+
+        <h3>Definitions:</h3>
+        <ul>
+          <li><strong>Eigenvalue:</strong> Scalar λ such that Av = λv.</li>
+          <li><strong>Eigenvector:</strong> Non-zero vector v that remains on the same line after transformation.</li>
+        </ul>
+
+        <h3>Key Properties:</h3>
+        <ul>
+          <li>Only square matrices have eigenvalues/vectors.</li>
+          <li>Eigenvectors ≠ 0; eigenvalues can be zero.</li>
+          <li>Sum = trace of matrix, product = determinant.</li>
+        </ul>
+
+        <div class="video-box">
+          <iframe src="https://www.youtube.com/embed/Cp_zrvzVBF0" allowfullscreen></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

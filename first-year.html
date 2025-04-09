@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>First Year Subjects</title>
+    <style>
+        body {
+            font-family: 'Poppins', Arial, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 1300px;
+            max-width: 12000px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 10%;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo {
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            object-fit: cover;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 26px;
+        }
+
+        nav.nav-menu {
+            background-color: transparent;
+            padding: 0;
+            box-shadow: none;
+        }
+
+        nav.nav-menu ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            gap: 25px;
+        }
+
+        nav.nav-menu ul li a {
+            text-decoration: none;
+            color: #ddd;
+            font-size: 16px;
+            font-weight: 500;
+            padding: 10px 15px;
+            border-radius: 6px;
+            transition: color 0.3s ease, background-color 0.3s ease;
+        }
+
+        nav.nav-menu ul li a:hover {
+            color: white;
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+
+        nav.nav-menu ul li a:focus {
+            outline: 2px solid #fff;
+        }
+
+        nav.nav-menu ul li a.selected {
+            color: white;
+            font-weight: 600;
+        }
+
+        nav.nav-menu ul li ul {
+            display: none;
+            position: absolute;
+            background-color: #333;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            border-radius: 4px;
+            padding: 10px 0;
+            z-index: 10;
+            min-width: 150px;
+        }
+
+        nav.nav-menu ul li:hover ul {
+            display: block;
+        }
+
+        nav.nav-menu ul li ul li {
+            width: 100%;
+        }
+
+        nav.nav-menu ul li ul li a {
+            padding: 10px 20px;
+            display: block;
+            white-space: nowrap;
+        }
+
+        nav.nav-menu ul li ul li a:hover {
+            background-color: #444;
+        }
+
+        @media (max-width: 768px) {
+            header {
+                padding: 15px 5%;
+            }
+
+            nav.nav-menu ul {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+
+            nav.nav-menu ul li {
+                margin: 0;
+            }
+
+            nav.nav-menu ul li a {
+                padding: 10px 20px;
+            }
+
+            nav.nav-menu ul li ul {
+                position: static;
+                box-shadow: none;
+                border-radius: 0;
+                padding: 0;
+                background-color: transparent;
+            }
+
+            nav.nav-menu ul li ul li a {
+                padding-left: 30px;
+            }
+
+            nav.nav-menu ul li ul li:last-child a {
+                border-bottom: none;
+            }
+
+            nav.nav-menu ul li:hover ul {
+                display: block;
+            }
+        }
+
+        .hero {
+            background-color: #008CBA;
+            color: white;
+            text-align: center;
+            padding: 60px 20px;
+            margin-bottom: 30px;
+            border-bottom-left-radius: 15px;
+            border-bottom-right-radius: 15px;
+        }
+
+        .hero h2 {
+            font-size: 2.8rem;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            gap: 20px;
+        }
+
+        nav ul li {
+            position: relative;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: color 0.3s ease;
+            padding: 8px 12px;
+            border-radius: 4px;
+            display: block;
+        }
+
+        nav ul li a:hover,
+        nav ul li a.active {
+            color: #007bff;
+            background-color: #444;
+        }
+
+        nav ul li ul {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: #333;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            z-index: 10;
+            border-radius: 4px;
+            min-width: 100px;
+        }
+
+        nav ul li:hover > ul {
+            display: block;
+        }
+
+        nav ul li ul li a {
+            padding: 10px 15px;
+            border-radius: 0;
+            border-bottom: 1px solid #444;
+            font-size: 0.9rem;
+            white-space: nowrap;
+        }
+
+        nav ul li ul li:last-child a {
+            border-bottom: none;
+        }
+
+        .options {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .options button {
+            padding: 10px 20px;
+            border: none;
+            background-color: #28a745;
+            color: white;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background-color 0.3s ease;
+        }
+
+        .options button:hover {
+            background-color: #218838;
+        }
+
+        .subject-heading {
+            font-size: 1.6rem;
+            color: #333;
+            margin-bottom: 15px;
+            padding-left: 15px;
+            border-left: 5px solid #007bff;
+            padding-bottom: 5px;
+            margin-top: 20px;
+        }
+
+        .subjects {
+            list-style: none;
+            padding: 0;
+        }
+
+        .subjects li a {
+            display: block;
+            background-color: #f9f9f9;
+            padding: 12px 15px;
+            margin-bottom: 8px;
+            border-radius: 6px;
+            border: 1px solid #eee;
+            transition: background-color 0.3s ease;
+            text-align: left;
+            color: #333;
+            text-decoration: none;
+        }
+
+        .subjects li a:hover {
+            background-color: #f0f0f0;
+        }
+
+        footer {
+            background-color: #333;
+            color: #f0f0f0;
+            padding: 20px 0;
+            font-size: 0.9rem;
+            text-align: center;
+            border-top: 1px solid #555;
+        }
+
+        .footer-content {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        .social-links a {
+            color: #f0f0f0;
+            margin: 0 10px;
+            font-size: 1.2rem;
+            transition: color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: #007bff;
+        }
+
+        @media (max-width: 768px) {
+            header {
+                padding: 15px;
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .logo-container {
+                margin-bottom: 10px;
+            }
+
+            nav ul {
+                flex-direction: column;
+                align-items: flex-start;
+                margin-top: 10px;
+            }
+
+            nav ul li {
+                margin-bottom: 5px;
+            }
+
+            nav ul li ul {
+                position: static;
+                box-shadow: none;
+                border-radius: 0;
+                margin-left: 15px;
+            }
+
+            nav ul li:hover > ul {
+                display: block;
+            }
+
+            nav ul li ul li a {
+                border-bottom: 1px solid #444;
+                padding-left: 20px;
+            }
+
+            nav ul li ul li:last-child a {
+                border-bottom: none;
+            }
+
+            .container {
+                padding: 15px;
+            }
+
+            .options {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .options button {
+                width: 100%;
+                margin-bottom: 10px;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                padding: 0 15px;
+            }
+
+            .social-links {
+                margin-top: 10px;
+            }
+
+            .social-links a {
+                margin: 0 8px;
+            }
+        }
+
+        .branch-options {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .branch-options button {
+            padding: 10px 20px;
+            border: none;
+            background-color: #007bff;
+            color: white;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background-color 0.3s ease;
+        }
+
+        .branch-options button.selected {
+            background-color: #28a745;
+        }
+
+        .branch-options button:hover {
+            background-color: #28a745;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo-container">
+            <img src="https://github.com/AbdulAzizes04/skills-github-pages/blob/main/.github/WhatsApp%20Image%202025-01-01%20at%2022.11.52_7937caa6.jpg?raw=true" alt="Study Cafe Logo" class="logo">
+            <h1>STUDY CAFE</h1>
+        </div>
+        <nav class="nav-menu">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="first-year.html">1ST YEAR</a></li>
+                <li>
+                    <a href="branch.html">2ND YEAR ▼</a>
+                    <ul>
+                        <li><a href="secondcse.html" id="cse">CSE</a></li>
+                        <li><a href="secondaids.html" id="aids">AI&DS</a></li>
+                        <li><a href="secondaiml.html" id="aiml">AI&ML</a></li>
+                        <li><a href="secondds.html" id="ds">CSE(DS)</a></li>
+                        <li><a href="secondai.html" id="ai">CSE(AI)</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="branch1.html">3RD YEAR ▼</a>
+                    <ul>
+                        <li><a href="thirdcse.html" id="cse">CSE</a></li>
+                        <li><a href="thirdaids.html" id="aids">AI&DS</a></li>
+                        <li><a href="thirdaiml.html" id="aiml">AI&ML</a></li>
+                        <li><a href="thirdds.html" id="ds">CSE(DS)</a></li>
+                        <li><a href="thirdai.html" id="ai">CSE(AI)</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="branch2.html">4TH YEAR ▼</a>
+                    <ul>
+                        <li><a href="fourthcse.html" id="cse">CSE</a></li>
+                        <li><a href="fourthaids.html" id="aids">AI&DS</a></li>
+                        <li><a href="fourthaiml.html" id="aiml">AI&ML</a></li>
+                        <li><a href="fourthds.html" id="ds">CSE(DS)</a></li>
+                        <li><a href="fourthai.html" id="ai">CSE(AI)</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <div class="hero">
+        <h2>Welcome, First-Year Students!</h2>
+        <p>Lay the foundation for your engineering journey.</p>
+    </div>
+
+    <div class="container">
+        <div class="branch-options" id="branchOptions">
+            <button onclick="selectBranch('CSE')">CSE</button>
+            <button onclick="selectBranch('AI&DS')">AI&DS</button>
+            <button onclick="selectBranch('AI&ML')">AI&ML</button>
+            <button onclick="selectBranch('CSE(DS)')">CSE(DS)</button>
+            <button onclick="selectBranch('CSE(AI)')">CSE(AI)</button>
+			<button onclick="selectBranch('CSE – IoT & CS')">CSE (IoT & CS)</button>
+			<button onclick="selectBranch('CSE(AI&ML)')">CSE(AI&ML)</button>
+            <button onclick="selectBranch('ME')">ME</button>
+            <button onclick="selectBranch('CE')">CE</button>
+            <button onclick="selectBranch('ECE')">ECE</button>
+            <button onclick="selectBranch('EEE')">EEE</button>
+        </div>
+        <div class="options">
+            <button onclick="selectRegulation('R24')">AU 24</button>
+        </div>
+        <h2 class="subject-heading" id="sem1Heading">First Year - Semester 1 (<span id="sem1Branch">CSE</span>)</h2>
+        <ul class="subjects" id="sem1Subjects">
+        </ul>
+        <h2 class="subject-heading" id="sem2Heading">First Year - Semester 2 (<span id="sem2Branch">CSE</span>)</h2>
+        <ul class="subjects" id="sem2Subjects">
+        </ul>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2025 Study Cafe | All Rights Reserved</p>
+            <div class="social-links">
+                <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+                <a href="#" target="_blank"><i class="fab fa-linkedin"></i></a>
+            </div>
+        </div>
+    </footer>
+    <script>
+        const sem1Heading = document.getElementById('sem1Heading');
+        const sem1Subjects = document.getElementById('sem1Subjects');
+        const sem2Heading = document.getElementById('sem2Heading');
+        const sem2Subjects = document.getElementById('sem2Subjects');
+        const branchOptions = document.getElementById('branchOptions');
+        const sem1BranchDisplay = document.getElementById('sem1Branch');
+        const sem2BranchDisplay = document.getElementById('sem2Branch');
+
+        function selectRegulation(regulation) {
+            console.log("Selected Regulation:", regulation);
+        }
+
+        function selectBranch(branch) {
+            loadSubjects(branch);
+            highlightSelectedBranch(branch);
+            sem1BranchDisplay.textContent = branch;
+            sem2BranchDisplay.textContent = branch;
+        }
+
+        function loadSubjects(branch) {
+            const subjects = {
+                'CSE': {
+                    'sem1': [
+                        { name: 'Matrix Theory and Calculus', link: 'mathematics.html' },
+                        { name: 'Applied Physics', link: 'physics.html' },
+                        { name: 'English for Engineers', link: 'english.html' },
+                        { name: 'Computational Problem Solving', link: 'programming_in_c.html' },
+                    ],
+                    'sem2': [
+                        { name: 'The joy of computing using Python', link: 'joy_of_computing_python.html' },
+                        { name: 'Basic Electrical and Electronics Engineering', link: 'basic_electrical_engineering.html' },
+                        { name: 'Data Structures', link: 'datastructures.html' },
+                        { name: 'Differential Equations and Transform Techniques', link: 'differentialequations.html'},
+                        { name: 'Chemistry ', link: 'Chemistry.html'},
+                        { name: 'EngineeringDrawing ', link: 'EngineeringDrawing.html'},
+                    ]
+                },
+                'AI&DS': {
+                    'sem1': [
+                        { name: 'Basic Electrical and Electronics Engineering', link: 'basic_electrical_engineering.html' },
+						{ name: 'Chemistry ', link: 'Chemistry.html'},
+                        { name: 'Matrix Theory and Calculus', link: 'mathematics.html' },
+                        { name: 'Computational Problem Solving', link: 'programming_in_c.html' },
+                        { name: 'EngineeringDrawing ', link: 'EngineeringDrawing.html'},
+                    ],
+                    'sem2': [
+                        { name: 'Applied Physics', link: 'physics.html' },
+                        { name: 'Differential Equations and Transform Techniques', link: 'differentialequations.html'},
+						{ name: 'English for Engineers', link: 'english.html' },
+                        { name: 'Data Structures', link: 'datastructures.html' },
+                        { name: 'The joy of computing using Python', link: 'joy_of_computing_python.html' },
+                    ]
+                },
+                'AI&ML': {
+                    'sem1': [
+						{ name: 'English for Engineers', link: 'english.html' },
+                        { name: 'Applied Physics', link: 'physics.html' },
+                        { name: 'Matrix Theory and Calculus', link: 'mathematics.html' },
+                        { name: 'Computational Problem Solving', link: 'programming_in_c.html' },
+                    ],
+                    'sem2': [
+                        { name: 'Chemistry ', link: 'Chemistry.html'},
+                        { name: 'Differential Equations and Transform Techniques', link: 'differentialequations.html'},
+                        { name: 'Basic Electrical and Electronics Engineering', link: 'basic_electrical_engineering.html' },
+                        { name: 'Data Structures', link: 'datastructures.html' },
+                        { name: 'The joy of computing using Python', link: 'joy_of_computing_python.html' },
+                        { name: 'EngineeringDrawing ', link: 'EngineeringDrawing.html'},
+                    ]
+                },
+                'CSE(DS)': {
+                    'sem1': [
+						{ name: 'English for Engineers', link: 'english.html' },
+                        { name: 'Applied Physics', link: 'physics.html' },
+                        { name: 'Matrix Theory and Calculus', link: 'mathematics.html' },
+                        { name: 'Computational Problem Solving', link: 'programming_in_c.html' },
+                    ],
+                    'sem2': [
+                        { name: 'Chemistry ', link: 'Chemistry.html'},
+                        { name: 'Differential Equations and Transform Techniques', link: 'differentialequations.html'},
+                        { name: 'Basic Electrical and Electronics Engineering', link: 'basic_electrical_engineering.html' },
+                        { name: 'Data Structures', link: 'datastructures.html' },
+                        { name: 'The joy of computing using Python', link: 'joy_of_computing_python.html' },
+                        { name: 'EngineeringDrawing ', link: 'EngineeringDrawing.html'},
+                    ]
+                },
+                'CSE(AI)': {
+                    'sem1': [
+                        { name: 'Basic Electrical and Electronics Engineering', link: 'basic_electrical_engineering.html' },
+                        { name: 'Chemistry ', link: 'Chemistry.html'},
+                        { name: 'Matrix Theory and Calculus', link: 'mathematics.html' },
+                        { name: 'Computational Problem Solving', link: 'programming_in_c.html' },
+                        { name: 'EngineeringDrawing ', link: 'EngineeringDrawing.html'},
+                    ],
+                    'sem2': [ 
+						{ name: 'Applied Physics', link: 'physics.html' },
+                        { name: 'Differential Equations and Transform Techniques', link: 'differentialequations.html'},
+						{ name: 'English for Engineers', link: 'english.html' },
+                        { name: 'Data Structures', link: 'datastructures.html' },
+                        { name: 'The joy of computing using Python', link: 'joy_of_computing_python.html' },
+                    ]
+                },
+				'CSE – IoT & CS': {
+                    'sem1': [
+                        { name: 'Basic Electrical and Electronics Engineering', link: 'basic_electrical_engineering.html' },
+                        { name: 'Chemistry ', link: 'Chemistry.html'},
+                        { name: 'Matrix Theory and Calculus', link: 'mathematics.html' },
+                        { name: 'Computational Problem Solving', link: 'programming_in_c.html' },
+                        { name: 'EngineeringDrawing ', link: 'EngineeringDrawing.html'},
+                    ],
+                    'sem2': [
+						{ name: 'Applied Physics', link: 'physics.html' },
+                        { name: 'Differential Equations and Transform Techniques', link: 'differentialequations.html'},
+						{ name: 'English for Engineers', link: 'english.html' },
+                        { name: 'Data Structures', link: 'datastructures.html' },
+                        { name: 'The joy of computing using Python', link: 'joy_of_computing_python.html' },
+                    ]
+                },
+				'CSE(AI&ML)': {
+                    'sem1': [
+						{ name: 'English for Engineers', link: 'english.html' },
+                        { name: 'Applied Physics', link: 'physics.html' },
+                        { name: 'Matrix Theory and Calculus', link: 'mathematics.html' },
+                        { name: 'Computational Problem Solving', link: 'programming_in_c.html' },
+                    ],
+                    'sem2': [
+                        { name: 'Chemistry ', link: 'Chemistry.html'},
+                        { name: 'Differential Equations and Transform Techniques', link: 'differentialequations.html'},
+                        { name: 'Basic Electrical and Electronics Engineering', link: 'basic_electrical_engineering.html' },
+                        { name: 'Data Structures', link: 'datastructures.html' },
+                        { name: 'The joy of computing using Python', link: 'joy_of_computing_python.html' },
+                        { name: 'EngineeringDrawing ', link: 'EngineeringDrawing.html'},
+                    ]
+                },
+				'ME': {
+                    'sem1': [
+                        { name: 'Basic Electrical and Electronics Engineering', link: 'basic_electrical_engineering.html' },
+                        { name: 'Engineering Chemistry ', link: 'EngineeringChemistry.html'},
+                        { name: 'Matrix Theory and Calculus', link: 'mathematics.html' },
+                        { name: 'Computational Problem Solving', link: 'programming_in_c.html' },
+                        { name: 'EngineeringDrawing ', link: 'EngineeringDrawing.html'},
+                    ],
+                    'sem2': [
+						{ name: 'Engineering Physics', link: 'Engineering_Physics.html' },
+                        { name: 'Differential Equations and Transform Techniques', link: 'differentialequations.html'},
+						{ name: 'English for Engineers', link: 'english.html' },
+                        { name: 'Engineering Mechanics', link: 'Engineering_Mechanics.html' },
+                        { name: 'The joy of computing using Python', link: 'joy_of_computing_python.html' },
+                    ]
+                },
+				'CE': {
+                    'sem1': [
+                        { name: 'Basic Electrical and Electronics Engineering', link: 'basic_electrical_engineering.html' },
+                        { name: 'Engineering Chemistry ', link: 'EngineeringChemistry.html'},
+                        { name: 'Matrix Theory and Calculus', link: 'mathematics.html' },
+                        { name: 'Computational Problem Solving', link: 'programming_in_c.html' },
+                        { name: 'EngineeringDrawing ', link: 'EngineeringDrawing.html'},
+                    ],
+                    'sem2': [
+						{ name: 'Engineering Physics', link: 'Engineering_Physics.html' },
+                        { name: 'Differential Equations and Transform Techniques', link: 'differentialequations.html'},
+						{ name: 'English for Engineers', link: 'english.html' },
+                        { name: 'Engineering Mechanics', link: 'Engineering_Mechanics.html' },
+                        { name: 'Computer Applications for Civil Engineering', link: 'Computer_Applications_for_Civil_Engineering.html' },
+                    ]
+                },
+				'ECE': {
+                    'sem1': [
+                        { name: 'Basic Electrical and Electronics Engineering', link: 'basic_electrical_engineering.html' },
+                        { name: 'Chemistry ', link: 'Chemistry.html'},
+                        { name: 'Matrix Theory and Calculus', link: 'mathematics.html' },
+                        { name: 'Computational Problem Solving', link: 'programming_in_c.html' },
+                        { name: 'EngineeringDrawing ', link: 'EngineeringDrawing.html'},
+                    ],
+                    'sem2': [
+						{ name: 'Applied Physics', link: 'physics.html' },
+                        { name: 'Differential Equations and Transform Techniques', link: 'differentialequations.html'},
+						{ name: 'English for Engineers', link: 'english.html' },
+                        { name: 'Electronic Devices & Circuits', link: 'Electronic_Devices_Circuits.html' },
+                        { name: 'Network Analysis', link: 'Network_Analysis.html' },
+                    ]
+                },
+				'EEE': {
+                    'sem1': [
+                        { name: 'Basic Electrical and Electronics Engineering', link: 'basic_electrical_engineering.html' },
+                        { name: 'Chemistry ', link: 'Chemistry.html'},
+                        { name: 'Matrix Theory and Calculus', link: 'mathematics.html' },
+                        { name: 'Computational Problem Solving', link: 'programming_in_c.html' },
+                        { name: 'EngineeringDrawing ', link: 'EngineeringDrawing.html'},
+                    ],
+                    'sem2': [
+						{ name: 'Applied Physics', link: 'physics.html' },
+                        { name: 'Differential Equations and Transform Techniques', link: 'differentialequations.html'},
+						{ name: 'English for Engineers', link: 'english.html' },
+                        { name: 'Fundamentals of Electronic Devices and Circuits', link: 'Fundamentals of Electronic Devices and Circuits.html' },
+                        { name: 'Electrical_Circuits-1', link: 'Electrical_Circuits-1.html' },
+                    ]
+                },
+            };
+
+            let defaultBranch = 'CSE';
+            if (!Object.keys(subjects).includes(branch)){
+                branch = defaultBranch;
+            }
+
+            if (subjects[branch]) {
+                sem1Subjects.innerHTML = subjects[branch].sem1.map(subject =>
+                    `<li><a href="${subject.link}">${subject.name}</a></li>`
+                ).join('');
+
+                sem2Subjects.innerHTML = subjects[branch].sem2.map(subject =>
+                    `<li><a href="${subject.link}">${subject.name}</a></li>`
+                ).join('');
+            } else {
+                sem1Subjects.innerHTML = '<li>Subjects not found for this branch.</li>';
+                sem2Subjects.innerHTML = '<li>Subjects not found for this branch.</li>';
+            }
+        }
+
+        loadSubjects('CSE');
+        highlightSelectedBranch('CSE');
+
+        function highlightSelectedBranch(selectedBranch) {
+            Array.from(branchOptions.children).forEach(button => {
+                if (button.textContent === selectedBranch) {
+                    button.classList.add('selected');
+                } else {
+                    button.classList.remove('selected');
+                }
+            });
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,1938 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>C Programming and Problem Solving</title>
+    <style>
+        body {
+            font-family: 'Poppins', Arial, sans-serif;
+            background-color: #f0f2f5;
+            color: #333;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+		.logo-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo {
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            object-fit: cover;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+        }
+		.back-link {
+		  display: inline-block;
+		  margin-top: 30px;
+		  padding: 10px 20px;
+		  background-color: #4CAF50;         /* Green background */
+		  color: white;                      /* White text */
+		  text-decoration: none;             /* Remove underline */
+		  font-weight: bold;
+		  border-radius: 6px;                /* Rounded corners */
+		  transition: background-color 0.3s, transform 0.2s ease-in-out;
+		  box-shadow: 0 4px 6px rgba(0,0,0,0.1); /* Soft shadow */
+		}
+
+		.back-link:hover {
+		  background-color: #45a049;         /* Slightly darker on hover */
+		  transform: translateY(-2px);       /* Slight lift effect */
+		}
+
+		.back-link:active {
+		  transform: scale(0.98);            /* Click feedback */
+		}
+
+        .header {
+            background-color: #343a40;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            width: 100%;
+            margin-bottom: 20px;
+        }
+
+        .container {
+            display: flex;
+            max-width: 1200px;
+            width: 95%;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            margin: 20px auto;
+        }
+		.pseudocode-image {
+			max-width: 100%;
+			height: auto;
+			display: block;
+			margin: 20px auto;
+			border-radius: 10px;
+			box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+			transition: transform 0.3s ease;
+		}
+
+		.pseudocode-image:hover {
+			transform: scale(1.02);
+		}
+
+        .sidebar {
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-right: 1px solid #dee2e6;
+            width: 280px;
+            flex-shrink: 0;
+        }
+
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .sidebar li a {
+            display: block;
+            padding: 12px 18px;
+            text-decoration: none;
+            color: #495057;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+            margin-bottom: 8px;
+            cursor: pointer;
+        }
+
+        .sidebar li a:hover,
+        .sidebar li a.active {
+            background-color: #e9ecef;
+            color: #007bff;
+        }
+
+        .sidebar .download-btn {
+            display: block;
+            background-color: #007bff;
+            color: white;
+            padding: 14px 18px;
+            text-decoration: none;
+            border-radius: 5px;
+            text-align: center;
+            margin-top: 25px;
+            transition: background-color 0.3s ease;
+        }
+
+        .sidebar .download-btn:hover {
+            background-color: #0056b3;
+        }
+
+        .main-content {
+            padding: 30px;
+            flex-grow: 1;
+        }
+
+        .main-content h1 {
+            color: #343a40;
+            margin-bottom: 15px;
+            font-size: 2.2em;
+        }
+
+        .main-content p {
+            color: #495057;
+            line-height: 1.8;
+            margin-bottom: 20px;
+            font-size: 1.1em;
+        }
+
+        .main-content h2 {
+            color: #343a40;
+            margin-top: 25px;
+            margin-bottom: 10px;
+            font-size: 1.6em;
+        }
+
+        .main-content ul {
+            padding-left: 25px;
+            margin-bottom: 20px;
+            list-style-type: disc;
+            color: #495057;
+            font-size: 1.1em;
+        }
+
+        .main-content ul li {
+            margin-bottom: 8px;
+        }
+
+        .topic-content,
+        .subtopic-content {
+            display: none;
+        }
+
+        .topic-content.active,
+        .subtopic-content.active {
+            display: block;
+        }
+
+        .sidebar ul ul {
+            margin-left: 20px;
+            margin-top: 5px;
+        }
+
+        .sidebar ul ul li a {
+            font-size: 0.9em;
+        }
+
+        pre code {
+            background-color: #f0f0f0;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+            display: block;
+        }
+
+        .topic-section h2 {
+            margin-bottom: #333;
+            color: #333;
+        }
+
+        ol {
+            padding-left: 25px;
+            margin-bottom: 20px;
+        }
+
+        ol li {
+            margin-bottom: 8px;
+        }
+		.image-container {
+		  text-align: center;         /* Center-align the image */
+		  margin: 20px auto;          /* Add spacing around the container */
+		  padding: 10px;
+		  max-width: 1000px;          /* Optional: limit image container width */
+		  background-color: #f9f9f9;  /* Light background for contrast */
+		  border: 1px solid #ccc;     /* Subtle border */
+		  border-radius: 10px;        /* Rounded corners */
+		  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Soft shadow */
+		}
+
+		.image-container img {
+		  max-width: 100%;            /* Responsive width */
+		  height: auto;               /* Maintain aspect ratio */
+		  border-radius: 8px;         /* Slight rounding of the image itself */
+		  display: inline-block;
+		}
+
+
+    </style>
+</head>
+
+<body>
+	
+    <div class="header">
+		
+        <h1>Unit 1: Problem Solving and Introduction to C<h1>
+    </div>
+    <div class="container">
+        <div class="sidebar">
+            <div id="problem-solving">
+                <div class="topic-section">
+                    <h2>Problem Solving</h2>
+                    <ul>
+                        <li><a href="#problem-solving-steps">Steps to Solve Problems</a></li>
+                        <li><a href="#algorithms">Algorithms</a></li>
+                        <li><a href="#pseudo-code">Pseudo Code</a></li>
+                        <li><a href="#flowcharts">Flowcharts with Examples</a></li>
+                        <li><a href="#program-development">Program Development</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div id="programming-environments">
+                <div class="topic-section">
+                    <h2>Programming Environments</h2>
+                    <ul>
+                        <li><a href="#programming-languages-generations">Programming Languages and Generations</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div id="introduction-to-c">
+                <div class="topic-section">
+                    <h2>Introduction to C</h2>
+                    <ul>
+                        <li><a href="#c-introduction">Introduction</a></li>
+                        <li><a href="#c-structure">Structure of C Program</a></li>
+                        <li><a href="#c-keywords-identifiers">Keywords and Identifiers</a></li>
+                        <li><a href="#c-variables-data-types">Variables and Data Types</a></li>
+                        <li><a href="#c-constants">Constants</a></li>
+                        <li><a href="#c-io-statements">I/O Statements</a></li>
+                        <li><a href="#c-operators">Operators, Precedence, and Associativity</a></li>
+                    </ul>
+                </div>
+                <a href="https://drive.google.com/file/d/19wdNDg1Fttz67atma5HdtiL2W6bNkg0j/view?usp=drive_link" class="download-btn">Download PDF</a>
+            </div>
+        </div>
+        <div class="main-content">
+			<div id="problem-solving-steps" class="subtopic-content">
+				<h2>Steps to Solve Problems</h2>
+				<p>Problem-solving in programming involves a structured approach to develop efficient and effective solutions. It is the foundation for writing reliable code and building functional programs.</p>
+				
+				<ol>
+					<li><strong>Understand the Problem:</strong> 
+						<p>Begin by reading and analyzing the problem statement carefully. Identify the given data (inputs), the desired result (outputs), and any constraints or special conditions. Misunderstanding the problem can lead to incorrect solutions.</p>
+					</li>
+
+					<li><strong>Plan the Solution:</strong> 
+						<p>Before jumping into coding, it is essential to plan how to solve the problem. This includes selecting appropriate techniques like flowcharts, pseudocode, or algorithms. Consider edge cases and outline the step-by-step logic clearly.</p>
+					</li>
+
+					<li><strong>Write the Code:</strong> 
+						<p>Translate the planned solution into a programming language such as C. Focus on proper syntax, variable declarations, control structures (if-else, loops), and functions. Aim for clean, readable, and modular code.</p>
+					</li>
+
+					<li><strong>Test the Code:</strong> 
+						<p>Test your program with a variety of inputs, including typical, boundary, and invalid cases. This ensures the code behaves as expected and helps in validating the logic.</p>
+					</li>
+
+					<li><strong>Debug the Code:</strong> 
+						<p>If the program doesn’t work correctly, identify and fix errors. These could be syntax errors, logical errors, or runtime issues. Use debugging tools or insert print statements to trace the problem.</p>
+					</li>
+
+					<li><strong>Maintain the Code:</strong> 
+						<p>Programs often need to be updated over time to fix bugs, improve performance, or add features. Writing well-documented and modular code helps with future maintenance.</p>
+					</li>
+				</ol>
+
+			</div>
+			
+			<!-- algorithms -->
+            <div id="algorithms" class="subtopic-content">
+					<h2>Algorithms</h2>
+					<p>An algorithmic approach is a systematic and step-by-step method for solving a problem or performing a task using a set
+						of well-defined rules and instructions.
+						Algorithms are fundamental to computer science and mathematics and play a crucial role in various fields, including programming, data analysis, and
+						problem-solving.
+					</p>
+
+					<p>Here are some key characteristics of algorithms:</p>
+					<ul>
+						<li><strong>Well-defined instructions:</strong> Each step is precise and executable.</li>
+						<li><strong>Input and Output:</strong> It operates on input and produces output.</li>
+						<li><strong>Finiteness:</strong> It must terminate after a finite number of steps.</li>
+						<li><strong>Deterministic:</strong> Same input always results in same output.</li>
+						<li><strong>Effective:</strong> Must be practical and clear to execute.</li>
+						<li><strong>Step-by-step:</strong> Executed in a specific, logical order.</li>
+						<li><strong>Optimality:</strong> Should ideally give the best result.</li>
+						<li><strong>Problem-solving:</strong> Used to solve specific computational tasks.</li>
+						<li><strong>Abstraction:</strong> Focuses on logic, not implementation detail.</li>
+						<li><strong>Reusability:</strong> Applicable to similar problems with minimal changes.</li>
+						<li><strong>Analysis:</strong> Assessed by time and space complexity.</li>
+						<li><strong>Parallelism:</strong> Can be executed concurrently for efficiency.</li>
+					</ul>
+
+					<h3>Example 1: Algorithm to Find the Sum of Two Numbers</h3>
+					<ol>
+						<li>Start</li>
+						<li>Declare variables num1, num2 and sum</li>
+						<li>Read values num1 and num2</li>
+						<li>Add num1 and num2 and assign result to sum</li>
+						<li>Display sum</li>
+						<li>Stop</li>
+					</ol>
+
+					<pre><code class="language-c">
+				#include &lt;stdio.h&gt;
+
+				int main() {
+					int num1, num2, sum;
+					printf("Enter the first number: ");
+					scanf("%d", &num1);
+
+					printf("Enter the second number: ");
+					scanf("%d", &num2);
+
+					sum = num1 + num2;
+
+					printf("The sum of %d and %d is %d\n", num1, num2, sum);
+
+					return 0;
+				}
+					</code></pre>
+
+
+					<h3>Example 2: Algorithm to Find the Largest of Three Numbers</h3>
+					<ol>
+						<li>Start</li>
+						<li>Declare variables a, b and c</li>
+						<li>Read values for a, b and c</li>
+						<li>If a &gt; b and a &gt; c, display a is largest</li>
+						<li>Else if b &gt; c, display b is largest</li>
+						<li>Else, display c is largest</li>
+						<li>Stop</li>
+					</ol>
+
+					<pre><code class="language-c">
+				#include &lt;stdio.h&gt;
+
+				int main() {
+					int a, b, c;
+
+					printf("Enter three numbers: ");
+					scanf("%d %d %d", &a, &b, &c);
+
+					if (a > b && a > c) {
+						printf("%d is the largest number.\n", a);
+					} else if (b > c) {
+						printf("%d is the largest number.\n", b);
+					} else {
+						printf("%d is the largest number.\n", c);
+					}
+
+					return 0;
+				}
+					</code></pre>
+			</div>
+
+			<!-- Pseudo Code Section -->
+			<div id="pseudo-code" class="subtopic-content">
+				<h2>Pseudo Code</h2>
+				<p>
+					Pseudo code is a simplified way of describing an algorithm using plain English.
+					It serves as a blueprint that outlines the logical flow of a program without being bound to the syntax of any programming language.
+				</p>
+
+				<p>
+					It's useful for planning and documenting logic that can be easily translated into real code.
+					Even non-programmers with basic knowledge can understand pseudocode.
+				</p>
+
+				<h3>Advantages of Pseudo Code</h3>
+				<ul>
+					<li>Improves readability and planning.</li>
+					<li>Acts as a bridge between algorithm and code.</li>
+					<li>Works as documentation for future maintenance.</li>
+					<li>Reduces complexity during actual implementation.</li>
+				</ul>
+
+				<h3>How to Write Pseudo Code</h3>
+				<ol>
+					<li>Write the main goal of the program.</li>
+					<li>Declare variables clearly.</li>
+					<li>Use indentation for control structures (if, loops).</li>
+					<li>Use simple and clear naming conventions.</li>
+					<li>Describe each step precisely without real syntax.</li>
+				</ol>
+
+				<h3>Example: Add Two Numbers</h3>
+				<pre><code>
+			// This program adds two numbers and displays the result.
+			1. Start
+			2. Declare variables: number1, number2, sum
+			3. Display "Enter first number:"
+			4. Read number1
+			5. Display "Enter second number:"
+			6. Read number2
+			7. sum = number1 + number2
+			8. Display "The sum is: ", sum
+			9. End
+				</code></pre>
+			</div>
+
+
+			<div id="flowcharts" class="subtopic-content">
+				<h2>Flowcharts with Examples</h2>
+				<p>Flowcharts are a visual representation of an algorithm or process.
+					They use symbols to represent different operations and arrows to show the flow of control.
+					Flowcharts help in understanding the logic of a program and are useful for both designing and documenting code.
+				</p>
+
+				<p><strong>Basic Flowchart Symbols:</strong></p>
+				<ul>
+					<li><strong>Oval:</strong> Start or End</li>
+					<li><strong>Rectangle:</strong> Process or Instruction</li>
+					<li><strong>Diamond:</strong> Decision (Yes/No)</li>
+					<li><strong>Parallelogram:</strong> Input/Output</li>
+					<li><strong>Arrow:</strong> Flow of control</li>
+				</ul>
+
+				<hr>
+				<p><strong>Flow Chart: Greatest of three number</strong></p>
+				
+				<div class="image-container">
+				  <img src="https://www.ebhor.com/wp-content/uploads/2023/01/Flowchart-To-Add-Two-Numbers.jpg" alt="Programming Language Generations">
+				</div>
+
+				<p><strong>Code:</strong></p>
+				<pre><code class="language-c">
+			#include &lt;stdio.h&gt;
+
+			int main() {
+				int num1, num2, sum;
+				printf("Enter two numbers: ");
+				scanf("%d %d", &num1, &num2);
+				sum = num1 + num2;
+				printf("Sum = %d", sum);
+				return 0;
+			}
+				</code></pre>
+
+				<hr>
+				<p><strong>Flow Chart: Greatest of three number</strong></p>
+				<div class="image-container">
+				  <img src="https://learnetutorials.com/assets/images/programs/largest-three1.png" alt="Programming Language Generations">
+				</div>
+
+				<p><strong>Code:</strong></p>
+				<pre><code class="language-c">
+			#include &lt;stdio.h&gt;
+
+			int main() {
+				int a, b, c;
+				printf("Enter three numbers: ");
+				scanf("%d %d %d", &a, &b, &c);
+
+				if (a >= b && a >= c)
+					printf("Largest number is %d", a);
+				else if (b >= a && b >= c)
+					printf("Largest number is %d", b);
+				else
+					printf("Largest number is %d", c);
+
+				return 0;
+			}
+				</code></pre>
+			</div>
+			<div id="program-development" class="subtopic-content">
+			  <h2>Program Development</h2>
+			  <p>
+				Program development is the structured process of designing, writing, testing, and maintaining a software application.
+				It involves several stages that ensure the software meets the user's needs and works efficiently and reliably.
+			  </p>
+				<div class="image-container">
+					<img src="https://tse2.mm.bing.net/th?id=OIP.X8c8t3BE0R95QNT25i6Z2wHaHa&pid=Api" alt="Requirement Analysis">
+				  </div>
+			  <ol>
+				<li>
+				  <strong>Requirement Analysis:</strong>
+				  This is the initial stage where developers gather all necessary information from stakeholders.
+				  The goal is to understand what the software must do and document the requirements clearly.
+				  
+				</li>
+
+				<li>
+				  <strong>Design:</strong>
+				  In this phase, the program's structure is planned, including its architecture, modules, and data flow.
+				  Diagrams like flowcharts and UML may be used.
+				</li>
+
+				<li>
+				  <strong>Coding:</strong>
+				  The actual program is written using a programming language (e.g., C, Python, Java). Clean, efficient, and well-commented code is essential.
+				</li>
+
+				<li>
+				  <strong>Testing:</strong>
+				  Once the code is written, it must be tested to catch and fix bugs. Testing ensures the software meets the requirements and performs as expected.
+				</li>
+
+				<li>
+				  <strong>Deployment:</strong>
+				  After testing is complete, the software is deployed to the production environment where users can access and use it.
+				</li>
+
+				<li>
+				  <strong>Maintenance:</strong>
+				  Post-deployment, the software needs updates and bug fixes to ensure long-term reliability. Maintenance also involves adding new features as needed.
+				</li>
+			  </ol>
+			</div>
+
+			<div id="programming-languages-generations" class="subtopic-content">
+				<h2>Programming Languages and Generations</h2>
+				<p>Programming languages have evolved significantly over time to simplify the process of writing software and to provide more power and flexibility to developers. These languages are typically categorized into five generations, each representing a step forward in abstraction and capability:</p>
+				<div class="image-container">
+				  <img src="https://image2.slideserve.com/4357108/programming-languages-generations-n.jpg" alt="Programming Language Generations">
+				</div>
+
+				<ul>
+					<li>
+						<strong>First Generation (1GL):</strong> These are <em>machine-level languages</em>, consisting entirely of binary code (0s and 1s). Programs are executed directly by the hardware without the need for a compiler or interpreter. While extremely fast, these are difficult and error-prone to write.
+						<br><strong>Example:</strong> `10110000 01100001` (binary representation of a machine instruction)
+					</li>
+					<li>
+						<strong>Second Generation (2GL):</strong> Also known as <em>assembly languages</em>, these use symbolic names or mnemonics to represent machine instructions. They are slightly easier to understand than binary but still require detailed knowledge of the hardware.
+						<br><strong>Example:</strong> `MOV AL, 61h` (moves the hexadecimal value 61 into register AL)
+					</li>
+					<li>
+						<strong>Third Generation (3GL):</strong> High-level programming languages that are more similar to human language. They are easier to learn and use and include structured syntax and abstraction from hardware. These languages require compilers or interpreters to convert code into machine language.
+						<br><strong>Examples:</strong> C, Java, Python, Pascal, C++
+					</li>
+					<li>
+						<strong>Fourth Generation (4GL):</strong> Designed to be even closer to natural human language and to accomplish specific tasks with minimal code. Often used in database querying, report generation, and GUI development.
+						<br><strong>Examples:</strong> SQL, MATLAB, Oracle Reports, Informix 4GL
+					</li>
+					<li>
+						<strong>Fifth Generation (5GL):</strong> These languages focus on <em>problem-solving using constraints</em> rather than explicit instructions. They are primarily used in AI and logic-based systems and rely on reasoning and rules.
+						<br><strong>Examples:</strong> Prolog, Mercury, OPS5
+					</li>
+				</ul>
+				<p>As we move up the generations, the level of abstraction increases, making programming easier and more powerful, but often at the cost of lower control over hardware.</p>
+
+			</div>
+
+			<div id="c-introduction" class="subtopic-content">
+				<h2>Introduction to C</h2>
+				<p>C is a foundational programming language developed in the early 1970s by <strong>Dennis Ritchie</strong> at <strong>Bell Labs</strong>. It played a major role in shaping modern software development. Notably, C was used to implement the UNIX operating system, and it laid the groundwork for languages like C++, Java, and C#.</p>
+
+				<p><strong>Why Learn C?</strong> C provides a deep understanding of how software interacts with hardware, making it an essential language for system-level programming and embedded systems development.</p>
+
+				<p><strong>Key Features of C:</strong></p>
+				<ul>
+					<li><strong>Procedural Language:</strong> Follows a linear, top-down approach where problems are broken into functions and solved step by step.</li>
+					<li><strong>Mid-Level Language:</strong> Combines the low-level power of assembly with high-level programming constructs, offering both control and simplicity.</li>
+					<li><strong>Rich Library:</strong> Includes standard libraries like `stdio.h`, `stdlib.h`, and `math.h` for input/output, memory handling, and math operations.</li>
+					<li><strong>Manual Memory Management:</strong> Offers dynamic memory control through functions like `malloc()`, `calloc()`, and `free()`.</li>
+					<li><strong>Pointers:</strong> Enables efficient data handling, especially useful in arrays, functions, and dynamic memory allocation.</li>
+					<li><strong>Portability:</strong> Code written in C can be compiled and run on various hardware platforms with minimal changes.</li>
+					<li><strong>Efficiency and Speed:</strong> C programs are close to hardware execution, making them ideal for real-time and performance-critical applications.</li>
+				</ul>
+
+				<p><strong>Applications of C:</strong> Operating systems, embedded systems, compilers, databases, drivers, and games.</p>
+
+			</div>
+
+			<div id="c-structure" class="subtopic-content">
+				<h2>Structure of a C Program</h2>
+				<p>Every C program follows a specific structure to ensure proper organization and readability. The structure provides a framework for where to place variables, functions, and executable code. Here’s a detailed look at each part:</p>
+					<div class="image-container">
+					  <img src="https://www.pragimtech.com/blog/c-programming/structure-of-c-program/structure-of-c-program.png" alt="Programming Language Generations">
+					</div>
+
+				<ol>
+					<li>
+						<strong>Documentation Section</strong>
+						<p>Used for comments that describe the purpose, author, date, or version of the program. Comments are ignored by the compiler but are vital for human readability.</p>
+						<ul>
+							<li><code>// Single-line comment</code></li>
+							<li><code>/* Multi-line comment */</code></li>
+						</ul>
+					</li>
+					<li>
+						<strong>Preprocessor Directives</strong>
+						<p>Instructions for the compiler that start with `#`. They typically include header files or define macros.</p>
+						<pre><code>#include &lt;stdio.h&gt;  // For standard I/O functions
+			#include &lt;math.h&gt;   // For mathematical functions</code></pre>
+					</li>
+					<li>
+						<strong>Global Declaration Section</strong>
+						<p>Variables and functions that are accessible throughout the program are declared here.</p>
+					</li>
+					<li>
+						<strong>main() Function</strong>
+						<p>The entry point of every C program. Contains declarations and the executable logic.</p>
+						<pre><code>int main() {
+				// Variable declarations
+				printf("Hello World!");
+				return 0;
+			}</code></pre>
+					</li>
+					<li>
+						<strong>Subprogram Section</strong>
+						<p>Includes user-defined functions that are called from <code>main()</code> or elsewhere.</p>
+					</li>
+				</ol>
+
+				<h2>📘 Complete Example of a C Program</h2>
+				<pre><code>// Documentation Section
+			/* Program to demonstrate basic structure of C */
+
+			// Preprocessor Directives
+			#include &lt;stdio.h&gt;
+
+			// Global Declarations
+			int globalVar = 10;
+			float multiply(float x, float y);
+
+			// main() Function
+			int main() {
+				int a = 5, b = 6;
+				float result = multiply(a, b);
+				printf("Result: %f\n", result);
+				return 0;
+			}
+
+			// Subprogram Section
+			float multiply(float x, float y) {
+				return x * y;
+			}</code></pre>
+
+				<p>This structure promotes clarity, modularity, and ease of debugging.</p>
+
+			</div>
+
+			<div id="c-keywords-identifiers" class="subtopic-content">
+				<h2>Keywords and Identifiers</h2>
+				<p>
+					Keywords and identifiers are foundational building blocks of the C programming language.
+					Understanding how to properly use them is essential for writing syntactically correct and meaningful programs.
+					Keywords form the vocabulary of the language, while identifiers allow programmers to name and reference data and functions in their code.
+				</p>
+
+				<h3>Keywords</h3>
+				<p>
+					Keywords are reserved words predefined by the C language. These words have specific meanings and are used to perform various operations or define control flow, data types, and functions.
+					Since keywords are integral to the language's syntax, they cannot be used as variable names or other identifiers.
+				</p>
+
+				<p><strong>Key Characteristics of Keywords:</strong></p>
+				<ul>
+					<li>Always written in lowercase (e.g., <code>int</code>, <code>return</code>).</li>
+					<li>Cannot be redefined or used as identifiers.</li>
+					<li>Essential for writing control structures, declaring data types, and more.</li>
+				</ul>
+
+				<p><strong>List of Common C Keywords:</strong></p>
+				<pre>
+					<code>
+						auto    break   case    char
+						const   continue    default     do
+						double  else    enum    extern
+						float   for     goto    if
+						int     long    register    return
+						short   signed  sizeof  static
+						struct  switch  typedef union
+						unsigned    void    volatile    while
+					</code>
+				</pre>
+
+				<p><strong>Examples of Keyword Usage:</strong></p>
+				<ul>
+					<li><code>int main()</code>: <code>int</code> is a keyword declaring the return type.</li>
+					<li><code>if (x > 0)</code>: <code>if</code> is a control structure keyword.</li>
+					<li><code>for (int i = 0; i < 10; i++)</code>: <code>for</code> is a loop control keyword.</li>
+					<li><code>return 0;</code>: <code>return</code> is used to return a value from a function.</li>
+				</ul>
+
+				<h3>Identifiers</h3>
+				<p>
+					Identifiers are the names assigned by the programmer to elements like variables, functions, arrays, structures, etc.
+					Identifiers make code readable and maintainable, enabling programmers to refer to stored data and functions effectively.
+				</p>
+
+				<p><strong>Rules for Creating Identifiers:</strong></p>
+				<ul>
+					<li>Must begin with a letter (A-Z, a-z) or underscore (_).</li>
+					<li>Subsequent characters may include letters, digits (0-9), or underscores.</li>
+					<li>Cannot be the same as a keyword (e.g., <code>int</code>, <code>float</code>).</li>
+					<li>Cannot contain special characters such as @, #, $, etc.</li>
+					<li>C is case-sensitive, so <code>count</code> and <code>Count</code> are different.</li>
+				</ul>
+
+				<p><strong>Examples of Valid Identifiers:</strong></p>
+				<pre><code>
+						userName
+						_age
+						totalSum
+						counter1
+						MAX_LIMIT
+				</code></pre>
+
+				<p><strong>Examples of Invalid Identifiers:</strong></p>
+				<pre><code>
+			1value      // Starts with a digit
+			float       // Reserved keyword
+			user-name   // Hyphen not allowed
+			total sum   // Space not allowed
+				</code></pre>
+
+				<p><strong>Best Practices for Naming Identifiers:</strong></p>
+				<ul>
+					<li><strong>Be descriptive:</strong> Use names that convey purpose (e.g., <code>studentScore</code>).</li>
+					<li><strong>Use consistent naming conventions:</strong>
+						<ul>
+							<li><strong>Camel Case:</strong> <code>totalMarks</code></li>
+							<li><strong>Snake Case:</strong> <code>total_marks</code></li>
+							<li><strong>Pascal Case:</strong> <code>TotalMarks</code></li>
+						</ul>
+					</li>
+					<li><strong>Use all caps for constants:</strong> <code>#define MAX_SPEED 120</code></li>
+					<li><strong>Avoid abbreviations unless standard:</strong> e.g., <code>num</code> for number is fine, but <code>tst</code> instead of <code>test</code> is unclear.</li>
+				</ul>
+
+				<p><strong>Summary:</strong> <br>
+					Understanding the difference between keywords and identifiers helps prevent common syntax errors and improves code readability. Keywords are predefined, while identifiers are custom names created by the programmer. Always follow naming conventions and rules to write clean, professional, and bug-free code.
+				</p>
+			</div>
+			<div id="c-variables-data-types" class="subtopic-content">
+				<h2>Variables and Data Types</h2>
+				<p>In C programming, variables are used to store data values.
+					Each variable has a specific data type that determines the kind of data it can hold.
+					Understanding variables and data types is crucial for writing efficient and correct C programs.
+				</p>
+
+				<h3>Variables</h3>
+				<p>
+					A variable is a named storage location in the computer's memory.
+					It is used to hold a value that can be changed during the program's execution.
+					In C, you must declare a variable before you can use it.
+					Declaration involves specifying the variable's name and its data type.
+				</p>
+
+				<p><strong>Variable Declaration Syntax:</strong></p>
+				<pre><code>
+					data_type variable_name;
+				</code></pre>
+
+				<ul>
+					<li><code>data_type</code>: Specifies the type of data the variable can store (e.g., <code>int</code>, <code>float</code>, <code>char</code>).</li>
+					<li><code>variable_name</code>: Is the name you give to the variable (following the rules for identifiers).</li>
+				</ul>
+
+				<p><strong>Examples of Variable Declarations:</strong></p>
+				<pre><code>
+					int age;
+					float salary;
+					char initial;
+					double pi;
+				</code></pre>
+
+				<p><strong>Variable Initialization:</strong></p>
+				<p>
+					Initialization is the process of assigning an initial value to a variable at the time of declaration.
+					You can initialize a variable when you declare it by using the assignment operator (=).
+				</p>
+
+				<p><strong>Variable Initialization Syntax:</strong></p>
+				<pre><code>
+					data_type variable_name = initial_value;
+				</code></pre>
+
+				<p><strong>Examples of Variable Initialization:</strong></p>
+				<pre><code>
+					int age = 25;
+					float salary = 50000.0;
+					char initial = 'J';
+					double pi = 3.14159;
+				</code></pre>
+
+				<h3>Data Types</h3>
+				<p>
+					Data types specify the type of data that a variable can hold.
+					C provides a variety of built-in data types, which can be broadly classified into the following categories:
+				</p>
+
+				<ul>
+					<li>Primary (Basic) Data Types</li>
+					<li>Derived Data Types</li>
+					<li>User-Defined Data Types</li>
+				</ul>
+
+				<h4>Primary (Basic) Data Types</h4>
+				<p>These are the fundamental data types in C.</p>
+
+				<ul>
+					<li><strong>int</strong>: ...
+					<li><strong>float</strong>: ...
+					<li><strong>double</strong>: ...
+					<li><strong>char</strong>: ...
+					<li><strong>void</strong>: ...
+				</ul>
+
+				<h4>Derived Data Types</h4>
+				<p>
+					Derived data types are created from the primary data types.
+					They include:
+				</p>
+				<ul>
+					<li><strong>Arrays</strong>: ...</li>
+					<li><strong>Pointers</strong>: ...</li>
+					<li><strong>Functions</strong>: ...</li>
+				</ul>
+
+				
+				<h4>User-Defined Data Types</h4>
+				<ul>
+					<li><strong>Structures</strong></li>
+					<li><strong>Unions</strong></li>
+					<li><strong>Enumerations (enums)</strong></li>
+				</ul>
+
+				
+				<p><strong>Modifiers</strong></p>
+				<p>Data type modifiers are keywords that can be used to alter the size or range of the basic data types.</p>
+
+				<ul>
+					<li><code>signed</code></li>
+					<li><code>unsigned</code></li>
+					<li><code>short</code></li>
+					<li><code>long</code></li>
+				</ul>
+
+				
+				<p><strong>Modified Data Types:</strong></p>
+				<ul>
+					<li><strong>signed int</strong>: ...</li>
+					<li><strong>unsigned int</strong>: ...</li>
+					<li><strong>short int</strong>: ...</li>
+					<li><strong>long int</strong>: ...</li>
+					<li><strong>unsigned char</strong>: ...</li>
+					<li><strong>signed char</strong>: ...</li>
+					<li><strong>long double</strong>: ...</li>
+				</ul>
+			</div>
+
+
+            <div id="c-constants" class="subtopic-content">
+                <h2>Constants</h2>
+                <p>
+                    Constants in C are fixed values that do not change during the execution of a program.
+                    They are used to represent values that should remain constant throughout the program's lifetime.
+                    C provides two main ways to define constants: using the <code>const</code> keyword and using the <code>#define</code> preprocessor directive.
+                </p>
+                <h3>1. Using the <code>const</code> Keyword</h3>
+                <p>
+                    The <code>const</code> keyword is used to declare a variable as a constant.
+                    Once a variable is declared with <code>const</code>, its value cannot be modified.
+                </p>
+                <p><strong>Syntax:</strong></p>
+                <pre>
+                    <code>
+                        const data_type variable_name = value;
+                    </code>
+                </pre>
+                <ul>
+                    <li><code>const</code>: Keyword used to declare a constant.</li>
+                    <li><code>data_type</code>: The data type of the constant (e.g., <code>int</code>, <code>float</code>, <code>char</code>).</li>
+                    <li><code>variable_name</code>: The name of the constant (following the rules for identifiers).</li>
+                    <li><code>value</code>: The constant value assigned to the variable.</li>
+                </ul>
+                <p><strong>Examples:</strong></p>
+                <pre>
+                    <code>
+                        const int MAX_VALUE = 100;
+                        const float PI = 3.14159;
+                        const char NEWLINE = '\n';
+                    </code>
+                </pre>
+                <p><strong>Key Points:</strong></p>
+                <ul>
+                    <li>Constants declared with <code>const</code> follow the same scope rules as variables. They can be local or global.</li>
+                    <li>It is a good practice to initialize <code>const</code> variables when they are declared.</li>
+                    <li>Attempting to modify a <code>const</code> variable will result in a compilation error.</li>
+                </ul>
+
+                <h3>2. Using the <code>#define</code> Preprocessor Directive</h3>
+                <p>
+                    The <code>#define</code> preprocessor directive is used to create symbolic constants.
+                    It is a preprocessor command, which means it is processed before the compilation phase.
+                    <code>#define</code> creates a macro that substitutes a specified value for every occurrence of the macro name in the code.
+                </p>
+                <p><strong>Syntax:</strong></p>
+                <pre>
+                    <code>
+                        #define CONSTANT_NAME value
+                    </code>
+                </pre>
+                <ul>
+                    <li><code>#define</code>: Preprocessor directive to define a constant.</li>
+                    <li><code>CONSTANT_NAME</code>: The name of the constant (conventionally written in uppercase).</li>
+                    <li><code>value</code>: The constant value.</li>
+                </ul>
+                <p><strong>Examples:</strong></p>
+                <pre>
+                    <code>
+                        #define MAX_SIZE 200
+                        #define GREETING "Hello, World!"
+                        #define TRUE 1
+                        #define FALSE 0
+                    </code>
+                </pre>
+                <p><strong>Key Points:</strong></p>
+                <ul>
+                    <li><code>#define</code> constants are not variables; they are symbolic names that are replaced by their values before compilation.</li>
+                    <li><code>#define</code> constants do not have a specific data type. The data type is determined by the value assigned.</li>
+                    <li><code>#define</code> constants have global scope; they are visible throughout the entire program after their definition.</li>
+                    <li>It is not necessary to end <code>#define</code> statements with a semicolon (;).</li>
+                </ul>
+
+                <h3>Differences between <code>const</code> and <code>#define</code></h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Feature</th>
+                            <th><code>const</code></th>
+                            <th><code>#define</code></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Type</td>
+                            <td>Declares a variable with a specific data type.</td>
+                            <td>Creates a symbolic name; no specific data type.</td>
+                        </tr>
+                        <tr>
+                            <td>Scope</td>
+                            <td>Follows variable scope rules (local or global).</td>
+                            <td>Global scope from the point of definition.</td>
+                        </tr>
+                        <tr>
+                            <td>Processing</td>
+                            <td>Processed during compilation.</td>
+                            <td>Processed by the preprocessor before compilation.</td>
+                        </tr>
+                        <tr>
+                            <td>Memory Allocation</td>
+                            <td>Allocates memory like a variable.</td>
+                            <td>Does not allocate memory; performs text substitution.</td>
+                        </tr>
+                        <tr>
+                            <td>Debugging</td>
+                            <td>Visible to the debugger.</td>
+                            <td>Not directly visible to the debugger (name is replaced by value).</td>
+                        </tr>
+                        <tr>
+                            <td>Semicolon</td>
+                            <td>Requires a semicolon at the end of the declaration.</td>
+                            <td>Does not require a semicolon.</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <h3>When to Use Which</h3>
+                <ul>
+                    <li>Use <code>const</code> when you need a constant with a specific data type and scope control (e.g., local constants within a function).</li>
+                    <li>Use <code>#define</code> for simple constant definitions that are used globally throughout the program and when you want preprocessor substitution (e.g., for simple macros).</li>
+                </ul>
+            </div>
+            <div id="c-io-statements" class="subtopic-content">
+                <h2>I/O Statements</h2>
+                <p>
+                    In C programming, input/output (I/O) statements are used to interact with the user or external devices.
+                    They allow the program to receive input from the user and display output to the user.
+                    The standard I/O functions in C are provided by the <code>stdio.h</code> header file.
+                </p>
+                <h3>1. Standard Output: <code>printf()</code></h3>
+                <p>
+                    The <code>printf()</code> function is used to display output to the standard output device (usually the console).
+                    It can display formatted output, including text, numbers, and characters.
+                </p>
+                <p><strong>Syntax:</strong></p>
+                <pre>
+                    <code>
+                        printf("format string", arguments);
+                    </code>
+                </pre>
+                <ul>
+                    <li><code>"format string"</code>: A string that specifies the format of the output. It can contain:
+                        <ul>
+                            <li>Text to be displayed as is.</li>
+                            <li>Format specifiers that indicate how to display the arguments.</li>
+                            <li>Escape sequences for special characters.</li>
+                        </ul>
+                    </li>
+                    <li><code>arguments</code>: Optional values to be inserted into the format string according to the format specifiers.</li>
+                </ul>
+                <p><strong>Format Specifiers:</strong></p>
+                <p>
+                    Format specifiers are placeholders in the format string that are replaced by the values of the arguments.
+                    Common format specifiers include:
+                </p>
+                <ul>
+                    <li><code>%d</code> or <code>%i</code>: Integer</li>
+                    <li><code>%f</code>: Floating-point number (float)</li>
+                    <li><code>%lf</code>: Floating-point number (double)</li>
+                    <li><code>%c</code>: Character</li>
+                    <li><code>%s</code>: String</li>
+                </ul>
+                <p><strong>Escape Sequences:</strong></p>
+                <p>
+                    Escape sequences are special character combinations that represent non-printable characters or perform specific formatting tasks.
+                    Common escape sequences include:
+                </p>
+                <ul>
+                    <li><code>\n</code>: Newline</li>
+                    <li><code>\t</code>: Horizontal tab</li>
+                    <li><code>\\</code>: Backslash</li>
+                    <li><code>\"</code>: Double quote</li>
+                    <li><code>\'</code>: Single quote</li>
+                </ul>
+                <p><strong>Examples:</strong></p>
+                <pre>
+                    <code>
+                        #include &lt;stdio.h&gt;
+
+                        int main() {
+                            int age = 30;
+                            float salary = 50000.50;
+                            char initial = 'J';
+                            char name[] = "John Doe";
+
+                            printf("Hello, %s!\n", name);
+                            printf("Age: %d\n", age);
+                            printf("Salary: %.2f\n", salary); // Display with 2 decimal places
+                            printf("Initial: %c\n", initial);
+                            printf("Age: %d, Salary: %.2f, Initial: %c\n", age, salary, initial);
+
+                            printf("This is a tabbed line:\tTabbed text\n");
+                            printf("This is a backslash: \\ \n");
+                            printf("This is a double quote: \" \n");
+
+                            return 0;
+                        }
+                    </code>
+                </pre>
+                <h3>2. Standard Input: <code>scanf()</code></h3>
+                <p>
+                    The <code>scanf()</code> function is used to read input from the standard input device (usually the keyboard).
+                    It can read formatted input, such as numbers, characters, and strings.
+                </p>
+                <p><strong>Syntax:</strong></p>
+                <pre>
+                    <code>
+                        scanf("format string", &variable1, &variable2, ...);
+                    </code>
+                </pre>
+                <ul>
+                    <li><code>"format string"</code>: A string that specifies the format of the expected input. It contains format specifiers that match the data types of the variables.</li>
+                    <li><code>&variable1, &variable2, ...</code>: Addresses of the variables where the input values will be stored. The ampersand (&) is the address-of operator and is necessary to modify the variable's value.</li>
+                </ul>
+                <p><strong>Format Specifiers:</strong></p>
+                <p>
+                    The format specifiers used with <code>scanf()</code> are similar to those used with <code>printf()</code>:
+                </p>
+                <ul>
+                    <li><code>%d</code> or <code>%i</code>: Integer</li>
+                    <li><code>%f</code>: Floating-point number(float)</li>
+                    <li><code>%lf</code>: Floating-point number (double)</li>
+                    <li><code>%c</code>: Character</li>
+                    <li><code>%s</code>: String (reads up to the first whitespace)</li>
+                </ul>
+                <p><strong>Examples:</strong></p>
+                <pre>
+                    <code>
+                        #include &lt;stdio.h&gt;
+
+                        int main() {
+                            int age;
+                            float salary;
+                            char initial;
+                            char name[50]; // Array to store a string (max 49 characters + null terminator)
+
+                            printf("Enter your age: ");
+                            scanf("%d", &age);
+
+                            printf("Enter your salary: ");
+                            scanf("%f", &salary);
+
+                            printf("Enter your initial: ");
+                            scanf(" %c", &initial); // Note the space before %c to consume any leading whitespace
+
+                            printf("Enter your name: ");
+                            scanf("%s", name); // Reading a single word, use fgets for a line
+
+                            printf("\nAge: %d, Salary: %.2f, Initial: %c, Name: %s\n", age, salary, initial, name);
+
+                            return 0;
+                        }
+                    </code>
+                </pre>
+                <h3>Important Notes:</h3>
+                <ul>
+                    <li><strong>Whitespace:</strong> <code>scanf()</code> generally ignores leading whitespace (spaces, tabs, newlines) when reading numbers and strings (<code>%d</code>, <code>%f</code>, <code>%s</code>). However, it does not ignore whitespace when reading a single character (<code>%c</code>). To avoid issues with <code>%c</code>, you can add a space before the format specifier in <code>scanf()</code> (e.g., <code>scanf(" %c", &ch);</code>).</li>
+                    <li><strong>Buffer Overflow:</strong> When using <code>%s</code> to read a string, you must ensure that the character array (e.g., <code>name</code> in the example) is large enough to hold the input. Otherwise, it can lead to a buffer overflow, which is a security vulnerability. Use <code>fgets()</code> for safer string input.</li>
+                    <li><strong>Return Value:</strong> <code>scanf()</code> returns the number of input items successfully read. You can use this return value to check for errors in input.</li>
+                    <li><strong>Newline Character:</strong> When you press Enter, a newline character (<code>\n</code>) is generated. If you don't handle this properly, it can cause unexpected behavior in subsequent input operations.</li>
+                </ul>
+                <h3>3. Character I/O: <code>getchar()</code> and <code>putchar()</code></h3>
+                <p>
+                    <code>getchar()</code> and <code>putchar()</code> are functions used for single character input and output, respectively.
+                </p>
+                <h4><code>getchar()</code></h4>
+                <p>
+                    The <code>getchar()</code> function reads a single character from the standard input (usually the keyboard) and returns the ASCII value of the character as an integer.
+                </p>
+                <p><strong>Syntax:</strong></p>
+                <pre>
+                    <code>
+                        int getchar(void);
+                    </code>
+                </pre>
+                <p><strong>Example:</strong></p>
+                <pre>
+                    <code>
+                        #include &lt;stdio.h&gt;
+
+                        int main() {
+                            int ch;
+
+                            printf("Enter a character: ");
+                            ch = getchar();
+
+                            printf("You entered: %c (ASCII value: %d)\n", ch, ch);
+
+                            return 0;
+                        }
+                    </code>
+                </pre>
+                <h4><code>putchar()</code></h4>
+                <p>
+                    The <code>putchar()</code> function writes a single character to the standard output (usually the console).
+                </p>
+                <p><strong>Syntax:</strong></p>
+                <pre>
+                    <code>
+                        int putchar(int character);
+                    </code>
+                </pre>
+                <p><strong>Example:</strong></p>
+                <pre>
+                    <code>
+                        #include &lt;stdio.h&gt;
+
+                        int main() {
+                            char ch = 'A';
+
+                            printf("Character to display: %c\n", ch);
+                            putchar(ch);
+                            putchar('\n'); // Newline character
+
+                            return 0;
+                        }
+                    </code>
+                </pre>
+                <h3>4. String I/O: <code>fgets()</code> and <code>puts()</code></h3>
+                <p>
+                    <code>fgets()</code> and <code>puts()</code> are functions used for string input and output, respectively.
+                </p>
+                <h4><code>fgets()</code></h4>
+                <p>
+                    The <code>fgets()</code> function reads a line of text from the standard input (or a file) and stores it in a character array (string).
+                    It is safer to use than <code>scanf()</code> with <code>%s</code> because it limits the number of characters read, preventing buffer overflows.
+                </p>
+                <p><strong>Syntax:</strong></p>
+                <pre>
+                    <code>
+                        char *fgets(char *str, int n, FILE *stream);
+                    </code>
+                </pre>
+                <ul>
+                    <li><code>str</code>: Pointer to the character array where the string will be stored.</li>
+                    <li><code>n</code>: Maximum number of characters to read (including the null terminator).</li>
+                    <li><code>stream</code>: Pointer to the input stream (<code>stdin</code> for standard input).</li>
+                </ul>
+                <p><strong>Example:</strong></p>
+                <pre>
+                    <code>
+                        #include &lt;stdio.h&gt;
+
+                        int main() {
+                            char name[50];
+
+                            printf("Enter your full name: ");
+                            fgets(name, sizeof(name), stdin);  // Read up to 49 characters + null terminator
+
+                            printf("Hello, %s", name); // puts() automatically adds a newline, fgets() might include one
+                            // printf("Hello, %s", name);
+                            return 0;
+                        }
+                    </code>
+                </pre>
+                <h4><code>puts()</code></h4>
+                <p>
+                    The <code>puts()</code> function writes a string to the standard output (usually the console) and appends a newline character at the end.
+                </p>
+                <p><strong>Syntax:</strong></p>
+                <pre>
+                    <code>
+                        int puts(const char *str);
+                    </code>
+                </pre>
+                <p><strong>Example:</strong></p>
+                <pre>
+                    <code>
+                        #include &lt;stdio.h&gt;
+
+                        int main() {
+                            char message[] = "Welcome to C programming!";
+
+                            puts(message);  // Output the string
+                            puts("This is another line."); // Output a string literal
+
+                            return 0;
+                        }
+                    </code>
+                </pre>
+            </div>
+            <div id="c-operators" class="subtopic-content">
+                <h2>Operators, Precedence, and Associativity</h2>
+                <p>
+                    Operators are symbols that perform operations on one or more operands (values or variables).
+                    C provides a rich set of operators that can be used to perform arithmetic, logical, relational, bitwise, and other operations.
+                    Understanding operator precedence and associativity is crucial for writing correct and efficient C programs.
+                </p>
+                <h3>1. Arithmetic Operators</h3>
+                <p>
+                    Arithmetic operators are used to perform mathematical calculations.
+                </p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Operator</th>
+                            <th>Description</th>
+                            <th>Example</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>+</code></td>
+                            <td>Addition</td>
+                            <td><code>a + b</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>-</code></td>
+                            <td>Subtraction</td>
+                            <td><code>a - b</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>*</code></td>
+                            <td>Multiplication</td>
+                            <td><code>a * b</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>/</code></td>
+                            <td>Division (integer division if both operands are integers)</td>
+                            <td><code>a / b</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>%</code></td>
+                            <td>Modulus (remainder of integer division)</td>
+                            <td><code>a % b</code></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p><strong>Example:</strong></p>
+                <pre>
+                    <code>
+                        #include &lt;stdio.h&gt;
+
+                        int main() {
+                            int a = 10, b = 5;
+                            int sum, difference, product, quotient, remainder;
+
+                            sum = a + b;
+                            difference = a - b;
+                            product = a * b;
+                            quotient = a / b;
+                            remainder = a % b;
+
+                            printf("Sum: %d\n", sum);
+                            printf("Difference: %d\n", difference);
+                            printf("Product: %d\n", product);
+                            printf("Quotient: %d\n", quotient);
+                            printf("Remainder: %d\n", remainder);
+
+                            return 0;
+                        }
+                    </code>
+                </pre>
+                <h3>2. Relational Operators</h3>
+                <p>
+                    Relational operators are used to compare two values. They return 1 (true) if the condition is true and 0 (false) if the condition is false.
+                </p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Operator</th>
+                            <th>Description</th>
+                            <th>Example</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>==</code></td>
+                            <td>Equal to</td>
+                            <td><code>a == b</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>!=</code></td>
+                            <td>Not equal to</td>
+                            <td><code>a != b</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>></code></td>
+                            <td>Greater than</td>
+                            <td><code>a > b</code></td>
+                        </tr>
+                        <tr>
+                            <td><code><</code></td>
+                            <td>Less than</td>
+                            <td><code>a < b</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>>=</code></td>
+                            <td>Greater than or equal to</td>
+                            <td><code>a >= b</code></td>
+                        </tr>
+                        <tr>
+                            <td><code><=</code></td>
+                            <td>Less than or equal to</td>
+                            <td><code>a <= b</code></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p><strong>Example:</strong></p>
+                <pre>
+                    <code>
+                        #include &lt;stdio.h&gt;
+
+                        int main() {
+                            int a = 10, b = 5;
+
+                            printf("a == b: %d\n", a == b);
+                            printf("a != b: %d\n", a != b);
+                            printf("a > b: %d\n", a > b);
+                            printf("a < b: %d\n", a < b);
+                            printf("a >= b: %d\n", a >= b);
+                            printf("a <= b: %d\n", a <= b);
+
+                            return 0;
+                        }
+                    </code>
+                </pre>
+                <h3>3. Logical Operators</h3>
+                <p>
+                    Logical operators are used to combine or negate logical expressions. They also return 1 (true) or 0 (false).
+                </p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Operator</th>
+                            <th>Description</th>
+                            <th>Example</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>&&</code></td>
+                            <td>Logical AND (true if both operands are true)</td>
+                            <td><code>a && b</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>||</code></td>
+                            <td>Logical OR (true if at least one operand is true)</td>
+                            <td><code>a || b</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>!</code></td>
+                            <td>Logical NOT (true if the operand is false, and vice versa)</td>
+                            <td><code>!a</code></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p><strong>Example:</strong></p>
+                <pre>
+                    <code>
+                        #include &lt;stdio.h&gt;
+
+                        int main() {
+                            int a = 1, b = 0;
+
+                            printf("a && b: %d\n", a && b);
+                            printf("a || b: %d\n", a || b);
+                            printf("!a: %d\n", !a);
+                            printf("!b: %d\n", !b);
+
+                            return 0;
+                        }
+                    </code>
+                </pre>
+                <h3>4. Bitwise Operators</h3>
+                <p>
+                    Bitwise operators perform operations on individual bits of data.
+                </p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Operator</th>
+                            <th>Description</th>
+                            <th>Example</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>&</code></td>
+                            <td>Bitwise AND</td>
+                            <td><code>a & b</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>|</code></td>
+                            <td>Bitwise OR</td>
+                            <td><code>a | b</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>^</code></td>
+                            <td>Bitwise XOR (exclusive OR)</td>
+                            <td><code>a ^ b</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>~</code></td>
+                            <td>Bitwise NOT (one's complement)</td>
+                            <td><code>~a</code></td>
+                        </tr>
+                        <tr>
+                            <td><code><<</code></td>
+                            <td>Left shift</td>
+                            <td><code>a << 2</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>>></code></td>
+                            <td>Right shift</td>
+                            <td><code>a >> 2</code></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p><strong>Example:</strong></p>
+                <pre>
+                    <code>
+                        #include &lt;stdio.h&gt;
+
+                        int main() {
+                            unsigned int a = 60;  // 0011 1100 in binary
+                            unsigned int b = 13;  // 0000 1101 in binary
+                            unsigned int result = 0;
+
+                            result = a & b;       // 0000 1100
+                            printf("a & b = %d\n", result);
+
+                            result = a | b;       // 0011 1101
+                            printf("a | b = %d\n", result);
+
+                            result = a ^ b;       // 0011 0001
+                            printf("a ^ b = %d\n", result);
+
+                            result = ~a;          // 1100 0011
+                            printf("~a = %d\n", result);
+
+                            result = a << 2;      // 1111 0000
+                            printf("a << 2 = %d\n", result);
+
+                            result = a >> 2;      // 0000 1111
+                            printf("a >> 2 = %d\n", result);
+
+                            return 0;
+                        }
+                    </code>
+                </pre>
+                <h3>5. Assignment Operators</h3>
+                <p>
+                    Assignment operators are used to assign values to variables.
+                </p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Operator</th>
+                            <th>Description</th>
+                            <th>Example</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>=</code></td>
+                            <td>Simple assignment</td>
+                            <td><code>a = 5</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>+=</code></td>
+                            <td>Add and assign</td>
+                            <td><code>a += 5</code> (equivalent to <code>a = a + 5</code>)</td>
+                        </tr>
+                        <tr>
+                            <td><code>-=</code></td>
+                            <td>Subtract and assign</td>
+                            <td><code>a -= 5</code> (equivalent to <code>a = a - 5</code>)</td>
+                        </tr>
+                        <tr>
+                            <td><code>*=</code></td>
+                            <td>Multiply and assign</td>
+                            <td><code>a *= 5</code> (equivalent to <code>a = a * 5</code>)</td>
+                        </tr>
+                        <tr>
+                            <td><code>/=</code></td>
+                            <td>Divide and assign</td>
+                            <td><code>a /= 5</code> (equivalent to <code>a = a / 5</code>)</td>
+                        </tr>
+                        <tr>
+                            <td><code>%=</code></td>
+                            <td>Modulus and assign</td>
+                            <td><code>a %= 5</code> (equivalent to <code>a = a % 5</code>)</td>
+                        </tr>
+                        <tr>
+                            <td><code>&=</code></td>
+                            <td>Bitwise AND and assign</td>
+                            <td><code>a &= 5</code> (equivalent to <code>a = a & 5</code>)</td>
+                        </tr>
+                        <tr>
+                            <td><code>|=</code></td>
+                            <td>Bitwise OR and assign</td>
+                            <td><code>a |= 5</code> (equivalent to <code>a = a | 5</code>)</td>
+                        </tr>
+                        <tr>
+                            <td><code>^=</code></td>
+                            <td>Bitwise XOR and assign</td>
+                            <td><code>a ^= 5</code> (equivalent to <code>a = a ^ 5</code>)</td>
+                        </tr>
+                        <tr>
+                            <td><code><<=</code></td>
+                            <td>Left shift and assign</td>
+                            <td><code>a <<= 2</code> (equivalent to <code>a = a << 2</code>)</td>
+                        </tr>
+                        <tr>
+                            <td><code>>>=</code></td>
+                            <td>Right shift and assign</td>
+                            <td><code>a >>= 2</code> (equivalent to <code>a = a >> 2</code>)</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p><strong>Example:</strong></p>
+                <pre>
+                    <code>
+                        #include &lt;stdio.h&gt;
+
+                        int main() {
+                            int a = 10;
+
+                            a += 5;  // a is now 15
+                            printf("a += 5: %d\n", a);
+
+                            a -= 3;  // a is now 12
+                            printf("a -= 3: %d\n", a);
+
+                            a *= 2;  // a is now 24
+                            printf("a *= 2: %d\n", a);
+
+                            a /= 4;// a is now 6
+                            printf("a /= 4: %d\n", a);
+
+                            a %= 5;  // a is now 1
+                            printf("a %= 5: %d\n", a);
+
+                            return 0;
+                        }
+                    </code>
+                </pre>
+                <h3>6. Increment and Decrement Operators</h3>
+                <p>
+                    Increment and decrement operators are used to increase or decrease the value of a variable by 1.
+                </p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Operator</th>
+                            <th>Description</th>
+                            <th>Example</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>++</code></td>
+                            <td>Increment (increase by 1)</td>
+                            <td><code>a++</code> or <code>++a</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>--</code></td>
+                            <td>Decrement (decrease by 1)</td>
+                            <td><code>a--</code> or <code>--a</code></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p>
+                    There are two forms of increment and decrement operators: prefix and postfix.
+                </p>
+                <ul>
+                    <li><strong>Prefix:</strong> The operator is placed before the variable (e.g., <code>++a</code>). The value of the variable is modified before it is used in the expression.</li>
+                    <li><strong>Postfix:</strong> The operator is placed after the variable (e.g., <code>a++</code>). The value of the variable is modified after it is used in the expression.</li>
+                </ul>
+                <p><strong>Example:</strong></p>
+                <pre>
+                    <code>
+                        #include &lt;stdio.h&gt;
+
+                        int main() {
+                            int a = 5, b = 5;
+
+                            printf("a++: %d\n", a++);  // Output: 5, then a becomes 6
+                            printf("a: %d\n", a);      // Output: 6
+
+                            printf("++b: %d\n", ++b);  // b becomes 6, then Output: 6
+                            printf("b: %d\n", b);      // Output: 6
+
+                            return 0;
+                        }
+                    </code>
+                </pre>
+                <h3>7. Conditional Operator (Ternary Operator)</h3>
+                <p>
+                    The conditional operator is a ternary operator (it takes three operands) that provides a concise way to express simple if-else statements.
+                </p>
+                <p><strong>Syntax:</strong></p>
+                <pre>
+                    <code>
+                        condition ? expression_if_true : expression_if_false;
+                    </code>
+                </pre>
+                <ul>
+                    <li><code>condition</code>: An expression that is evaluated to true (non-zero) or false (0).</li>
+                    <li><code>expression_if_true</code>: The expression that is evaluated and returned if the condition is true.</li>
+                    <li><code>expression_if_false</code>: The expression that is evaluated and returned if the condition is false.</li>
+                </ul>
+                <p><strong>Example:</strong></p>
+                <pre>
+                    <code>
+                        #include &lt;stdio.h&gt;
+
+                        int main() {
+                            int a = 10, b = 20;
+                            int max;
+
+                            max = (a > b) ? a : b;
+
+                            printf("Max value: %d\n", max);
+
+                            return 0;
+                        }
+                    </code>
+                </pre>
+                <h3>8. Special Operators</h3>
+                <p>
+                    C also provides some special operators:
+                </p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Operator</th>
+                            <th>Description</th>
+                            <th>Example</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>sizeof</code></td>
+                            <td>Returns the size of a variable or data type in bytes</td>
+                            <td><code>sizeof(int)</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>&</code></td>
+                            <td>Address-of operator (returns the memory address of a variable)</td>
+                            <td><code>&a</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>*</code></td>
+                            <td>Dereference operator (accesses the value at a memory address)</td>
+                            <td><code>*ptr</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>,</code></td>
+                            <td>Comma operator (separates multiple expressions in a single statement)</td>
+                            <td><code>a = 1, b = 2</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>.</code></td>
+                            <td>Member access operator (accesses members of a structure or union)</td>
+                            <td><code>struct.member</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>-></code></td>
+                            <td>Pointer to member access operator</td>
+                            <td><code>ptr->member</code></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p><strong>Example:</strong></p>
+                <pre>
+                    <code>
+                        #include &lt;stdio.h&gt;
+
+                        struct Point {
+                            int x;
+                            int y;
+                        };
+
+                        int main() {
+                            int a = 5;
+                            int arr[5] = {1, 2, 3, 4, 5};
+                            struct Point p1 = {10, 20};
+                            struct Point *ptr = &p1;
+
+                            printf("Size of int: %zu bytes\n", sizeof(int));
+                            printf("Address of a: %p\n", &a);
+                            printf("Value at arr[0]: %d\n", *arr); // Dereferencing the array (pointer)
+                            printf("p1.x: %d, p1.y: %d\n", p1.x, p1.y);
+                            printf("ptr->x: %d, ptr->y: %d\n", ptr->x, ptr->y);
+
+                            int i, j;
+                            for (i = 0, j = 5; i < 5; i++, j--) {
+                                printf("i: %d, j: %d\n", i, j);
+                            }
+
+                            return 0;
+                        }
+                    </code>
+                </pre>
+                <h3>Operator Precedence and Associativity</h3>
+                <p>
+                    Operator precedence determines the order in which operators are evaluated in an expression.
+                    Associativity determines the direction (left-to-right or right-to-left) in which operators of the same precedence are evaluated.
+                </p>
+                <p><strong>Operator Precedence Table (Highest to Lowest):</strong></p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Precedence</th>
+                            <th>Operator</th>
+                            <th>Associativity</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td><code>() [] -> .</code></td>
+                            <td>Left-to-right</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td><code>! ~ ++ -- + (unary) - (unary) * (pointer) & sizeof</code></td>
+                            <td>Right-to-left</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td><code>* / %</code></td>
+                            <td>Left-to-right</td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td><code>+ -</code></td>
+                            <td>Left-to-right</td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td><code><< >></code></td>
+                            <td>Left-to-right</td>
+                        </tr>
+                        <tr>
+                            <td>6</td>
+                            <td><code>< <= > >=</code></td>
+                            <td>Left-to-right</td>
+                        </tr>
+                        <tr>
+                            <td>7</td>
+                            <td><code>== !=</code></td>
+                            <td>Left-to-right</td>
+                        </tr>
+                        <tr>
+                            <td>8</td>
+                            <td><code>&</code> (bitwise AND)</td>
+                            <td>Left-to-right</td>
+                        </tr>
+                        <tr>
+                            <td>9</td>
+                            <td><code>^</code></td>
+                            <td>Left-to-right</td>
+                        </tr>
+                        <tr>
+                            <td>10</td>
+                            <td><code>|</code></td>
+                            <td>Left-to-right</td>
+                        </tr>
+                        <tr>
+                            <td>11</td>
+                            <td><code>&&</code></td>
+                            <td>Left-to-right</td>
+                        </tr>
+                        <tr>
+                            <td>12</td>
+                            <td><code>||</code></td>
+                            <td>Left-to-right</td>
+                        </tr>
+                        <tr>
+                            <td>13</td>
+                            <td><code>?:</code> (conditional)</td>
+                            <td>Right-to-left</td>
+                        </tr>
+                        <tr>
+                            <td>14</td>
+                            <td><code>= += -= *= /= %= &= |= ^= <<= >>=</code> (assignment)</td>
+                            <td>Right-to-left</td>
+                        </tr>
+                        <tr>
+                            <td>15</td>
+                            <td><code>,</code> (comma)</td>
+                            <td>Left-to-right</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p><strong>Examples:</strong></p>
+                <pre>
+                    <code>
+                        #include &lt;stdio.h&gt;
+
+                        int main() {
+                            int a = 5, b = 10, c = 15, result;
+
+                            result = a + b * c;      // Multiplication has higher precedence than addition
+                            printf("a + b * c: %d\n", result);  // Output: 155 (5 + (10 * 15))
+
+                            result = (a + b) * c;    // Parentheses override precedence
+                            printf("(a + b) * c: %d\n", result);  // Output: 375 ((5 + 10) * 15)
+
+                            result = c / a + b;      // Division and addition have same precedence, left-to-right associativity
+                            printf("c / a + b: %d\n", result);  // Output: 13 ((15 / 5) + 10)
+
+                            result = c / (a + b);    // Parentheses override associativity
+                            printf("c / (a + b): %d\n", result);  // Output: 1 ((15 / (5 + 10))
+
+                            result = a = b = c;      // Assignment has right-to-left associativity
+                            printf("a = b = c: a=%d, b=%d, c=%d\n", a, b, c);  // Output: a=15, b=15, c=15
+
+                            return 0;
+                        }
+                    </code>
+                </pre>
+            </div>
+			
+            <a href="#" class="back-link">Back to Top</a>
+        </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const sidebarLinks = document.querySelectorAll('.sidebar ul li a');
+            const topicContents = document.querySelectorAll('.topic-content');
+            const subtopicContents = document.querySelectorAll('.subtopic-content');
+			window.onload = function() {
+				document.querySelector('a[href="#problem-solving-steps"]').click();
+			};
+            sidebarLinks.forEach(link => {
+                link.addEventListener('click', function(event) {
+                    event.preventDefault();
+                    const targetId = this.getAttribute('href').substring(1);
+                    sidebarLinks.forEach(l => l.classList.remove('active'));
+                    topicContents.forEach(content => content.classList.remove('active'));
+                    subtopicContents.forEach(content => content.classList.remove('active'));
+                    this.classList.add('active');
+                    if (document.getElementById(targetId)) {
+                        document.getElementById(targetId).classList.add('active');
+                    }
+                    if (targetId.includes('-')) {
+                        document.getElementById(targetId.split('-')[0]).classList.add('active');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>

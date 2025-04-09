@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>Engineering Drawing</title>
+    <style>
+        body {
+            font-family: 'Poppins', Arial, sans-serif;
+            background-color: #e0f2f7;
+            color: #333;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 1000px;
+            max-width: 6000px;
+            margin: 50px auto;
+            background-color: #a7c7e7;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        header {
+            background-color: #333;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 10%;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .logo {
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            object-fit: cover;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+        }
+        header h1 {
+            margin: 0;
+            font-size: 26px;
+        }
+        nav.nav-menu {
+            background-color: transparent;
+            padding: 0;
+            box-shadow: none;
+        }
+        nav.nav-menu ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            gap: 25px;
+        }
+        nav.nav-menu ul li a {
+            text-decoration: none;
+            color: #ddd;
+            font-size: 16px;
+            font-weight: 500;
+            padding: 10px 15px;
+            border-radius: 6px;
+            transition: color 0.3s ease, background-color 0.3s ease;
+        }
+        nav.nav-menu ul li a:hover {
+            color: white;
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+        nav.nav-menu ul li a:focus {
+            outline: 2px solid #fff;
+        }
+        nav.nav-menu ul li a.selected {
+            color: white;
+            font-weight: 600;
+        }
+        nav.nav-menu ul li ul {
+            display: none;
+            position: absolute;
+            background-color: #333;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            border-radius: 4px;
+            padding: 10px 0;
+            z-index: 10;
+            min-width: 150px;
+        }
+        nav.nav-menu ul li:hover ul {
+            display: block;
+        }
+        nav.nav-menu ul li ul li {
+            width: 100%;
+        }
+        nav.nav-menu ul li ul li a {
+            padding: 10px 20px;
+            display: block;
+            white-space: nowrap;
+        }
+        nav.nav-menu ul li ul li a:hover {
+            background-color: #444;
+        }
+        @media (max-width: 768px) {
+            header {
+                padding: 15px 5%;
+            }
+            nav.nav-menu ul {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+            nav.nav-menu ul li {
+                margin: 0;
+            }
+            nav.nav-menu ul li a {
+                padding: 10px 20px;
+            }
+            nav.nav-menu ul li ul {
+                position: static;
+                box-shadow: none;
+                border-radius: 0;
+                padding: 0;
+                background-color: transparent;
+            }
+            nav.nav-menu ul li ul li a {
+                padding-left: 30px;
+            }
+            nav.nav-menu ul li:hover ul {
+                display: block;
+            }
+        }
+        .hero {
+            background-color: #008CBA;
+            color: white;
+            text-align: center;
+            padding: 60px 20px;
+            margin-bottom: 30px;
+            border-bottom-left-radius: 15px;
+            border-bottom-right-radius: 15px;
+        }
+        .hero h2 {
+            font-size: 2.8rem;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+        }
+        .hero p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .subject-heading {
+            text-align: center;
+            font-size: 24px;
+            color: #e91e63;
+            margin-bottom: 20px;
+        }
+        .unit-list {
+            list-style: none;
+            padding: 0;
+        }
+        .unit-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #f0f8ff;
+            padding: 15px;
+            margin-bottom: 10px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .unit-item:hover {
+            background-color: #e9e9e9;
+        }
+        .unit-item span {
+            font-size: 18px;
+            color: black;
+            font-weight: bold;
+        }
+        .unit-item a.pdf-link {
+            background-color: #3498db;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 16px;
+        }
+        .unit-item a.pdf-link:hover {
+            background-color: #2980b9;
+        }
+        footer {
+            background-color: #333;
+            color: #f0f0f0;
+            padding: 20px 0;
+            font-size: 0.9rem;
+            text-align: center;
+            border-top: 1px solid #555;
+        }
+        .footer-content {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+        .social-links a {
+            color: #f0f0f0;
+            margin: 0 10px;
+            font-size: 1.2rem;
+            transition: color 0.3s ease;
+        }
+        .social-links a:hover {
+            color: #007bff;
+        }
+        @media (max-width: 768px) {
+            .footer-content {
+                flex-direction: column;
+                padding: 0 15px;
+            }
+            .social-links {
+                margin-top: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo-container">
+            <img src="https://github.com/AbdulAzizes04/skills-github-pages/blob/main/.github/WhatsApp%20Image%202025-01-01%20at%2022.11.52_7937caa6.jpg?raw=true" alt="Study Cafe Logo" class="logo">
+            <h1>STUDY CAFE</h1>
+        </div>
+        <nav class="nav-menu">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="first-year.html">1ST YEAR</a></li>
+                <li>
+                    <a href="branch.html">2ND YEAR ▼</a>
+                    <ul>
+                        <li><a href="secondcse.html" id="cse">CSE</a></li>
+                        <li><a href="secondaids.html" id="aids">AI&DS</a></li>
+                        <li><a href="secondaiml.html" id="aiml">AI&ML</a></li>
+                        <li><a href="secondds.html" id="ds">CSE(DS)</a></li>
+                        <li><a href="secondai.html" id="ai">CSE(AI)</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="branch1.html">3RD YEAR ▼</a>
+                    <ul>
+                        <li><a href="thirdcse.html" id="cse">CSE</a></li>
+                        <li><a href="thirdaids.html" id="aids">AI&DS</a></li>
+                        <li><a href="thirdaiml.html" id="aiml">AI&ML</a></li>
+                        <li><a href="thirdds.html" id="ds">CSE(DS)</a></li>
+                        <li><a href="thirdai.html" id="ai">CSE(AI)</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="branch2.html">4TH YEAR ▼</a>
+                    <ul>
+                        <li><a href="fourthcse.html" id="cse">CSE</a></li>
+                        <li><a href="fourthaids.html" id="aids">AI&DS</a></li>
+                        <li><a href="fourthaiml.html" id="aiml">AI&ML</a></li>
+                        <li><a href="fourthds.html" id="ds">CSE(DS)</a></li>
+                        <li><a href="fourthai.html" id="ai">CSE(AI)</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="hero">
+        <h2>Engineering Drawing</h2>
+        <p>Learn the fundamental principles of technical drawing and graphical communication.</p>
+    </div>
+
+    <div class="container">
+        <div class="subject-heading">
+            TOPICS
+        </div>
+        <ul class="unit-list">
+            <li class="unit-item"><span>Unit 1: Introduction && Engineering Curves</span><a href="#" class="pdf-link">View Details</a></li>
+            <li class="unit-item"><span>Unit 2: Orthographic Projections && Projections of Straight Lines</span><a href="#" class="pdf-link">View Details</a></li>
+            <li class="unit-item"><span>Unit 3: Projections of Planes</span><a href="#" class="pdf-link">View Details</a></li>
+            <li class="unit-item"><span>Unit 4: Projections of Solids && Development of Surfaces</span><a href="#" class="pdf-link">View Details</a></li>
+            <li class="unit-item"><span>Unit 5: Isometric Projections / Views</span><a href="#" class="pdf-link">View Details</a></li>
+        </ul>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2025 Study Cafe | All Rights Reserved</p>
+            <div class="social-links">
+                <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+                <a href="#" target="_blank"><i class="fab fa-linkedin"></i></a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

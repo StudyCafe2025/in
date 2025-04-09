@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dielectric and Magnetic Materials</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      font-family: 'Poppins', Arial, sans-serif;
+      background-color: #f0f2f5;
+      color: #333;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .header {
+      background-color: #343a40;
+      color: white;
+      padding: 20px 0;
+      text-align: center;
+    }
+
+    .container {
+      display: flex;
+      max-width: 1300px;
+      margin: 20px auto;
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+    }
+
+    .sidebar {
+      background-color: #f8f9fa;
+      width: 280px;
+      padding: 20px;
+      border-right: 1px solid #ddd;
+    }
+
+    .sidebar ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .sidebar li a {
+      display: block;
+      padding: 10px 15px;
+      color: #333;
+      text-decoration: none;
+      border-radius: 6px;
+      margin-bottom: 8px;
+      transition: background-color 0.3s ease;
+    }
+
+    .sidebar li a:hover,
+    .sidebar li a.active {
+      background-color: #e2e6ea;
+      color: #007bff;
+    }
+
+    .main-content {
+      padding: 30px;
+      flex-grow: 1;
+    }
+
+    .main-content h1 {
+      color: #343a40;
+      font-size: 2em;
+      margin-bottom: 15px;
+    }
+
+    .main-content h2 {
+      color: #343a40;
+      margin-top: 25px;
+      margin-bottom: 10px;
+      font-size: 1.5em;
+    }
+
+    .main-content h3 {
+      color: #555;
+      margin-top: 15px;
+    }
+
+    .main-content p {
+      font-size: 1.1em;
+      line-height: 1.8;
+      color: #495057;
+      margin-bottom: 20px;
+    }
+
+    .equation {
+      text-align: center;
+      font-weight: bold;
+      font-size: 1.2em;
+      margin: 10px 0;
+      font-family: monospace;
+    }
+
+    ul li {
+      margin-bottom: 10px;
+    }
+
+    .highlight {
+      background-color: #e9f7ef;
+      padding: 10px;
+      border-left: 5px solid #28a745;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="header">
+    <h1>Dielectric and Magnetic Materials</h1>
+  </div>
+
+  <div class="container">
+    <div class="sidebar">
+      <ul>
+        <li><a href="#electric-dipole">Electric Dipole</a></li>
+        <li><a href="#dielectric-constant">Dielectric Constant</a></li>
+        <li><a href="#polarization">Dielectric Polarization</a></li>
+        <li><a href="#types-polarization">Types of Polarization</a></li>
+        <li><a href="#internal-field">Internal Field</a></li>
+        <li><a href="#clausius-mossotti">Clausius–Mossotti Relation</a></li>
+        <li><a href="#ferroelectricity">Ferroelectricity</a></li>
+        <li><a href="#magnetic-basics">Magnetic Basics</a></li>
+        <li><a href="#types-magnetic">Types of Magnetic Materials</a></li>
+      </ul>
+    </div>
+
+    <div class="main-content">
+      <h1>Dielectric Materials</h1>
+
+      <div id="electric-dipole" class="subtopic-content">
+        <h2>Electric Dipole</h2>
+        <p>
+          An <strong>electric dipole</strong> consists of two equal and opposite charges (+q and -q) separated by a finite distance <em>d</em>.
+          These structures play a fundamental role in the behavior of dielectric materials under electric fields.
+        </p>
+
+        <div class="highlight">
+          <p><strong>Real-life example:</strong> The water molecule (H<sub>2</sub>O) is naturally polar and acts as a permanent electric dipole due to its bent geometry and uneven charge distribution.</p>
+        </div>
+
+        <h3>Dipole Moment (μ)</h3>
+        <p>
+          The <strong>dipole moment</strong> is a vector quantity that indicates the strength of the dipole. It is directed from the negative charge to the positive charge and defined by the product:
+        </p>
+        <div class="equation">
+          μ = q × d
+        </div>
+
+        <ul>
+          <li><strong>μ</strong> is the dipole moment (in C·m)</li>
+          <li><strong>q</strong> is the magnitude of each charge</li>
+          <li><strong>d</strong> is the separation distance between the charges</li>
+        </ul>
+
+        <h3>Units</h3>
+        <p>
+          - The SI unit of dipole moment is <strong>Coulomb-meter (C·m)</strong>.<br />
+          - A more commonly used unit in atomic physics is the <strong>Debye (D)</strong>.
+        </p>
+        <div class="equation">1 D ≈ 3.3 × 10<sup>−30</sup> C·m</div>
+
+        <h3>Key Characteristics</h3>
+        <ul>
+          <li>Dipole moment depends on both charge magnitude and separation.</li>
+          <li>Larger dipole moment implies stronger interaction with external electric fields.</li>
+          <li>Used to understand polar molecules, polarization, and dielectric behavior.</li>
+        </ul>
+
+        <h3>Visualization</h3>
+        <p>
+          A simple representation:
+        </p>
+        <div class="equation">(-q) ——&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;→ μ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;—— (+q)</div>
+
+        <p>
+          When placed in an external electric field, dipoles tend to align with the field, which causes polarization—a key property of dielectric materials.
+        </p>
+        <div id="dielectric-constant">
+            <h2>Dielectric Constant</h2>
+            <p>The dielectric constant (or relative permittivity) is defined as the ratio of the permittivity of a dielectric material to the permittivity of free space.</p>
+            <div class="equation">&epsilon;<sub>r</sub> = &epsilon; / &epsilon;<sub>0</sub></div>
+            <p>It measures how much electric field is reduced inside a material compared to vacuum.</p>
+          </div>
+    
+          <div id="polarization">
+            <h2>Dielectric Polarization</h2>
+            <p>Polarization is the formation of dipoles inside a dielectric material when an external electric field is applied. It is defined as the dipole moment per unit volume.</p>
+            <div class="equation">P = N &mu;</div>
+            <p>Where N is the number of dipoles per unit volume and &mu; is the dipole moment.</p>
+          </div>
+    
+          <div id="types-polarization">
+            <h2>Types of Polarization</h2>
+            <ul>
+              <li><strong>Electronic Polarization:</strong> Displacement of electrons with respect to nuclei.</li>
+              <li><strong>Ionic Polarization:</strong> Relative displacement of cations and anions.</li>
+              <li><strong>Orientational Polarization:</strong> Alignment of permanent dipoles.</li>
+              <li><strong>Space Charge Polarization:</strong> Accumulation of charges at interfaces or defects.</li>
+            </ul>
+          </div>
+    
+          <div id="internal-field">
+            <h2>Internal Field</h2>
+            <p>The internal or local field at an atom inside a dielectric includes contributions from the applied field and surrounding charges. Lorentz’s method gives the total internal field.</p>
+            <div class="equation">E<sub>i</sub> = E + P / 3&epsilon;<sub>0</sub></div>
+          </div>
+    
+          <div id="clausius-mossotti">
+            <h2>Clausius–Mossotti Relation</h2>
+            <p>This relation connects the macroscopic property (dielectric constant) with microscopic polarizability of molecules.</p>
+            <div class="equation">(&epsilon;<sub>r</sub> - 1) / (&epsilon;<sub>r</sub> + 2) = (N&alpha;) / (3&epsilon;<sub>0</sub>)</div>
+          </div>
+    
+          <div id="ferroelectricity">
+            <h2>Ferroelectricity</h2>
+            <p>Some materials exhibit spontaneous polarization even in the absence of external electric fields. This property is known as ferroelectricity.</p>
+            <ul>
+              <li>Example: Barium Titanate (BaTiO<sub>3</sub>)</li>
+              <li>They show hysteresis loops in polarization vs. electric field plots.</li>
+            </ul>
+          </div>
+    
+          <div id="magnetic-basics">
+            <h2>Magnetic Basics</h2>
+            <p>Magnetic properties arise from electron spin and orbital motion. Key quantities include:</p>
+            <ul>
+              <li><strong>Magnetic Moment:</strong> &mu;<sub>m</sub> = I &times; A</li>
+              <li><strong>Magnetization:</strong> M = &mu;<sub>m</sub> / Volume</li>
+              <li><strong>Magnetic Field Intensity:</strong> H</li>
+              <li><strong>Magnetic Flux Density:</strong> B = &mu;H</li>
+            </ul>
+          </div>
+    
+          <div id="types-magnetic">
+            <h2>Types of Magnetic Materials</h2>
+            <ul>
+              <li><strong>Diamagnetic:</strong> Weakly repelled by magnetic fields (e.g., Bismuth).</li>
+              <li><strong>Paramagnetic:</strong> Weakly attracted (e.g., Aluminum).</li>
+              <li><strong>Ferromagnetic:</strong> Strongly attracted and retain magnetism (e.g., Iron).</li>
+              <li><strong>Antiferromagnetic:</strong> Opposing magnetic moments cancel each other.</li>
+              <li><strong>Ferrimagnetic:</strong> Opposing moments don’t cancel fully (e.g., Ferrites).</li>
+            </ul>
+          </div>
+    
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

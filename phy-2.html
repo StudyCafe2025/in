@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Crystallography and X-ray Diffraction</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #f0f2f5;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .header {
+      background-color: #343a40;
+      color: white;
+      padding: 20px;
+      width: 100%;
+      text-align: center;
+    }
+    .container {
+      display: flex;
+      width: 95%;
+      max-width: 1200px;
+      margin: 20px auto;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+    }
+    .sidebar {
+      width: 280px;
+      background: #f8f9fa;
+      padding: 20px;
+      border-right: 1px solid #ddd;
+    }
+    .sidebar h2 {
+      font-size: 18px;
+      margin-bottom: 15px;
+    }
+    .sidebar ul {
+      list-style: none;
+      padding: 0;
+    }
+    .sidebar li a {
+      display: block;
+      padding: 10px 15px;
+      text-decoration: none;
+      color: #495057;
+      margin-bottom: 10px;
+      border-radius: 5px;
+    }
+    .sidebar li a:hover {
+      background: #e9ecef;
+      color: #007bff;
+    }
+    .main-content {
+      padding: 30px;
+      flex-grow: 1;
+    }
+    h1, h2 {
+      color: #343a40;
+    }
+    p, li {
+      font-size: 1.05em;
+      color: #333;
+    }
+    ul {
+      padding-left: 20px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="header">
+    <h1>Crystallography and X-ray Diffraction</h1>
+  </div>
+  <div class="container">
+    <div class="sidebar">
+      <h2>Contents</h2>
+      <ul>
+        <li><a href="#introduction">Introduction</a></li>
+        <li><a href="#lattice">Lattice and Basis</a></li>
+        <li><a href="#unit-cell">Unit Cell & Parameters</a></li>
+        <li><a href="#crystal-systems">Crystal Systems</a></li>
+        <li><a href="#bravais">Bravais Lattices</a></li>
+        <li><a href="#cubic">Cubic Crystal Definitions</a></li>
+      </ul>
+    </div>
+    <div class="main-content">
+      <section id="introduction">
+        <h2>Introduction</h2>
+        <ul>
+          <li>Matter exists in three states: gas, liquid, and solid.</li>
+          <li>In gases and liquids, atoms move freely without a fixed position.</li>
+          <li>In solids, atoms occupy fixed positions, possibly in regular patterns.</li>
+          <li>Solids are classified as:
+            <ul>
+              <li><strong>Crystalline Solids:</strong> Regular and periodic arrangement of atoms.</li>
+              <li><strong>Amorphous Solids:</strong> Irregular arrangement, like glass or plastic.</li>
+            </ul>
+          </li>
+        </ul>
+      </section>
+
+      <section id="lattice">
+        <h2>Lattice and Basis</h2>
+        <p><strong>Lattice:</strong> A geometric arrangement of points showing atom positions in space.</p>
+        <p><strong>Space Lattice:</strong> Three-dimensional arrangement of lattice points.</p>
+        <p><strong>Basis:</strong> A group of atoms associated with each lattice point.</p>
+        <p>Combining lattice and basis forms the <strong>crystal structure</strong>:</p>
+        <p><strong>Crystal Structure = Lattice + Basis</strong></p>
+      </section>
+
+      <section id="unit-cell">
+        <h2>Unit Cell & Lattice Parameters</h2>
+        <p>A <strong>unit cell</strong> is the smallest portion of a crystal lattice that retains the overall characteristics of the crystal.</p>
+        <ul>
+          <li>Lattice parameters:
+            <ul>
+              <li><strong>Lengths:</strong> a, b, c</li>
+              <li><strong>Angles:</strong> α (between b & c), β (between a & c), γ (between a & b)</li>
+            </ul>
+          </li>
+          <li>These define the shape and symmetry of the unit cell.</li>
+        </ul>
+      </section>
+
+      <section id="crystal-systems">
+        <h2>Crystal Systems</h2>
+        <p>Based on variations in lattice parameters, crystals are classified into 7 systems:</p>
+        <ul>
+          <li><strong>Cubic:</strong> a = b = c, α = β = γ = 90°</li>
+          <li><strong>Tetragonal:</strong> a = b ≠ c, α = β = γ = 90°</li>
+          <li><strong>Orthorhombic:</strong> a ≠ b ≠ c, α = β = γ = 90°</li>
+          <li><strong>Monoclinic:</strong> a ≠ b ≠ c, α = γ = 90°, β ≠ 90°</li>
+          <li><strong>Triclinic:</strong> a ≠ b ≠ c, α ≠ β ≠ γ ≠ 90°</li>
+          <li><strong>Hexagonal:</strong> a = b ≠ c, α = β = 90°, γ = 120°</li>
+          <li><strong>Rhombohedral:</strong> a = b = c, α = β = γ ≠ 90°</li>
+        </ul>
+      </section>
+
+      <section id="bravais">
+        <h2>Bravais Lattices</h2>
+        <p>Each crystal system can have one or more types of Bravais lattices. There are 14 distinct Bravais lattices:</p>
+        <ul>
+          <li><strong>Primitive (P):</strong> Atoms at corners only</li>
+          <li><strong>Body-Centered (I):</strong> One atom at the center of the cell</li>
+          <li><strong>Face-Centered (F):</strong> Atoms at each face center</li>
+          <li><strong>Base-Centered (C):</strong> Atoms at center of opposite faces</li>
+        </ul>
+        <p>These arrangements vary depending on the crystal system they belong to.</p>
+      </section>
+
+      <section id="cubic">
+        <h2>Basic Definitions: Cubic Crystal</h2>
+        <ul>
+          <li><strong>Number of Atoms per Unit Cell (n):</strong>
+            <ul>
+              <li>Simple Cubic (SC): 1</li>
+              <li>Body-Centered Cubic (BCC): 2</li>
+              <li>Face-Centered Cubic (FCC): 4</li>
+            </ul>
+          </li>
+          <li><strong>Atomic Radius (r):</strong> r = a / 2 for SC</li>
+          <li><strong>Coordination Number (N):</strong> Number of nearest neighbors
+            <ul>
+              <li>SC: 6</li>
+              <li>BCC: 8</li>
+              <li>FCC: 12</li>
+            </ul>
+          </li>
+          <li><strong>Atomic Packing Factor (APF):</strong> Fraction of volume occupied by atoms
+            <ul>
+              <li>SC: 0.52</li>
+              <li>BCC: 0.68</li>
+              <li>FCC: 0.74</li>
+            </ul>
+          </li>
+        </ul>
+        <p><strong>APF Formula:</strong> (Number of atoms × Volume of each atom) / Volume of unit cell</p>
+      </section>
+    </div>
+  </div>
+</body>
+
+</html>

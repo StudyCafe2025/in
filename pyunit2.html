@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python - Lists, Dictionaries, Sets, and Tuples</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 0;
+        }
+        .header {
+            background-color: #343a40;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+        .container {
+            display: flex;
+            max-width: 1200px;
+            margin: 20px auto;
+            background: white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .sidebar {
+            width: 300px;
+            background: #f1f1f1;
+            padding: 20px;
+        }
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+        }
+        .sidebar li {
+            margin-bottom: 10px;
+        }
+        .sidebar a {
+            text-decoration: none;
+            color: #333;
+            display: block;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .sidebar a:hover {
+            background-color: #ddd;
+        }
+        .main-content {
+            flex: 1;
+            padding: 30px;
+        }
+        h2 {
+            color: #2c3e50;
+        }
+        pre, code {
+            background-color: #f4f4f4;
+            padding: 10px;
+            display: block;
+            overflow-x: auto;
+            border-left: 4px solid #007bff;
+        }
+        ul, ol {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Python - Lists, Dictionaries, Sets, and Tuples</h1>
+    </div>
+    <div class="container">
+        <div class="sidebar">
+            <ul>
+                <li><a href="#lists">Lists</a></li>
+                <li><a href="#dictionaries">Dictionaries</a></li>
+                <li><a href="#sets">Sets</a></li>
+                <li><a href="#tuples">Tuples</a></li>
+            </ul>
+        </div>
+        <div class="main-content">
+            <section id="lists">
+                <h2>Lists</h2>
+                <p>A list is a data structure in Python that is a mutable, or changeable, ordered sequence of elements. Each element or value inside a list is called an item. Lists allow you to group related data and are defined using square brackets <code>[]</code>.</p>
+                <p><strong>Creating Lists:</strong></p>
+                <pre><code>ages = [19, 26, 29]
+print(ages)  # [19, 26, 29]</code></pre>
+                <p>You can store elements of different data types in a list:</p>
+                <pre><code>student = ['Jack', 32, 'Computer Science', [2, 4]]
+print(student)</code></pre>
+                <p><strong>Accessing Elements:</strong></p>
+                <pre><code>languages = ['Python', 'Swift', 'C++']
+print(languages[0])  # Python
+print(languages[-1]) # C++ (last element)</code></pre>
+                <p><strong>Slicing:</strong></p>
+                <pre><code>my_list = ['p', 'r', 'o', 'g', 'r', 'a', 'm']
+print(my_list[2:5])     # ['o', 'g', 'r']
+print(my_list[0:3])     # ['p', 'r', 'o']</code></pre>
+                <p><strong>Modifying a List:</strong></p>
+                <pre><code>colors = ['Red', 'Black', 'Green']
+colors[0] = 'Purple'
+colors[2] = 'Blue'
+print(colors)</code></pre>
+                <p><strong>Adding Elements:</strong></p>
+                <pre><code>fruits = ['apple', 'banana']
+fruits.append('cherry')
+fruits.insert(1, 'orange')
+print(fruits)</code></pre>
+                <p><strong>Extending a List:</strong></p>
+                <pre><code>numbers = [1, 2, 3]
+more_numbers = [4, 5, 6]
+numbers.extend(more_numbers)
+print(numbers)</code></pre>
+                <p><strong>Removing Elements:</strong></p>
+                <pre><code>numbers = [2, 4, 7, 9]
+numbers.remove(4)
+print(numbers)</code></pre>
+                <p><strong>List Methods:</strong> append(), insert(), extend(), remove(), pop(), clear(), index(), count(), sort(), reverse(), copy()</p>
+                <p><strong>Iterating Through a List:</strong></p>
+                <pre><code>for fruit in fruits:
+    print(fruit)</code></pre>
+            </section>
+
+            <section id="dictionaries">
+                <h2>Dictionaries</h2>
+                <p>A dictionary is an unordered collection of key-value pairs. Each key is unique and is used to access the corresponding value.</p>
+                <pre><code>capitals = {'Germany': 'Berlin', 'Canada': 'Ottawa'}
+print(capitals['Germany'])</code></pre>
+                <p><strong>Adding and Modifying:</strong></p>
+                <pre><code>capitals['Italy'] = 'Rome'
+capitals['Germany'] = 'Munich'</code></pre>
+                <p><strong>Removing:</strong></p>
+                <pre><code>del capitals['Canada']</code></pre>
+                <p><strong>Iterating:</strong></p>
+                <pre><code>for country, city in capitals.items():
+    print(country, city)</code></pre>
+            </section>
+
+            <section id="sets">
+                <h2>Sets</h2>
+                <p>A set is an unordered collection of unique elements. It automatically removes duplicates and is ideal for membership testing and mathematical operations like union and intersection.</p>
+                <pre><code>numbers = {1, 2, 3, 3, 2}
+print(numbers)  # Output: {1, 2, 3}</code></pre>
+                <p><strong>Adding and Updating:</strong></p>
+                <pre><code>numbers.add(4)
+numbers.update([5, 6])</code></pre>
+                <p><strong>Removing:</strong></p>
+                <pre><code>numbers.discard(2)</code></pre>
+            </section>
+
+            <section id="tuples">
+                <h2>Tuples</h2>
+                <p>A tuple is similar to a list but is immutable. Once created, its elements cannot be changed.</p>
+                <pre><code>my_tuple = (1, 2, 3)
+print(my_tuple[0])  # Output: 1</code></pre>
+                <p><strong>Immutability:</strong></p>
+                <pre><code># my_tuple[0] = 4  # This will raise a TypeError</code></pre>
+                <p><strong>Length and Iteration:</strong></p>
+                <pre><code>for item in my_tuple:
+    print(item)</code></pre>
+            </section>
+        </div>
+    </div>
+</body>
+</html>

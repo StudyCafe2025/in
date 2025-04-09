@@ -1,0 +1,973 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>C Programming and Problem Solving</title>
+    <style>
+        body {
+            font-family: 'Poppins', Arial, sans-serif;
+            background-color: #f0f2f5;
+            color: #333;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo {
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            object-fit: cover;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 6px;
+            transition: background-color 0.3s, transform 0.2s ease-in-out;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .back-link:hover {
+            background-color: #45a049;
+            transform: translateY(-2px);
+        }
+
+        .back-link:active {
+            transform: scale(0.98);
+        }
+
+        .header {
+            background-color: #343a40;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            width: 100%;
+            margin-bottom: 20px;
+        }
+
+        .container {
+            display: flex;
+            max-width: 1200px;
+            width: 95%;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            margin: 20px auto;
+        }
+
+        .pseudocode-image {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 20px auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            transition: transform 0.3s ease;
+        }
+
+        .pseudocode-image:hover {
+            transform: scale(1.02);
+        }
+
+        .sidebar {
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-right: 1px solid #dee2e6;
+            width: 280px;
+            flex-shrink: 0;
+        }
+
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .sidebar li a {
+            display: block;
+            padding: 12px 18px;
+            text-decoration: none;
+            color: #495057;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+            margin-bottom: 8px;
+            cursor: pointer;
+        }
+
+        .sidebar li a:hover,
+        .sidebar li a.active {
+            background-color: #e9ecef;
+            color: #007bff;
+        }
+
+        .sidebar .download-btn {
+            display: block;
+            background-color: #007bff;
+            color: white;
+            padding: 14px 18px;
+            text-decoration: none;
+            border-radius: 5px;
+            text-align: center;
+            margin-top: 25px;
+            transition: background-color 0.3s ease;
+        }
+
+        .sidebar .download-btn:hover {
+            background-color: #0056b3;
+        }
+
+        .main-content {
+            padding: 30px;
+            flex-grow: 1;
+        }
+
+        .main-content h1 {
+            color: #343a40;
+            margin-bottom: 15px;
+            font-size: 2.2em;
+        }
+
+        .main-content p {
+            color: #495057;
+            line-height: 1.8;
+            margin-bottom: 20px;
+            font-size: 1.1em;
+        }
+
+        .main-content h2 {
+            color: #343a40;
+            margin-top: 25px;
+            margin-bottom: 10px;
+            font-size: 1.6em;
+        }
+
+        .main-content ul {
+            padding-left: 25px;
+            margin-bottom: 20px;
+            list-style-type: disc;
+            color: #495057;
+            font-size: 1.1em;
+        }
+
+        .main-content ul li {
+            margin-bottom: 8px;
+        }
+
+        .sidebar ul ul {
+            margin-left: 20px;
+            margin-top: 5px;
+        }
+
+        .sidebar ul ul li a {
+            font-size: 0.9em;
+        }
+
+        pre code {
+            background-color: #f0f0f0;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+            display: block;
+        }
+
+        .topic-section h2 {
+            margin-bottom: #333;
+            color: #333;
+        }
+
+        ol {
+            padding-left: 25px;
+            margin-bottom: 20px;
+        }
+
+        ol li {
+            margin-bottom: 8px;
+        }
+
+        .image-container {
+            text-align: center;
+            margin: 20px auto;
+            padding: 10px;
+            max-width: 1000px;
+            background-color: #f9f9f9;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .image-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            display: inline-block;
+        }
+
+        .subtopic-content {
+            display: none;
+        }
+
+        .subtopic-content.active {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <h1>Unit 5: Structures and Files</h1>
+    </div>
+    <div class="container">
+        <div class="sidebar">
+            <div class="topic-section">
+                <h2>Structures</h2>
+                <ul>
+                    <li><a href="#structure-basics">Structure Basics</a></li>
+                    <li><a href="#advanced-structure-concepts">Advanced Structure Concepts</a></li>
+                    <li><a href="#other-user-defined-types">Other User-Defined Types</a></li>
+                </ul>
+            </div>
+            <div class="topic-section">
+                <h2>Files</h2>
+                <ul>
+                    <li><a href="#file-handling-basics">File Handling Basics</a></li>
+                    <li><a href="#file-operations">File Operations</a></li>
+                    <li><a href="#advanced-file-concepts">Advanced File Concepts</a></li>
+                </ul>
+            </div>
+            <a href="https://drive.google.com/file/d/19wdNDg1Fttz67atma5HdtiL2W6bNkg0j/view?usp=drive_link" class="download-btn">Download PDF</a>
+        </div>
+        <div class="main-content">
+            
+		<div id="structure-basics" class="subtopic-content">
+			<h2>Structure Basics</h2>
+			<p>Structures in C allow you to group variables of different data types into a single unit. This is useful for representing complex data records. Here's a detailed overview:</p>
+			<ul>
+				<li><strong>Definition:</strong> Structures are defined using the <code>struct</code> keyword.</li>
+				<li><strong>Members:</strong> Each variable within a structure is called a member.</li>
+				<li><strong>Accessing Members:</strong> Members are accessed using the dot (<code>.</code>) operator.</li>
+			</ul>
+			<h3>Defining and Using a Structure</h3>
+			<p>Below is an example of defining a simple structure to represent a student and accessing its members:</p>
+			<pre><code>
+		#include &lt;stdio.h&gt;
+
+		struct Student {
+			char name[50];
+			int roll;
+			float marks;
+		};
+
+		int main() {
+			struct Student s1;
+
+			// Assigning values to structure members
+			strcpy(s1.name, "John Doe");
+			s1.roll = 10;
+			s1.marks = 95.5;
+
+			// Accessing and printing structure members
+			printf("Name: %s\n", s1.name);
+			printf("Roll: %d\n", s1.roll);
+			printf("Marks: %.2f\n", s1.marks);
+
+			return 0;
+		}
+			</code></pre>
+			<h3>Initializing Structures</h3>
+			<p>Structures can be initialized at the time of declaration:</p>
+			<pre><code>
+		#include &lt;stdio.h&gt;
+
+		struct Point {
+			int x;
+			int y;
+		};
+
+		int main() {
+			struct Point p1 = {0, 1}; // Initializing x to 0 and y to 1
+
+			printf("x: %d, y: %d\n", p1.x, p1.y);
+
+			return 0;
+		}
+			</code></pre>
+			<h3>Nested Structures</h3>
+			<p>Structures can contain other structures as members:</p>
+			<pre><code>
+		#include &lt;stdio.h&gt;
+
+		struct Address {
+			char city[50];
+			int pin;
+		};
+
+		struct Employee {
+			char name[50];
+			struct Address addr;
+		};
+
+		int main() {
+			struct Employee emp1;
+
+			// Assigning values to nested structure members
+			strcpy(emp1.name, "Alice");
+			strcpy(emp1.addr.city, "New York");
+			emp1.addr.pin = 10001;
+
+			// Accessing and printing nested structure members
+			printf("Name: %s\n", emp1.name);
+			printf("City: %s\n", emp1.addr.city);
+			printf("PIN: %d\n", emp1.addr.pin);
+
+			return 0;
+		}
+			</code></pre>
+			<h3>Array of Structures</h3>
+			<p>You can create an array of structures to store multiple records:</p>
+			<pre><code>
+		#include &lt;stdio.h&gt;
+
+		struct Book {
+			char title[100];
+			char author[50];
+			int year;
+		};
+
+		int main() {
+			struct Book library[2];
+
+			// Assigning values to first book
+			strcpy(library[0].title, "1984");
+			strcpy(library[0].author, "George Orwell");
+			library[0].year = 1949;
+
+			// Assigning values to second book
+			strcpy(library[1].title, "To Kill a Mockingbird");
+			strcpy(library[1].author, "Harper Lee");
+			library[1].year = 1960;
+
+			// Accessing and printing book details
+			for(int i = 0; i < 2; i++) {
+				printf("Book %d:\n", i+1);
+				printf("Title: %s\n", library[i].title);
+				printf("Author: %s\n", library[i].author);
+				printf("Year: %d\n\n", library[i].year);
+			}
+
+			return 0;
+		}
+			</code></pre>
+			<h3>Pointers to Structures</h3>
+			<p>Pointers can be used to point to structures, allowing dynamic access:</p>
+			<pre><code>
+		#include &lt;stdio.h&gt;
+
+		struct Car {
+			char model[50];
+			int year;
+		};
+
+		int main() {
+			struct Car car1;
+			struct Car *ptr;
+
+			ptr = &car1;
+
+			// Assigning values using pointer
+			strcpy(ptr->model, "Toyota Corolla");
+			ptr->year = 2020;
+
+			// Accessing values using pointer
+			printf("Model: %s\n", ptr->model);
+			printf("Year: %d\n", ptr->year);
+
+			return 0;
+		}
+			</code></pre>
+			<h3>Self-Referential Structures</h3>
+			<p>Structures can have members that point to structures of the same type, useful for creating linked lists and trees:</p>
+			<pre><code>
+		#include &lt;stdio.h&gt;
+
+		struct Node {
+			int data;
+			struct Node* next;
+		};
+
+		int main() {
+			struct Node node1, node2;
+
+			node1.data = 10;
+			node1.next = &node2;
+
+			node2.data = 20;
+			node2.next = NULL;
+
+			// Traversing the linked nodes
+			struct Node* ptr = &node1;
+			while(ptr != NULL) {
+				printf("Data: %d\n", ptr->data);
+				ptr = ptr->next;
+			}
+
+			return 0;
+		}
+			</code></pre>
+			<h3>Unions</h3>
+			<p>Unions are similar to structures but with a key difference: all members share the same memory location. This means only one member can hold a value at any given time.</p>
+			<pre><code>
+		#include &lt;stdio.h&gt;
+
+		union Data {
+			int i;
+			float f;
+			char str[20];
+		};
+
+		int main() {
+			union Data data;
+
+			data.i = 10;
+			printf("data.i : %d\n", data.i);
+
+			data.f = 220.5;
+			printf("data.f : %.2f\n", data.f);
+
+			strcpy(data.str, "C Programming");
+			printf("data.str : %s\n", data.str);
+
+			return 0;
+		}
+			</code></pre>
+			<p>In the above example, assigning a value to one member of the union will overwrite the values of other members because they share the same memory space.</p>
+			<h3>Enumerated Data Types</h3>
+			<p>Enumeration (or enum) is a user-defined data type in C that consists of integral constants. To define    <h3>Enumerated Data Types</h3>
+			<p>Enumeration (or <code>enum</code>) is a user-defined data type in C that consists of named integral constants. It is used to assign names to integral constants to make the program easy to read and maintain.</p>
+			<pre><code>
+		#include &lt;stdio.h&gt;
+
+		enum Days { MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY, SUNDAY };
+
+		int main() {
+			enum Days today;
+
+			today = WEDNESDAY;
+
+			if (today == WEDNESDAY) {
+				printf("It's the middle of the week!\n");
+			}
+
+			return 0;
+		}
+			</code></pre>
+
+			<h3>Visual Representation</h3>
+			<p>Here is an illustrative image that shows how a structure stores data in memory:</p>
+			<img src="https://tse2.mm.bing.net/th?id=OIP.-9SpJdZI8NIQtxQbl_3wYgHaFj&pid=Api" alt="C Structure Memory Layout" style="max-width: 100%; height: auto; border: 1px solid #ccc; border-radius: 8px; margin: 1em 0;" />
+
+			<p>This image helps visualize how members of a structure are laid out in memory sequentially (unless padding is applied).</p>
+			<a href="#" class="back-link">Back to Top</a>
+		</div>
+
+		<div id="advanced-structure-concepts" class="subtopic-content">
+			<h2>Advanced Structure Concepts</h2>
+			<p>Beyond the basics, structures in C can be nested, passed to functions, and used with pointers to create complex data models.</p>
+
+			<h3>Nested Structures</h3>
+			<p>Structures can contain other structures as members, allowing the creation of complex data types.</p>
+			<pre><code>
+			#include &lt;stdio.h&gt;
+
+			struct Address {
+				char city[50];
+				char state[50];
+			};
+
+			struct Student {
+				char name[50];
+				int age;
+				struct Address addr;
+			};
+
+			int main() {
+				struct Student student1 = {"Alice", 20, {"Hyderabad", "Telangana"}};
+				printf("Name: %s\n", student1.name);
+				printf("Age: %d\n", student1.age);
+				printf("City: %s\n", student1.addr.city);
+				printf("State: %s\n", student1.addr.state);
+				return 0;
+			}
+			</code></pre>
+			<p>In this example, the <code>Student</code> structure contains an <code>Address</code> structure, demonstrating nesting. :contentReference[oaicite:5]{index=5}</p>
+
+			<h3>Passing Structures to Functions</h3>
+			<p>Structures can be passed to functions by value or by reference (using pointers).</p>
+			<pre><code>
+			#include &lt;stdio.h&gt;
+
+			struct Student {
+				char name[50];
+				int age;
+			};
+
+			void displayStudent(struct Student s) {
+				printf("Name: %s\n", s.name);
+				printf("Age: %d\n", s.age);
+			}
+
+			int main() {
+				struct Student student1 = {"Bob", 22};
+				displayStudent(student1);
+				return 0;
+			}
+			</code></pre>
+			<p>Here, the <code>displayStudent</code> function takes a <code>Student</code> structure as an argument and prints its members. :contentReference[oaicite:6]{index=6}</p>
+
+			<h3>Pointers to Structures</h3>
+			<p>Pointers can be used to point to structures, allowing dynamic memory allocation and efficient data manipulation.</p>
+			<pre><code>
+			#include &lt;stdio.h&gt;
+			#include &lt;stdlib.h&gt;
+
+			struct Student {
+				char name[50];
+				int age;
+			};
+
+			int main() {
+				struct Student *studentPtr;
+				studentPtr = (struct Student *)malloc(sizeof(struct Student));
+
+				if (studentPtr == NULL) {
+					printf("Memory allocation failed.\n");
+					return 1;
+				}
+
+				strcpy(studentPtr->name, "Charlie");
+				studentPtr->age = 25;
+
+				printf("Name: %s\n", studentPtr->name);
+				printf("Age: %d\n", studentPtr->age);
+
+				free(studentPtr);
+				return 0;
+			}
+			</code></pre>
+			<p>In this example, a pointer to a <code>Student</code> structure is used to allocate memory dynamically and access its members using the <code>-&gt;</code> operator. :contentReference[oaicite:7]{index=7}</p>
+
+			<a href="#" class="back-link">Back to Top</a>
+		</div>
+		 
+		<div id="other-user-defined-types" class="subtopic-content">
+			<h2>Other User-Defined Types</h2>
+			<p>In C, beyond structures, there are several mechanisms to create custom data types: <code>typedef</code>, <code>union</code>, and <code>enum</code>. These allow for more readable and maintainable code by enabling the creation of aliases, grouping of different data types, and defining sets of named integral constants.</p>
+
+			<h3>1. <code>typedef</code>: Creating Type Aliases</h3>
+			<p>The <code>typedef</code> keyword allows you to create new names (aliases) for existing data types, enhancing code readability and portability.</p>
+			<p><strong>Example: Defining an Alias for <code>unsigned int</code></strong></p>
+			<pre><code>
+		#include &lt;stdio.h&gt;
+
+		typedef unsigned int uint;
+
+		int main() {
+			uint age = 25;
+			printf("Age: %u\n", age);
+			return 0;
+		}
+			</code></pre>
+			<p>In this example, <code>uint</code> is an alias for <code>unsigned int</code>, making the code more concise.</p>
+
+			<p><strong>Example: Using <code>typedef</code> with <code>struct</code></strong></p>
+			<pre><code>
+		#include &lt;stdio.h&gt;
+
+		typedef struct {
+			char title[50];
+			char author[50];
+			int pages;
+		} Book;
+
+		int main() {
+			Book myBook;
+			strcpy(myBook.title, "The C Programming Language");
+			strcpy(myBook.author, "Kernighan and Ritchie");
+			myBook.pages = 272;
+
+			printf("Book: %s by %s (%d pages)\n", myBook.title, myBook.author, myBook.pages);
+			return 0;
+		}
+			</code></pre>
+			<p>Here, <code>Book</code> is an alias for the defined <code>struct</code>, simplifying variable declarations.</p>
+
+			<h3>2. <code>union</code>: Storing Different Data Types in the Same Memory Location</h3>
+			<p>A <code>union</code> allows storing different data types in the same memory location. All members of a union share the same memory space, which means only one member can hold a value at any given time.</p>
+			<p><strong>Example: Defining and Using a <code>union</code></strong></p>
+			<pre><code>
+		#include &lt;stdio.h&gt;
+
+		union Data {
+			int i;
+			float f;
+			char str[20];
+		};
+
+		int main() {
+			union Data data;
+
+			data.i = 10;
+			printf("data.i : %d\n", data.i);
+
+			data.f = 220.5;
+			printf("data.f : %.2f\n", data.f);
+
+			strcpy(data.str, "C Programming");
+			printf("data.str : %s\n", data.str);
+
+			return 0;
+		}
+			</code></pre>
+			<p>In this example, assigning a value to one member of the union will overwrite the values of other members because they share the same memory space.</p>
+
+			<p><strong>Memory Layout of a <code>union</code></strong></p>
+			<p>The size of a union is determined by the size of its largest member. For instance, if a union contains an <code>int</code>, a <code>float</code>, and a <code>char[20]</code>, the size of the union will be that of the <code>char[20]</code> array, as it is the largest.</p>
+
+			<h3>3. <code>enum</code>: Defining Enumerated Constants</h3>
+			<p>An <code>enum</code> (enumeration) is a user-defined type consisting of a set of named integral constants. Enums enhance code readability by assigning descriptive names to integral values.</p>
+			<p><strong>Example: Defining and Using an <code>enum</code></strong></p>
+			<pre><code>
+		#include &lt;stdio.h&gt;
+
+		enum Color { RED, GREEN, BLUE };
+
+		int main() {
+			enum Color favoriteColor;
+
+			favoriteColor = GREEN;
+			printf("Favorite color code: %d\n", favoriteColor);
+
+			return 0;
+		}
+			</code></pre>
+			<p>In this example, <code>RED</code>, <code>GREEN</code>, and <code>BLUE</code> are assigned the values 0, 1, and 2, respectively, by default.</p>
+
+			<p><strong>Assigning Specific Values to <code>enum</code> Constants</strong></p>
+			<pre><code>
+		#include &lt;stdio.h&gt;
+
+		enum Weekday { MONDAY = 1, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY, SUNDAY };
+
+		int main() {
+			enum Weekday today = WEDNESDAY;
+			printf("Day number: %d\n", today);
+
+			return 0;
+		}
+			</code></pre>
+			<p>Here, <code>MONDAY</code> is explicitly assigned the value 1, and the subsequent constants increment by 1 automatically.</p>
+
+			<h3>Visual Representation</h3>
+			<p>Below is an illustrative image demonstrating the difference between <code>struct</code> and <code>union</code> memory allocation:</p>
+			<img src="https://tse2.mm.bing.net/th?id=OIP.-9SpJdZI8NIQtxQbl_3wYgHaFj&pid=Api" alt="Structure vs Union Memory Layout" style="max-width: 100%; height: auto; border: 1px solid #ccc; border-radius: 8px; margin: 1em 0;" />
+			<p>This image helps visualize how structures allocate separate memory for each member, while unions share the same memory space among all members.</p>
+			<a href="#" class="back-link">Back to Top</a>
+		</div>
+
+		<div id="file-handling-basics" class="subtopic-content">
+			<h2>File Handling Basics in C</h2>
+			<p>File handling in C allows for reading from and writing to files, enabling data to be stored and retrieved efficiently.</p>
+
+			<h3>File Pointers</h3>
+			<p>In C, a <code>FILE</code> pointer is used to interact with files. It is declared as follows:</p>
+			<pre><code>
+			FILE *fp;
+			</code></pre>
+
+			<h3>Opening Files</h3>
+			<p>The <code>fopen()</code> function is used to open a file. It requires the filename and the mode as arguments:</p>
+			<pre><code>
+			fp = fopen("example.txt", "r");
+			</code></pre>
+			<p>Common modes include:</p>
+			<ul>
+				<li><code>"r"</code>: Open for reading.</li>
+				<li><code>"w"</code>: Open for writing (creates a new file if it doesn't exist or truncates the file if it does).</li>
+				<li><code>"a"</code>: Open for appending.</li>
+				<li><code>"r+"</code>: Open for both reading and writing.</li>
+			</ul>
+
+			<h3>Closing Files</h3>
+			<p>After operations are complete, the <code>fclose()</code> function is used to close the file:</p>
+			<pre><code>
+			fclose(fp);
+			</code></pre>
+
+			<h3>Writing to a File</h3>
+			<p>To write data to a file, you can use the <code>fprintf()</code> function:</p>
+			<pre><code>
+			FILE *fp = fopen("example.txt", "w");
+			if (fp != NULL) {
+				fprintf(fp, "Hello, World!\n");
+				fclose(fp);
+			}
+			</code></pre>
+
+			<h3>Reading from a File</h3>
+			<p>To read data from a file, the <code>fscanf()</code> function can be utilized:</p>
+			<pre><code>
+			FILE *fp = fopen("example.txt", "r");
+			char buffer[100];
+			if (fp != NULL) {
+				while (fscanf(fp, "%s", buffer) != EOF) {
+					printf("%s ", buffer);
+				}
+				fclose(fp);
+			}
+			</code></pre>
+
+			<h3>Using <code>fread()</code> and <code>fwrite()</code></h3>
+			<p>For binary file operations, <code>fread()</code> and <code>fwrite()</code> functions are used:</p>
+			<pre><code>
+			struct Record {
+				int id;
+				char name[30];
+			};
+
+			struct Record rec = {1, "Alice"};
+			FILE *fp = fopen("record.bin", "wb");
+			if (fp != NULL) {
+				fwrite(&rec, sizeof(struct Record), 1, fp);
+				fclose(fp);
+			}
+
+			struct Record rec_read;
+			fp = fopen("record.bin", "rb");
+			if (fp != NULL) {
+				fread(&rec_read, sizeof(struct Record), 1, fp);
+				printf("ID: %d, Name: %s\n", rec_read.id, rec_read.name);
+				fclose(fp);
+			}
+			</code></pre>
+
+			<a href="#" class="back-link">Back to Top</a>
+		</div>
+
+		<div id="file-operations" class="subtopic-content">
+			<h2>File Operations in C</h2>
+			<p>File operations in C allow you to create, open, read, write, and append data to files. These operations are essential for data persistence and management. Below are the common file operations:</p>
+
+			<h3>1. Writing to Files</h3>
+			<p>To write data to a file, you can use the <code>fprintf()</code> function, which sends formatted output to a file.</p>
+			<p><strong>Example: Writing to a File</strong></p>
+			<pre><code>
+		#include &lt;stdio.h&gt;
+
+		int main() {
+			FILE *fp = fopen("example.txt", "w"); // Open file for writing
+			if (fp == NULL) {
+				perror("Error opening file");
+				return -1;
+			}
+			fprintf(fp, "Hello, World!\n"); // Write to file
+			fclose(fp); // Close the file
+			return 0;
+		}
+			</code></pre>
+			<p>In this example, the file "example.txt" is opened in write mode. If the file does not exist, it is created. The string "Hello, World!" is written to the file using <code>fprintf()</code>, and then the file is closed.</p>
+
+			<h3>2. Reading from Files</h3>
+			<p>To read data from a file, you can use the <code>fscanf()</code> function, which reads formatted input from a file.</p>
+			<p><strong>Example: Reading from a File</strong></p>
+			<pre><code>
+		#include &lt;stdio.h&gt;
+
+		int main() {
+			FILE *fp = fopen("example.txt", "r"); // Open file for reading
+			if (fp == NULL) {
+				perror("Error opening file");
+				return -1;
+			}
+			char buffer[255];
+			while (fscanf(fp, "%s", buffer) != EOF) {
+				printf("%s ", buffer);
+			}
+			fclose(fp); // Close the file
+			return 0;
+		}
+			</code></pre>
+			<p>Here, the file "example.txt" is opened in read mode. The <code>fscanf()</code> function reads words from the file until the end of the file is reached, printing each word to the console.</p>
+
+			<h3>3. Appending to Files</h3>
+			<p>To append data to the end of an existing file without overwriting its content, open the file in append mode using the <code>"a"</code> mode.</p>
+			<p><strong>Example: Appending to a File</strong></p>
+			<pre><code>
+		#include &lt;stdio.h&gt;
+
+		int main() {
+			FILE *fp = fopen("example.txt", "a"); // Open file for appending
+			if (fp == NULL) {
+				perror("Error opening file");
+				return -1;
+			}
+			fprintf(fp, "Appending a new line.\n"); // Append to file
+			fclose(fp); // Close the file
+			return 0;
+		}
+			</code></pre>
+			<p>In this example, "example.txt" is opened in append mode. The string "Appending a new line." is added to the end of the file without altering existing content.</p>
+
+			<h3>4. File Opening Modes</h3>
+			<p>When opening files, different modes can be used:</p>
+			<ul>
+				<li><code>"r"</code>: Read mode. Opens the file for reading.</li>
+				<li><code>"w"</code>: Write mode. Opens the file for writing and creates it if it doesn't exist. Overwrites the file if it exists.</li>
+				<li><code>"a"</code>: Append mode. Opens the file for writing at the end. Creates the file if it doesn't exist.</li>
+				<li><code>"r+"</code>: Read and write mode. Opens the file for both reading and writing.</li>
+				<li><code>"w+"</code>: Read and write mode. Opens the file for reading and writing, and truncates it to zero length if it exists.</li>
+				<li><code>"a+"</code>: Read and append mode. Opens the file for reading and appending.</li>
+			</ul>
+
+			<a href="#" class="back-link">Back to Top</a>
+		</div>
+
+		<div id="advanced-file-concepts" class="subtopic-content">
+			<h2>Advanced File Handling Concepts in C</h2>
+			<p>Advanced file handling in C encompasses operations such as working with binary files, manipulating file positions using functions like <code>fseek()</code> and <code>ftell()</code>, and implementing error handling with functions like <code>ferror()</code>.</p>
+
+			<h3>Binary Files</h3>
+			<p>Binary files store data in the same format as it is held in memory, making them more efficient for storage and retrieval compared to text files. The <code>fread()</code> and <code>fwrite()</code> functions are used for reading from and writing to binary files.</p>
+			<pre><code>
+			#include &lt;stdio.h&gt;
+
+			struct Record {
+				int id;
+				char name[30];
+			};
+
+			int main() {
+				struct Record rec = {1, "Alice"};
+				FILE *fp = fopen("record.bin", "wb");
+				if (fp != NULL) {
+					fwrite(&rec, sizeof(struct Record), 1, fp);
+					fclose(fp);
+				}
+
+				struct Record rec_read;
+				fp = fopen("record.bin", "rb");
+				if (fp != NULL) {
+					fread(&rec_read, sizeof(struct Record), 1, fp);
+					printf("ID: %d, Name: %s\n", rec_read.id, rec_read.name);
+					fclose(fp);
+				}
+				return 0;
+			}
+			</code></pre>
+			<p>In this example, a <code>Record</code> structure is written to and read from a binary file named "record.bin".</p>
+
+			<h3>File Positioning</h3>
+			<p>The <code>fseek()</code> function allows you to move the file pointer to a specific location within a file, enabling random access to file contents. The <code>ftell()</code> function returns the current position of the file pointer.</p>
+			<pre><code>
+			#include &lt;stdio.h&gt
+
+			int main() {
+				FILE *fp = fopen("example.txt", "r");
+				if (fp == NULL) {
+					perror("Error opening file");
+					return -1;
+				}
+
+				fseek(fp, 10, SEEK_SET); // Move to the 10th byte
+				char ch = fgetc(fp); // Read the character at that position
+				printf("Character at position 10: %c\n", ch);
+
+				long pos = ftell(fp); // Get current position
+				printf("Current file position: %ld\n", pos);
+
+				fclose(fp);
+				return 0;
+			}
+			</code></pre>
+			<p>In this example, the file pointer is moved to the 10th byte of "example.txt", and the character at that position is read and displayed. The current position is then retrieved using <code>ftell()</code>.</p>
+
+			<h3>Error Handling</h3>
+			<p>To ensure robust file operations, it's important to check for errors during file processing. The <code>ferror()</code> function can be used to detect errors associated with file operations.</p>
+			<pre><code>
+			#include &lt;stdio.h&gt;
+
+			int main() {
+				FILE *fp = fopen("nonexistent.txt", "r");
+				if (fp == NULL) {
+					perror("Error opening file");
+					return -1;
+				}
+
+				char ch = fgetc(fp);
+				if (ferror(fp)) {
+					printf("Error reading from file.\n");
+					clearerr(fp); // Clear the error indicator
+				}
+
+				fclose(fp);
+				return 0;
+			}
+			</code></pre>
+			<p>In this example, an attempt to open a non-existent file is made, and error handling is performed using <code>ferror()</code> and <code>perror()</code>.</p>
+
+			<a href="#" class="back-link">Back to Top</a>
+		</div>
+
+            
+        </div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const sidebarLinks = document.querySelectorAll('.sidebar ul li a');
+            const subtopicContents = document.querySelectorAll('.subtopic-content');
+
+            window.onload = function () {
+                const first = document.querySelector('a[href="#structure-basics"]');
+                if (first) first.click();
+            };
+
+            sidebarLinks.forEach(link => {
+                link.addEventListener('click', function (event) {
+                    event.preventDefault();
+                    const targetId = this.getAttribute('href').substring(1);
+
+                    sidebarLinks.forEach(l => l.classList.remove('active'));
+                    subtopicContents.forEach(content => content.classList.remove('active'));
+
+                    this.classList.add('active');
+
+                    const targetEl = document.getElementById(targetId);
+                    if (targetEl) targetEl.classList.add('active');
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>

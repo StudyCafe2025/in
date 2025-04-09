@@ -1,0 +1,1785 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>C Programming and Problem Solving</title>
+    <style>
+        body {
+            font-family: 'Poppins', Arial, sans-serif;
+            background-color: #f0f2f5;
+            color: #333;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo {
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            object-fit: cover;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 6px;
+            transition: background-color 0.3s, transform 0.2s ease-in-out;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .back-link:hover {
+            background-color: #45a049;
+            transform: translateY(-2px);
+        }
+
+        .back-link:active {
+            transform: scale(0.98);
+        }
+
+        .header {
+            background-color: #343a40;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            width: 100%;
+            margin-bottom: 20px;
+        }
+
+        .container {
+            display: flex;
+            max-width: 1200px;
+            width: 95%;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            margin: 20px auto;
+        }
+
+        .pseudocode-image {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 20px auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            transition: transform 0.3s ease;
+        }
+
+        .pseudocode-image:hover {
+            transform: scale(1.02);
+        }
+
+        .sidebar {
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-right: 1px solid #dee2e6;
+            width: 280px;
+            flex-shrink: 0;
+        }
+
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .sidebar li a {
+            display: block;
+            padding: 12px 18px;
+            text-decoration: none;
+            color: #495057;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+            margin-bottom: 8px;
+            cursor: pointer;
+        }
+
+        .sidebar li a:hover,
+        .sidebar li a.active {
+            background-color: #e9ecef;
+            color: #007bff;
+        }
+
+        .sidebar .download-btn {
+            display: block;
+            background-color: #007bff;
+            color: white;
+            padding: 14px 18px;
+            text-decoration: none;
+            border-radius: 5px;
+            text-align: center;
+            margin-top: 25px;
+            transition: background-color 0.3s ease;
+        }
+
+        .sidebar .download-btn:hover {
+            background-color: #0056b3;
+        }
+
+        .main-content {
+            padding: 30px;
+            flex-grow: 1;
+        }
+
+        .main-content h1 {
+            color: #343a40;
+            margin-bottom: 15px;
+            font-size: 2.2em;
+        }
+
+        .main-content p {
+            color: #495057;
+            line-height: 1.8;
+            margin-bottom: 20px;
+            font-size: 1.1em;
+        }
+
+        .main-content h2 {
+            color: #343a40;
+            margin-top: 25px;
+            margin-bottom: 10px;
+            font-size: 1.6em;
+        }
+
+        .main-content ul {
+            padding-left: 25px;
+            margin-bottom: 20px;
+            list-style-type: disc;
+            color: #495057;
+            font-size: 1.1em;
+        }
+
+        .main-content ul li {
+            margin-bottom: 8px;
+        }
+
+        .sidebar ul ul {
+            margin-left: 20px;
+            margin-top: 5px;
+        }
+
+        .sidebar ul ul li a {
+            font-size: 0.9em;
+        }
+
+        pre code {
+            background-color: #f0f0f0;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+            display: block;
+        }
+
+        .topic-section h2 {
+            margin-bottom: #333;
+            color: #333;
+        }
+
+        ol {
+            padding-left: 25px;
+            margin-bottom: 20px;
+        }
+
+        ol li {
+            margin-bottom: 8px;
+        }
+
+        .image-container {
+            text-align: center;
+            margin: 20px auto;
+            padding: 10px;
+            max-width: 1000px;
+            background-color: #f9f9f9;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .image-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            display: inline-block;
+        }
+
+        .subtopic-content {
+            display: none;
+        }
+
+        .subtopic-content.active {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <h1>Unit 3: Strings and Functions</h1>
+    </div>
+    <div class="container">
+        <div class="sidebar">
+            <div class="topic-section">
+                <h2>Strings</h2>
+                <ul>
+                    <li><a href="#strings-declaration">Declaration and Initialization of Strings</a></li>
+                    <li><a href="#strings-input">String Input / String Output Functions</a></li>
+                    <li><a href="#strings-manipulation">Standard String Manipulation Functions</a></li>
+                </ul>
+            </div>
+            <div class="topic-section">
+                <h2>Functions</h2>
+                <ul>
+                    <li><a href="#functions-types">Types of Functions</a></li>
+                    <li><a href="#functions-args-return">Function Categories Based on Arguments & Return Type</a></li>
+                    <li><a href="#functions-prototypes">Function Prototypes</a></li>
+                    <li><a href="#functions-recursion">Recursion</a></li>
+                    <li><a href="#functions-scope">Scope of Variables</a></li>
+                    <li><a href="#functions-storage">Storage Classes</a></li>
+                </ul>
+            </div>
+            <div class="topic-section">
+                <h2>Preprocessor Directives</h2>
+                <ul>
+                    <li><a href="#preprocessor-definition">Definition of Preprocessor Directives</a></li>
+                    <li><a href="#preprocessor-types">Types of Preprocessor Directives</a></li>
+                    <li><a href="#preprocessor-examples">Examples of Preprocessor Usage</a></li>
+                </ul>
+                <a href="https://drive.google.com/file/d/19wdNDg1Fttz67atma5HdtiL2W6bNkg0j/view?usp=drive_link"
+                    class="download-btn">Download PDF</a>
+            </div>
+        </div>
+
+		<div class="main-content">
+			<div id="strings-declaration" class="subtopic-content">
+				<h2>Declaration and Initialization of Strings</h2>
+				<p>In C, a string is an array of characters terminated by a null character <code>'\0'</code>. You declare a string using the <code>char</code> data type followed by the variable name and array brackets. There are several ways to initialize strings:</p>
+				<ul>
+					<li>Direct initialization: <code>char str[] = "Hello";</code></li>
+					<li>Character by character: <code>char str[6] = {'H', 'e', 'l', 'l', 'o', '\0'};</code></li>
+					<li>Using pointers: <code>char *str = "Hello";</code></li>
+					<li>Initialization with specified size: <code>char country[6] = "India";</code></li>
+					<li>Without specifying size: <code>char greeting[] = "Welcome";</code></li>
+					<li>Pointer initialization (read-only): <code>char *message = "Greetings";</code></li>
+				</ul>
+				<p><strong>Note:</strong> Always allocate space for the null terminator <code>'\0'</code> when specifying size manually.</p>
+				
+				<h3>Illustrative Diagram</h3>
+				<img src="https://tse3.mm.bing.net/th?id=OIP.y1tJTupbNY7CAIbbz0lbywHaE8&pid=Api" alt="String declaration image" style="max-width:100%; border:1px solid #ccc; border-radius:8px; margin-bottom:15px;" />
+
+				<h3>Code Examples</h3>
+				<pre><code>
+		#include &lt;stdio.h&gt;
+
+		int main() {
+			char str1[] = "Hello";
+			char str2[6] = {'W', 'o', 'r', 'l', 'd', '\0'};
+			char *str3 = "Greetings";
+			char country[6] = "India";
+			char name[5] = {'J', 'o', 'h', 'n', '\0'};
+			char city[] = {'P', 'a', 'r', 'i', 's', '\0'};
+
+			printf("String 1: %s\n", str1);
+			printf("String 2: %s\n", str2);
+			printf("String 3: %s\n", str3);
+			printf("Country: %s\n", country);
+			printf("Name: %s\n", name);
+			printf("City: %s\n", city);
+
+			return 0;
+		}
+				</code></pre>
+
+				<h3>Expected Output</h3>
+				<pre><code>
+		String 1: Hello
+		String 2: World
+		String 3: Greetings
+		Country: India
+		Name: John
+		City: Paris
+				</code></pre>
+				
+				<a href="#" class="back-link">Back to Top</a>
+			</div>
+		</div>
+
+			<div id="strings-input" class="subtopic-content">
+				<h2>String Input / Output Functions</h2>
+				<p>C provides functions like <code>scanf()</code>, <code>gets()</code>, and <code>fgets()</code> for input, and <code>printf()</code> and <code>puts()</code> for output.</p>
+				
+				<h3>1. scanf("%s", str)</h3>
+				<p>Reads a string until a whitespace is encountered. It cannot read multi-word input.</p>
+				<pre><code>
+			#include &lt;stdio.h&gt;
+
+			int main() {
+				char str[50];
+				printf("Enter a single word: ");
+				scanf("%s", str);
+				printf("You entered: %s\n", str);
+				return 0;
+			}
+				</code></pre>
+
+				<h3>2. gets(str)</h3>
+				<p>Reads a line from stdin until a newline is encountered. <strong>Deprecated</strong> due to buffer overflow risk.</p>
+				<pre><code>
+			#include &lt;stdio.h&gt;
+
+			int main() {
+				char str[50];
+				printf("Enter a string: ");
+				gets(str); // Warning: gets() is unsafe
+				printf("You entered: %s\n", str);
+				return 0;
+			}
+				</code></pre>
+
+				<h3>3. fgets(str, size, stdin)</h3>
+				<p>Safely reads a line with a size limit, safer than <code>gets()</code>.</p>
+				<pre><code>
+			#include &lt;stdio.h&gt;
+
+			int main() {
+				char str[50];
+				printf("Enter a string: ");
+				fgets(str, sizeof(str), stdin);
+				printf("You entered: %s", str);
+				return 0;
+			}
+				</code></pre>
+
+				<h3>4. printf("%s", str)</h3>
+				<p>Prints a string without adding a newline automatically.</p>
+				<pre><code>
+			#include &lt;stdio.h&gt;
+
+			int main() {
+				char str[] = "Hello, World!";
+				printf("%s\n", str);
+				return 0;
+			}
+				</code></pre>
+
+				<h3>5. puts(str)</h3>
+				<p>Prints a string followed by a newline automatically.</p>
+				<pre><code>
+			#include &lt;stdio.h&gt;
+
+			int main() {
+				char str[] = "Hello, World!";
+				puts(str);
+				return 0;
+			}
+				</code></pre>
+
+				<h3>Comprehensive Example</h3>
+				<pre><code>
+			#include &lt;stdio.h&gt;
+
+			int main() {
+				char str[100];
+
+				// Using fgets for safe input
+				printf("Enter a string: ");
+				fgets(str, sizeof(str), stdin);
+
+				// Output using printf
+				printf("Using printf: %s", str);
+
+				// Output using puts
+				printf("Using puts: ");
+				puts(str);
+
+				return 0;
+			}
+				</code></pre>
+
+				<h3>Key Points</h3>
+				<ul>
+					<li><strong>scanf</strong> cannot handle spaces in input.</li>
+					<li><strong>gets</strong> is unsafe and deprecated—avoid using it.</li>
+					<li><strong>fgets</strong> is recommended for safe input with buffer size control.</li>
+					<li><strong>printf</strong> needs a newline character to move to the next line.</li>
+					<li><strong>puts</strong> appends a newline automatically after printing.</li>
+				</ul>
+				
+				<a href="#" class="back-link">Back to Top</a>
+			</div>
+			
+			
+			<div id="strings-manipulation" class="subtopic-content">
+				<h2>Standard String Manipulation Functions</h2>
+				<p>The <code>&lt;string.h&gt;</code> library provides several essential functions for string operations:</p>
+				<ul>
+					<li><code>strlen(str)</code>: Returns the length of the string <code>str</code>, excluding the null terminator.</li>
+					<li><code>strcpy(dest, src)</code>: Copies the string <code>src</code> to <code>dest</code>. Ensure <code>dest</code> has sufficient space to accommodate <code>src</code>.</li>
+					<li><code>strncpy(dest, src, n)</code>: Copies up to <code>n</code> characters from <code>src</code> to <code>dest</code>. If <code>src</code> is less than <code>n</code> characters long, <code>dest</code> will be padded with null bytes.</li>
+					<li><code>strcat(dest, src)</code>: Appends the string <code>src</code> to the end of <code>dest</code>. Ensure <code>dest</code> has enough space to hold the combined string.</li>
+					<li><code>strncat(dest, src, n)</code>: Appends up to <code>n</code> characters from <code>src</code> to <code>dest</code>, and then adds a null terminator.</li>
+					<li><code>strcmp(str1, str2)</code>: Compares <code>str1</code> and <code>str2</code>. Returns 0 if they are equal, a negative value if <code>str1</code> is less than <code>str2</code>, and a positive value if <code>str1</code> is greater than <code>str2</code>.</li>
+					<li><code>strncmp(str1, str2, n)</code>: Compares up to <code>n</code> characters of <code>str1</code> and <code>str2</code>.</li>
+					<li><code>strchr(str, c)</code>: Returns a pointer to the first occurrence of character <code>c</code> in <code>str</code>, or NULL if not found.</li>
+					<li><code>strrchr(str, c)</code>: Returns a pointer to the last occurrence of character <code>c</code> in <code>str</code>, or NULL if not found.</li>
+					<li><code>strstr(haystack, needle)</code>: Returns a pointer to the first occurrence of the substring <code>needle</code> in <code>haystack</code>, or NULL if not found.</li>
+				</ul>
+				<p>It's crucial to handle these functions with care to avoid common pitfalls such as buffer overflows and ensure that destination buffers have adequate space.</p>
+
+				<h3>Illustrative Diagram</h3>
+				<p>The following image provides a visual representation of some standard string functions:</p>
+				<img src="https://www.educba.com/academy/wp-content/uploads/2019/07/C-String-Functions.jpg" alt="Standard String Functions in C" style="max-width:100%; border:1px solid #ccc; border-radius:8px; margin-bottom:15px;" />
+
+				<h3>Code Examples</h3>
+				<p>Below is a comprehensive example demonstrating the use of these functions:</p>
+				<pre><code>
+			#include &lt;stdio.h&gt;
+			#include &lt;string.h&gt;
+
+			int main() {
+				char str1[50] = "Hello";
+				char str2[] = "World";
+				char str3[50];
+				char *pos;
+
+				// strlen
+				printf("Length of str1: %zu\n", strlen(str1));
+
+				// strcpy
+				strcpy(str3, str1);
+				printf("After copying, str3: %s\n", str3);
+
+				// strncpy
+				strncpy(str3, str2, 3);
+				str3[3] = '\0'; // Null-terminate explicitly
+				printf("After strncpy, str3: %s\n", str3);
+
+				// strcat
+				strcat(str1, str2);
+				printf("After concatenation, str1: %s\n", str1);
+
+				// strncat
+				strncat(str1, "!!!", 3);
+				printf("After strncat, str1: %s\n", str1);
+
+				// strcmp
+				int cmp = strcmp(str1, str2);
+				printf("Comparison result between str1 and str2: %d\n", cmp);
+
+				// strncmp
+				cmp = strncmp(str1, str2, 3);
+				printf("Comparison result of first 3 chars: %d\n", cmp);
+
+				// strchr
+				pos = strchr(str1, 'W');
+				if (pos) {
+					printf("First occurrence of 'W' in str1: %s\n", pos);
+				} else {
+					printf("'W' not found in str1.\n");
+				}
+
+				// strrchr
+				pos = strrchr(str1, 'l');
+				if (pos) {
+					printf("Last occurrence of 'l' in str1: %s\n", pos);
+				} else {
+					printf("'l' not found in str1.\n");
+				}
+
+				// strstr
+				pos = strstr(str1, "World");
+				if (pos) {
+					printf("Substring 'World' found in str1: %s\n", pos);
+				} else {
+					printf("'World' not found in str1.\n");
+				}
+
+				return 0;
+			}
+				</code></pre>
+
+				<h3>Expected Output</h3>
+				<pre><code>
+			Length of str1: 5
+			After copying, str3: Hello
+			After strncpy, str3: Wor
+			After concatenation, str1: HelloWorld
+			After strncat, str1: HelloWorld!!!
+			Comparison result between str1 and str2: 1
+			Comparison result of first 3 chars: 0
+			First occurrence of 'W' in str1: World!!!
+			Last occurrence of 'l' in str1: ld!!!
+			Substring 'World' found in str1: World!!!
+				</code></pre>
+				
+				<a href="#" class="back-link">Back to Top</a>
+			</div>
+
+			<div id="functions-types" class="subtopic-content">
+				<h2>Types of Functions</h2>
+				<p>In C, functions are categorized based on whether they are predefined by the language or created by the programmer.</p>
+
+				<h3>1. Library Functions</h3>
+				<p>
+					Library functions are predefined in C libraries. These are ready-to-use and help in performing standard operations like input/output, mathematical operations, etc.
+				</p>
+				<ul>
+					<li><strong>Examples:</strong> <code>printf()</code>, <code>scanf()</code>, <code>sqrt()</code>, <code>strlen()</code></li>
+					<li><strong>Header files:</strong> These functions are available through header files like <code>&lt;stdio.h&gt;</code>, <code>&lt;math.h&gt;</code>, etc.</li>
+				</ul>
+
+				<pre><code>
+			#include &lt;stdio.h&gt;
+
+			int main() {
+				int num;
+				printf("Enter an integer: ");
+				scanf("%d", &num);
+				printf("You entered: %d\n", num);
+				return 0;
+			}
+				</code></pre>
+
+				<img src="https://tse2.mm.bing.net/th?id=OIP.fyqzJKtcFtgfbIg3Umor0QHaFj&pid=Api" alt="Library Functions" width="500">
+
+				<h3>2. User-Defined Functions</h3>
+				<p>
+					User-defined functions are functions that the programmer writes to perform specific tasks. They help break the program into smaller, manageable sections.
+				</p>
+				<ul>
+					<li>Enhance modularity and reusability.</li>
+					<li>Follow the structure: <code>declaration → call → definition</code></li>
+				</ul>
+
+				<pre><code>
+			#include &lt;stdio.h&gt;
+
+			// Function declaration
+			int add(int a, int b);
+
+			int main() {
+				int sum = add(5, 7);
+				printf("Sum: %d\n", sum);
+				return 0;
+			}
+
+			// Function definition
+			int add(int a, int b) {
+				return a + b;
+			}
+				</code></pre>
+
+				<img src="https://tse3.mm.bing.net/th?id=OIP.Me_VSLRhhTuJu6e7pRP2HgHaGc&pid=Api" alt="User Defined Functions" width="500">
+
+				<h3>Key Differences Between Library and User-Defined Functions</h3>
+				<table border="1" cellpadding="5" cellspacing="0">
+					<thead>
+						<tr>
+							<th>Aspect</th>
+							<th>Library Functions</th>
+							<th>User-Defined Functions</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>Definition</td>
+							<td>Predefined in standard libraries</td>
+							<td>Created by the programmer</td>
+						</tr>
+						<tr>
+							<td>Flexibility</td>
+							<td>Fixed functionality</td>
+							<td>Customizable</td>
+						</tr>
+						<tr>
+							<td>Need for Header</td>
+							<td>Yes (e.g., stdio.h)</td>
+							<td>No (written directly by user)</td>
+						</tr>
+						<tr>
+							<td>Reusability</td>
+							<td>Reused via libraries</td>
+							<td>Reused via definitions</td>
+						</tr>
+					</tbody>
+				</table>
+				<a href="#" class="back-link">Back to Top</a>
+			</div>
+
+			<div id="functions-args-return" class="subtopic-content">
+				<h2>Function Categories Based on Arguments & Return Type</h2>
+				<p>In C, functions can be classified into four primary categories based on whether they take arguments and whether they return a value:</p>
+				<ul>
+					<li><strong>Functions with no arguments and no return value</strong></li>
+					<li><strong>Functions with arguments and no return value</strong></li>
+					<li><strong>Functions with no arguments and a return value</strong></li>
+					<li><strong>Functions with arguments and a return value</strong></li>
+				</ul>
+
+				<h3>1. Functions with No Arguments and No Return Value</h3>
+				<p>These functions do not receive any data from the caller and do not return any data back. They perform their task independently.</p>
+				<pre><code>
+			#include &lt;stdio.h&gt;
+
+			// Function prototype
+			void greet(void);
+
+			int main() {
+				greet(); // Function call
+				return 0;
+			}
+
+			// Function definition
+			void greet(void) {
+				printf("Hello! Welcome to C programming.\n");
+			}
+				</code></pre>
+				<p>In this example, the <code>greet</code> function neither takes parameters nor returns a value. It simply prints a greeting message.</p>
+
+				<h3>2. Functions with Arguments and No Return Value</h3>
+				<p>These functions accept data from the caller but do not return any value. They typically perform operations using the provided arguments.</p>
+				<pre><code>
+			#include &lt;stdio.h&gt;
+
+			// Function prototype
+			void displaySquare(int num);
+
+			int main() {
+				int number = 5;
+				displaySquare(number); // Function call with argument
+				return 0;
+			}
+
+			// Function definition
+			void displaySquare(int num) {
+				printf("The square of %d is %d.\n", num, num * num);
+			}
+				</code></pre>
+				<p>Here, the <code>displaySquare</code> function takes an integer as an argument and prints its square without returning any value.</p>
+
+				<h3>3. Functions with No Arguments and a Return Value</h3>
+				<p>These functions do not take any arguments but return a value to the caller.</p>
+				<pre><code>
+			#include &lt;stdio.h&gt;
+
+			// Function prototype
+			int getNumber(void);
+
+			int main() {
+				int number;
+				number = getNumber(); // Function call
+				printf("You entered: %d\n", number);
+				return 0;
+			}
+
+			// Function definition
+			int getNumber(void) {
+				int num;
+				printf("Enter a number: ");
+				scanf("%d", &num);
+				return num; // Returning the inputted number
+			}
+				</code></pre>
+				<p>In this case, the <code>getNumber</code> function prompts the user for input and returns the entered number to the caller.</p>
+
+				<h3>4. Functions with Arguments and a Return Value</h3>
+				<p>These functions take arguments from the caller and return a value after processing.</p>
+				<pre><code>
+			#include &lt;stdio.h&gt;
+
+			// Function prototype
+			int add(int a, int b);
+
+			int main() {
+				int sum;
+				sum = add(3, 4); // Function call with arguments
+				printf("The sum is: %d\n", sum);
+				return 0;
+			}
+
+			// Function definition
+			int add(int a, int b) {
+				return a + b; // Returning the sum of a and b
+			}
+				</code></pre>
+				<a href="#" class="back-link">Back to Top</a>
+			</div>
+			<div id="functions-prototypes" class="subtopic-content">
+				<h2>Function Prototypes</h2>
+				<p>
+					In C programming, a <strong>function prototype</strong> is a declaration of a function that informs the compiler about the function's name, return type, and parameters before its actual definition. This practice enables the compiler to perform type checking and ensures that function calls are made with the correct number and types of arguments. :contentReference[oaicite:0]{index=0}
+				</p>
+
+				<h3>Syntax of a Function Prototype</h3>
+				<p>The general syntax of a function prototype is:</p>
+				<pre><code>
+			return_type function_name(parameter_type1, parameter_type2, ...);
+				</code></pre>
+				<p>For example:</p>
+				<pre><code>
+			int add(int a, int b);
+				</code></pre>
+				<p>Here, <code>int</code> is the return type, <code>add</code> is the function name, and it takes two parameters of type <code>int</code>. :contentReference[oaicite:1]{index=1}</p>
+
+				<h3>Importance of Function Prototypes</h3>
+				<ul>
+					<li><strong>Enables Type Checking:</strong> The compiler uses the prototype to ensure that function calls match the declared return type and parameter types, reducing errors. :contentReference[oaicite:2]{index=2}</li>
+					<li><strong>Allows Function Calls Before Definitions:</strong> Prototypes allow functions to be called before their actual definitions, facilitating better organization of code. :contentReference[oaicite:3]{index=3}</li>
+					<li><strong>Supports Modular Programming:</strong> By declaring prototypes in header files, functions can be shared across multiple source files, promoting code reuse and modularity. :contentReference[oaicite:4]{index=4}</li>
+				</ul>
+
+				<h3>Example: Using a Function Prototype</h3>
+				<p>Consider the following example where a function prototype is used to declare a function that adds two integers:</p>
+				<pre><code>
+			#include &lt;stdio.h&gt;
+
+			// Function prototype
+			int add(int a, int b);
+
+			int main() {
+				int result = add(5, 3);
+				printf("Sum: %d\n", result);
+				return 0;
+			}
+
+			// Function definition
+			int add(int a, int b) {
+				return a + b;
+			}
+				</code></pre>
+				<p>In this example:</p>
+				<ul>
+					<li>The function prototype <code>int add(int a, int b);</code> informs the compiler about the function before its use. :contentReference[oaicite:5]{index=5}</li>
+					<li>The <code>main()</code> function calls <code>add(5, 3)</code>, which is defined after <code>main()</code>.</li>
+					<li>The function definition <code>int add(int a, int b) { return a + b; }</code> provides the actual implementation.</li>
+				</ul>
+
+				<h3>Function Prototypes in Header Files</h3>
+				<p>In larger programs, function prototypes are often placed in header files (<code>.h</code> files) to be included in multiple source files. This practice promotes modularity and reusability. For example:</p>
+				<pre><code>
+			// add.h - Header file containing the function prototype
+			#ifndef ADD_H
+			#define ADD_H
+
+			int add(int a, int b);
+
+			#endif
+				</code></pre>
+				<p>Then, in the source file:</p>
+				<pre><code>
+			#include &lt;stdio.h&gt;
+			#include "add.h" // Include the header file
+
+			int main() {
+				int result = add(10, 15);
+				printf("Sum: %d\n", result);
+				return 0;
+			}
+
+			// Function definition
+			int add(int a, int b) {
+				return a + b;
+			}
+				</code></pre>
+				
+				<a href="#" class="back-link">Back to Top</a>
+			</div>
+		<div id="functions-args-return" class="subtopic-content">
+			<h2>Function Categories Based on Arguments & Return Type</h2>
+			<p>In C, functions can be classified into four primary categories based on whether they take arguments and whether they return a value:</p>
+			<ul>
+				<li><strong>Functions with no arguments and no return value</strong></li>
+				<li><strong>Functions with arguments and no return value</strong></li>
+				<li><strong>Functions with no arguments and a return value</strong></li>
+				<li><strong>Functions with arguments and a return value</strong></li>
+			</ul>
+
+			<h3>1. Functions with No Arguments and No Return Value</h3>
+			<p>These functions do not receive any data from the caller and do not return any data back. They perform their task independently.</p>
+			<pre><code>
+		#include &lt;stdio.h&gt;
+
+		// Function prototype
+		void greet(void);
+
+		int main() {
+			greet(); // Function call
+			return 0;
+		}
+
+		// Function definition
+		void greet(void) {
+			printf("Hello! Welcome to C programming.\n");
+		}
+			</code></pre>
+			<p>In this example, the <code>greet</code> function neither takes parameters nor returns a value. It simply prints a greeting message.</p>
+
+			<h3>2. Functions with Arguments and No Return Value</h3>
+			<p>These functions accept data from the caller but do not return any value. They typically perform operations using the provided arguments.</p>
+			<pre><code>
+		#include &lt;stdio.h&gt;
+
+		// Function prototype
+		void displaySquare(int num);
+
+		int main() {
+			int number = 5;
+			displaySquare(number); // Function call with argument
+			return 0;
+		}
+
+		// Function definition
+		void displaySquare(int num) {
+			printf("The square of %d is %d.\n", num, num * num);
+		}
+			</code></pre>
+			<p>Here, the <code>displaySquare</code> function takes an integer as an argument and prints its square without returning any value.</p>
+
+			<h3>3. Functions with No Arguments and a Return Value</h3>
+			<p>These functions do not take any arguments but return a value to the caller.</p>
+			<pre><code>
+		#include &lt;stdio.h&gt;
+
+		// Function prototype
+		int getNumber(void);
+
+		int main() {
+			int number;
+			number = getNumber(); // Function call
+			printf("You entered: %d\n", number);
+			return 0;
+		}
+
+		// Function definition
+		int getNumber(void) {
+			int num;
+			printf("Enter a number: ");
+			scanf("%d", &num);
+			return num; // Returning the inputted number
+		}
+			</code></pre>
+			<p>In this case, the <code>getNumber</code> function prompts the user for input and returns the entered number to the caller.</p>
+
+			<h3>4. Functions with Arguments and a Return Value</h3>
+			<p>These functions take arguments from the caller and return a value after processing.</p>
+			<pre><code>
+		#include &lt;stdio.h&gt;
+
+		// Function prototype
+		int add(int a, int b);
+
+		int main() {
+			int sum;
+			sum = add(3, 4); // Function call with arguments
+			printf("The sum is: %d\n", sum);
+			return 0;
+		}
+
+		// Function definition
+		int add(int a, int b) {
+			return a + b; // Returning the sum of a and b
+		}
+			</code></pre>
+			<p>Here, the <code>add</code> function takes two integers as arguments, calculates their sum, and returns the result.</p>
+
+			<h3>Illustrative Diagram</h3>
+			<p>The following image provides a visual representation of the different function categories in C:</p>
+			<img src="https://www.tutorialspoint.com/cprogramming/images/user_defined_functions.jpg" alt="Function Categories in C" style="max-width:100%; border:1px solid #ccc; border-radius:8px; margin-bottom:15px;" />
+		</div>
+		<div id="functions-recursion" class="subtopic-content">
+			<h2>Recursion</h2>
+			<p>
+				In C programming, <strong>recursion</strong> is a technique where a function calls itself directly or indirectly to solve a problem. This approach is particularly useful for problems that can be broken down into smaller, similar sub-problems. Recursion provides an elegant and straightforward way to write code for problems like factorial computation, Fibonacci series generation, and tree traversals. <a href="https://www.programiz.com/c-programming/c-recursion" target="_blank">[Source]</a>
+			</p>
+
+			<h3>Understanding Recursion</h3>
+			<p>
+				A recursive function typically has two main components:
+			</p>
+			<ul>
+				<li><strong>Base Case:</strong> The condition under which the recursion terminates.</li>
+				<li><strong>Recursive Case:</strong> The part where the function calls itself with modified parameters to approach the base case.</li>
+			</ul>
+
+			<h3>Example: Calculating Factorial Using Recursion</h3>
+			<p>
+				The factorial of a non-negative integer <code>n</code> is the product of all positive integers less than or equal to <code>n</code>. It is denoted by <code>n!</code> and defined as:
+			</p>
+			<pre>
+				n! = n × (n - 1) × (n - 2) × ... × 1
+			</pre>
+			<p>
+				Using recursion, the factorial function can be implemented as follows:
+			</p>
+			<pre><code>
+		#include &lt;stdio.h&gt;
+
+		int factorial(int n) {
+			if (n == 0)
+				return 1; // Base case
+			else
+				return n * factorial(n - 1); // Recursive case
+		}
+
+		int main() {
+			int num = 5;
+			printf("Factorial of %d: %d\n", num, factorial(num));
+			return 0;
+		}
+			</code></pre>
+			<p>
+				In this example:
+			</p>
+			<ul>
+				<li>If <code>n</code> is 0, the function returns 1 (base case).</li>
+				<li>Otherwise, it returns <code>n</code> multiplied by the factorial of <code>n - 1</code> (recursive case).</li>
+			</ul>
+
+			<h3>Visual Representation of Recursion</h3>
+			<p>
+				The following image illustrates the recursive process of calculating the factorial of 5:
+			</p>
+			<img src="https://www.programiz.com/sites/tutorial2program/files/factorial.jpg" alt="Factorial Calculation Using Recursion" width="500">
+			<p class="image-caption">Figure: Recursive calculation of factorial(5)</p>
+
+			<h3>Example: Generating Fibonacci Series Using Recursion</h3>
+			<p>
+				The Fibonacci series is a sequence of numbers where each number is the sum of the two preceding ones. The series starts with 0 and 1. The recursive approach to generate the Fibonacci series is shown below:
+			</p>
+			<pre><code>
+		#include &lt;stdio.h&gt;
+
+		int fibonacci(int n) {
+			if (n == 0)
+				return 0; // Base case
+			else if (n == 1)
+				return 1; // Base case
+			else
+				return fibonacci(n - 1) + fibonacci(n - 2); // Recursive case
+		}
+
+		int main() {
+			int n = 10;
+			printf("Fibonacci series up to %d terms:\n", n);
+			for (int i = 0; i < n; i++) {
+				printf("%d ", fibonacci(i));
+			}
+			printf("\n");
+			return 0;
+		}
+			</code></pre>
+			<p>
+				In this example:
+			</p>
+			<ul>
+				<li>If <code>n</code> is 0, the function returns 0 (base case).</li>
+				<li>If <code>n</code> is 1, the function returns 1 (base case).</li>
+				<li>Otherwise, it returns the sum of the Fibonacci numbers at positions <code>n - 1</code> and <code>n - 2</code> (recursive case).</li>
+			</ul>
+
+			<h3>Advantages of Recursion</h3>
+			<ul>
+				<li><strong>Simplicity:</strong> Recursive solutions are often more straightforward and easier to understand for problems that have a natural recursive structure, such as tree traversals.</li>
+				<li><strong>Modularity:</strong> Recursion allows for the breaking down of complex problems into simpler sub-problems, promoting modularity in code design.</li>
+			</ul>
+
+			<h3>Disadvantages of Recursion</h3>
+			<ul>
+				<li><strong>Performance Overhead:</strong> Recursive calls can be expensive in terms of memory and time due to the overhead of maintaining the call stack.</li>
+				<li><strong>Risk of Stack Overflow:</strong> Deep recursion can lead to stack overflow errors if the base case is not reached within the stack size limit.</li>
+			</ul>
+
+			<h3>Best Practices When Using Recursion</h3>
+			<ul>
+				<li>Ensure that a base case is defined and will be reached to prevent infinite recursion.</li>
+				<li>Consider the depth of recursion and the potential for stack overflow; use iterative solutions when appropriate.</li>
+				<li>Be mindful of the performance implications and test recursive functions for efficiency.</li>
+			</ul>
+			<a href="#" class="back-link">Back to Top</a>
+		</div>
+
+		<div id="functions-scope" class="subtopic-content">
+			<h2>Scope of Variables</h2>
+			<p>
+				In C programming, the <strong>scope</strong> of a variable determines the region of the program where the variable can be accessed. Understanding variable scope is crucial for managing data visibility and maintaining code modularity.
+			</p>
+
+			<h3>Types of Variable Scope</h3>
+			<ul>
+				<li>
+					<strong>Local Variables:</strong> Declared within a function or block, these variables are accessible only within that function or block. They are created when the function is called and destroyed upon its termination.
+				</li>
+				<li>
+					<strong>Global Variables:</strong> Declared outside all functions, typically at the top of a program, these variables are accessible throughout the entire program after their declaration.
+				</li>
+			</ul>
+
+			<h3>Local Variables</h3>
+			<p>
+				Local variables are confined to the function or block in which they are declared. They cannot be accessed outside of that function or block.
+			</p>
+			<p>Example:</p>
+			<pre><code>
+		#include &lt;stdio.h&gt;
+
+		void myFunction() {
+			int localVar = 5; // localVar is local to myFunction
+			printf("localVar inside myFunction: %d\n", localVar);
+		}
+
+		int main() {
+			myFunction();
+			// printf("%d", localVar); // This would result in an error: 'localVar' undeclared
+			return 0;
+		}
+			</code></pre>
+			<p>
+				In this example, <code>localVar</code> is declared within <code>myFunction</code> and is not accessible outside of it.
+			</p>
+
+			<h3>Global Variables</h3>
+			<p>
+				Global variables are accessible from any function within the program. They retain their values throughout the program's execution.
+			</p>
+			<p>Example:</p>
+			<pre><code>
+		#include &lt;stdio.h&gt;
+
+		int globalVar = 10; // globalVar is global and accessible throughout the program
+
+		void myFunction() {
+			printf("globalVar inside myFunction: %d\n", globalVar);
+		}
+
+		int main() {
+			printf("globalVar in main: %d\n", globalVar);
+			myFunction();
+			return 0;
+		}
+			</code></pre>
+			<p>
+				Here, <code>globalVar</code> is accessible both in the <code>main</code> function and in <code>myFunction</code>.
+			</p>
+
+			<h3>Variable Shadowing</h3>
+			<p>
+				Variable shadowing occurs when a local variable in a function or block has the same name as a global variable. In such cases, the local variable "shadows" the global variable within its scope.
+			</p>
+			<p>Example:</p>
+			<pre><code>
+		#include &lt;stdio.h&gt;
+
+		int var = 5; // Global variable
+
+		void myFunction() {
+			int var = 10; // Local variable shadows the global variable
+			printf("var inside myFunction: %d\n", var);
+		}
+
+		int main() {
+			printf("var in main before calling myFunction: %d\n", var);
+			myFunction();
+			printf("var in main after calling myFunction: %d\n", var);
+			return 0;
+		}
+			</code></pre>
+			<p>
+				In this example, the local variable <code>var</code> inside <code>myFunction</code> shadows the global <code>var</code>. Changes to <code>var</code> inside <code>myFunction</code> do not affect the global <code>var</code>.
+			</p>
+
+			<h3>Static Variables</h3>
+			<p>
+				<strong>Static variables</strong> are a special type of local variable that retain their value between function calls. They are declared using the <code>static</code> keyword.
+			</p>
+			<p>Example:</p>
+			<pre><code>
+		#include &lt;stdio.h&gt;
+
+		void myFunction() {
+			static int staticVar = 0; // Static variable initialization
+			staticVar++;
+			printf("staticVar: %d\n", staticVar);
+		}
+
+		int main() {
+			myFunction(); // Outputs: staticVar: 1
+			myFunction(); // Outputs: staticVar: 2
+			myFunction(); // Outputs: staticVar: 3
+			return 0;
+		}
+			</code></pre>
+			<p>
+				In this example, <code>staticVar</code> retains its value between calls to <code>myFunction</code>.
+			</p>
+
+			<h3>Visual Representation of Variable Scope</h3>
+			<p>
+				The following diagram illustrates the concept of local and global variable scopes:
+			</p>
+			<img src="https://www.w3schools.com/c/img_scope.png" alt="Variable Scope in C" width="500">
+			<p class="image-caption">Figure: Illustration of Local and Global Variable Scope in C</p>
+
+			<h3>Best Practices</h3>
+			<ul>
+				<li>
+					<strong>Minimize the use of global variables:</strong> Excessive use of global variables can lead to code that is difficult to debug and maintain. Prefer local variables to encapsulate data within functions.
+				</li>
+				<li>
+					<strong>Use meaningful variable names:</strong> This helps in avoiding confusion and potential naming conflicts.
+				</li>
+				<li>
+					<strong>Be cautious with variable shadowing:</strong> While it is allowed, it can lead to confusion and errors if not managed carefully.
+				</li>
+				<li>
+					<strong>Utilize static variables when appropriate:</strong> When a function needs to retain state information between calls, static variables can be useful.
+				</li>
+			</ul>
+			<a href="#" class="back-link">Back to Top</a>
+		</div>
+
+		<div id="functions-storage" class="subtopic-content">
+			<h2>Storage Classes in C</h2>
+			<p>Storage classes in C define the scope, lifetime, and visibility of variables and functions. They determine how memory is allocated and deallocated, influencing the behavior and accessibility of variables throughout the program.</p>
+
+			<h3>1. <code>auto</code> Storage Class</h3>
+			<p>The <code>auto</code> storage class is the default for all local variables. Variables declared with <code>auto</code> are created when the block in which they are defined is entered and destroyed upon exiting the block. They are stored in the stack and have no linkage, meaning they are not accessible outside their defining function or block.</p>
+			<pre><code>
+		#include &lt;stdio.h&gt;
+
+		void exampleFunction() {
+			auto int num = 10; // 'auto' is optional here
+			printf("Auto variable: %d\n", num);
+		}
+
+		int main() {
+			exampleFunction();
+			return 0;
+		}
+			</code></pre>
+			<p>In this example, the variable <code>num</code> is an automatic variable with block scope and is destroyed once <code>exampleFunction</code> exits.</p>
+
+			<h3>2. <code>register</code> Storage Class</h3>
+			<p>The <code>register</code> storage class suggests that the compiler store the variable in a CPU register instead of RAM for quicker access. This is typically used for frequently accessed variables, such as loop counters. However, the compiler may ignore this suggestion. Variables declared with <code>register</code> cannot have their addresses taken using the address-of operator (<code>&amp;</code>).</p>
+			<pre><code>
+		#include &lt;stdio.h&gt;
+
+		void registerExample() {
+			register int counter;
+			for (counter = 0; counter < 5; counter++) {
+				printf("Register variable counter: %d\n", counter);
+			}
+		}
+
+		int main() {
+			registerExample();
+			return 0;
+		}
+			</code></pre>
+			<p>Here, <code>counter</code> is suggested to be stored in a register for faster access during the loop iterations.</p>
+
+			<h3>3. <code>static</code> Storage Class</h3>
+			<p>The <code>static</code> storage class has two primary uses:</p>
+			<ul>
+				<li>For local variables: A local variable declared with <code>static</code> retains its value between function calls. It is initialized only once, and its value persists across multiple invocations of the function.</li>
+				<li>For global variables and functions: When used with global variables or functions, <code>static</code> restricts their scope to the file in which they are declared, making them inaccessible from other files.</li>
+			</ul>
+			<pre><code>
+		#include &lt;stdio.h&gt;
+
+		void staticExample() {
+			static int count = 0; // Initialized only once
+			count++;
+			printf("Static variable count: %d\n", count);
+		}
+
+		int main() {
+			staticExample();
+			staticExample();
+			staticExample();
+			return 0;
+		}
+			</code></pre>
+			<p>In this example, the <code>count</code> variable retains its value between calls to <code>staticExample</code>, demonstrating the persistence of <code>static</code> local variables.</p>
+
+			<h3>4. <code>extern</code> Storage Class</h3>
+			<p>The <code>extern</code> storage class is used to declare a global variable or function in another file. It tells the compiler that the variable or function is defined in a different file, allowing for cross-file variable and function usage.</p>
+			<p>Consider two files: <code>main.c</code> and <code>support.c</code>.</p>
+			<pre><code>
+		// main.c
+		#include &lt;stdio.h&gt;
+
+		extern int count; // Declaration of the external variable
+
+		void write_extern();
+
+		int main() {
+			count = 5;
+			write_extern();
+			return 0;
+		}
+			</code></pre>
+			<pre><code>
+		// support.c
+		#include &lt;stdio.h&gt;
+
+		int count; // Definition of the external variable
+
+		void write_extern() {
+			printf("Count is %d\n", count);
+		}
+			</code></pre>
+			<a href="#" class="back-link">Back to Top</a>
+		</div>
+
+		<div id="preprocessor-definition" class="subtopic-content">
+			<h2>Definition of Preprocessor Directives</h2>
+			<p>
+				In C programming, <strong>preprocessor directives</strong> are commands that instruct the compiler to preprocess the source code before actual compilation. These directives begin with the <code>#</code> symbol and are essential for including files, defining constants, and managing code compilation conditions. The preprocessor operates on the source code to produce an expanded version that the compiler then processes.
+			</p>
+
+			<h3>Common Preprocessor Directives</h3>
+			<ul>
+				<li>
+					<strong><code>#include</code>:</strong> This directive is used to include the contents of one file into another during compilation. It's commonly used to incorporate standard or user-defined header files.
+					<pre><code>
+		#include &lt;stdio.h&gt; // Includes the Standard Input Output header file
+					</code></pre>
+					In this example, the contents of the <code>stdio.h</code> file are included, providing access to functions like <code>printf</code> and <code>scanf</code>.
+				</li>
+				<li>
+					<strong><code>#define</code>:</strong> This directive defines macros, which are constants or expressions that can be used throughout the code. It allows for the creation of symbolic constants.
+					<pre><code>
+		#define PI 3.14159
+					</code></pre>
+					Here, <code>PI</code> is defined as 3.14159, and any occurrence of <code>PI</code> in the code will be replaced with this value during preprocessing.
+				</li>
+				<li>
+					<strong><code>#undef</code>:</strong> This directive is used to undefine a previously defined macro.
+					<pre><code>
+		#undef PI
+					</code></pre>
+					After this directive, <code>PI</code> is no longer defined in the subsequent code.
+				</li>
+				<li>
+					<strong><code>#ifdef</code> and <code>#ifndef</code>:</strong> These directives check if a macro is defined or not, respectively, and conditionally compile code based on that.
+					<pre><code>
+		#ifdef DEBUG
+			printf("Debug mode is ON\n");
+		#endif
+					</code></pre>
+					In this example, the <code>printf</code> statement will only be compiled if <code>DEBUG</code> is defined.
+				</li>
+				<li>
+					<strong><code>#if</code>, <code>#elif</code>, <code>#else</code>, and <code>#endif</code>:</strong> These directives allow for conditional compilation based on constant expressions.
+					<pre><code>
+		#if VERSION == 2
+			printf("Version 2\n");
+		#elif VERSION == 1
+			printf("Version 1\n");
+		#else
+			printf("Unknown Version\n");
+		#endif
+					</code></pre>
+					Here, different blocks of code are compiled based on the value of <code>VERSION</code>.
+				</li>
+				<li>
+					<strong><code>#error</code>:</strong> This directive generates a compilation error with a specified message.
+					<pre><code>
+		#ifndef CONFIG_H
+		#error "CONFIG_H is not defined"
+		#endif
+					</code></pre>
+					If <code>CONFIG_H</code> is not defined, the compiler will produce an error with the message "CONFIG_H is not defined".
+				</li>
+				<li>
+					<strong><code>#pragma</code>:</strong> This directive provides additional information to the compiler, which can vary between different compilers.
+					<pre><code>
+		#pragma once
+					</code></pre>
+					This directive ensures that the file is included only once during compilation, preventing multiple inclusions.
+				</li>
+			</ul>
+
+
+			<h3>Importance of Preprocessor Directives</h3>
+			<p>
+				Preprocessor directives play a crucial role in C programming by:
+			</p>
+			<ul>
+				<li>Allowing modularity through file inclusion.</li>
+				<li>Enabling code reusability and readability with macros.</li>
+				<li>Facilitating conditional compilation for different build configurations.</li>
+				<li>Providing a mechanism for error checking during compilation.</li>
+			</ul>
+			<a href="#" class="back-link">Back to Top</a>
+		</div>
+
+		<div id="functions-storage" class="subtopic-content">
+			<h2>Storage Classes in C</h2>
+			<p>Storage classes in C define the scope, lifetime, and visibility of variables and functions. They determine how memory is allocated and deallocated, influencing the behavior and accessibility of variables throughout the program.</p>
+
+			<h3>1. <code>auto</code> Storage Class</h3>
+			<p>The <code>auto</code> storage class is the default for all local variables. Variables declared with <code>auto</code> are created when the block in which they are defined is entered and destroyed upon exiting the block. They are stored in the stack and have no linkage, meaning they are not accessible outside their defining function or block.</p>
+			<pre><code>
+		#include &lt;stdio.h&gt;
+
+		void exampleFunction() {
+			auto int num = 10; // 'auto' is optional here
+			printf("Auto variable: %d\n", num);
+		}
+
+		int main() {
+			exampleFunction();
+			return 0;
+		}
+			</code></pre>
+			<p>In this example, the variable <code>num</code> is an automatic variable with block scope and is destroyed once <code>exampleFunction</code> exits.</p>
+
+			<h3>2. <code>register</code> Storage Class</h3>
+			<p>The <code>register</code> storage class suggests that the compiler store the variable in a CPU register instead of RAM for quicker access. This is typically used for frequently accessed variables, such as loop counters. However, the compiler may ignore this suggestion. Variables declared with <code>register</code> cannot have their addresses taken using the address-of operator (<code>&amp;</code>).</p>
+			<pre><code>
+		#include &lt;stdio.h&gt;
+
+		void registerExample() {
+			register int counter;
+			for (counter = 0; counter < 5; counter++) {
+				printf("Register variable counter: %d\n", counter);
+			}
+		}
+
+		int main() {
+			registerExample();
+			return 0;
+		}
+			</code></pre>
+			<p>Here, <code>counter</code> is suggested to be stored in a register for faster access during the loop iterations.</p>
+
+			<h3>3. <code>static</code> Storage Class</h3>
+			<p>The <code>static</code> storage class has two primary uses:</p>
+			<ul>
+				<li>For local variables: A local variable declared with <code>static</code> retains its value between function calls. It is initialized only once, and its value persists across multiple invocations of the function.</li>
+				<li>For global variables and functions: When used with global variables or functions, <code>static</code> restricts their scope to the file in which they are declared, making them inaccessible from other files.</li>
+			</ul>
+			<pre><code>
+		#include &lt;stdio.h&gt;
+
+		void staticExample() {
+			static int count = 0; // Initialized only once
+			count++;
+			printf("Static variable count: %d\n", count);
+		}
+
+		int main() {
+			staticExample();
+			staticExample();
+			staticExample();
+			return 0;
+		}
+			</code></pre>
+			<p>In this example, the <code>count</code> variable retains its value between calls to <code>staticExample</code>, demonstrating the persistence of <code>static</code> local variables.</p>
+
+			<h3>4. <code>extern</code> Storage Class</h3>
+			<p>The <code>extern</code> storage class is used to declare a global variable or function in another file. It tells the compiler that the variable or function is defined in a different file, allowing for cross-file variable and function usage.</p>
+			<p>Consider two files: <code>main.c</code> and <code>support.c</code>.</p>
+			<pre><code>
+		// main.c
+		#include &lt;stdio.h&gt;
+
+		extern int count; // Declaration of the external variable
+
+		void write_extern();
+
+		int main() {
+			count = 5;
+			write_extern();
+			return 0;
+		}
+			</code></pre>
+			<pre><code>
+		// support.c
+		#include &lt;stdio.h&gt;
+
+		int count; // Definition of the external variable
+
+		void write_extern() {
+			printf("Count is %d\n", count);
+		}
+			</code></pre>
+			<p>In this example, <code>count</code> is defined in <code>support.c</code> and declared in <code>main.c</code> using the <code>extern</code> keyword, allowing <code>main.c</code> to access the <code>count</code> variable.</p>
+
+			<a href="#" class="back-link">Back to Top</a>
+		</div>
+
+		<div id="preprocessor-definition" class="subtopic-content">
+			<h2>Definition of Preprocessor Directives</h2>
+			<p>
+				In C programming, <strong>preprocessor directives</strong> are commands that instruct the compiler to preprocess the source code before actual compilation. These directives begin with the <code>#</code> symbol and are essential for including files, defining constants, and managing code compilation conditions. The preprocessor operates on the source code to produce an expanded version that the compiler then processes.
+			</p>
+
+			<h3>Common Preprocessor Directives</h3>
+			<ul>
+				<li>
+					<strong><code>#include</code>:</strong> This directive is used to include the contents of one file into another during compilation. It's commonly used to incorporate standard or user-defined header files.
+					<pre><code>
+		#include &lt;stdio.h&gt; // Includes the Standard Input Output header file
+					</code></pre>
+					In this example, the contents of the <code>stdio.h</code> file are included, providing access to functions like <code>printf</code> and <code>scanf</code>.
+				</li>
+				<li>
+					<strong><code>#define</code>:</strong> This directive defines macros, which are constants or expressions that can be used throughout the code. It allows for the creation of symbolic constants.
+					<pre><code>
+		#define PI 3.14159
+					</code></pre>
+					Here, <code>PI</code> is defined as 3.14159, and any occurrence of <code>PI</code> in the code will be replaced with this value during preprocessing.
+				</li>
+				<li>
+					<strong><code>#undef</code>:</strong> This directive is used to undefine a previously defined macro.
+					<pre><code>
+		#undef PI
+					</code></pre>
+					After this directive, <code>PI</code> is no longer defined in the subsequent code.
+				</li>
+				<li>
+					<strong><code>#ifdef</code> and <code>#ifndef</code>:</strong> These directives check if a macro is defined or not, respectively, and conditionally compile code based on that.
+					<pre><code>
+		#ifdef DEBUG
+			printf("Debug mode is ON\n");
+		#endif
+					</code></pre>
+					In this example, the <code>printf</code> statement will only be compiled if <code>DEBUG</code> is defined.
+				</li>
+				<li>
+					<strong><code>#if</code>, <code>#elif</code>, <code>#else</code>, and <code>#endif</code>:</strong> These directives allow for conditional compilation based on constant expressions.
+					<pre><code>
+		#if VERSION == 2
+			printf("Version 2\n");
+		#elif VERSION == 1
+			printf("Version 1\n");
+		#else
+			printf("Unknown Version\n");
+		#endif
+					</code></pre>
+					Here, different blocks of code are compiled based on the value of <code>VERSION</code>.
+				</li>
+				<li>
+					<strong><code>#error</code>:</strong> This directive generates a compilation error with a specified message.
+					<pre><code>
+		#ifndef CONFIG_H
+		#error "CONFIG_H is not defined"
+		#endif
+					</code></pre>
+					If <code>CONFIG_H</code> is not defined, the compiler will produce an error with the message "CONFIG_H is not defined".
+				</li>
+				<li>
+					<strong><code>#pragma</code>:</strong> This directive provides additional information to the compiler, which can vary between different compilers.
+					<pre><code>
+		#pragma once
+					</code></pre>
+					This directive ensures that the file is included only once during compilation, preventing multiple inclusions.
+				</li>
+			</ul>
+
+			<h3>Visual Representation of Preprocessing</h3>
+			<p>
+				The following diagram illustrates the process of preprocessing in C:
+			</p>
+			<img src="https://www.tutorialspoint.com/cprogramming/images/preprocessor.jpg" alt="C Preprocessor Process" width="500">
+			<p class="image-caption">Figure: The C Preprocessor Process</p>
+
+			<h3>Importance of Preprocessor Directives</h3>
+			<p>
+				Preprocessor directives play a crucial role in C programming by:
+			</p>
+			<ul>
+				<li>Allowing modularity through file inclusion.</li>
+				<li>Enabling code reusability and readability with macros.</li>
+				<li>Facilitating conditional compilation for different build configurations.</li>
+				<li>Providing a mechanism for error checking during compilation.</li>
+			</ul>
+			<a href="#" class="back-link">Back to Top</a>
+		</div>
+		
+		<div id="preprocessor-types" class="subtopic-content">
+			<h2>Types of Preprocessor Directives in C</h2>
+			<p>Preprocessor directives in C are lines included in the code of programs preceded by a hash symbol (<code>#</code>). They are processed before the compilation of the program, allowing for inclusion of files, macro definitions, conditional compilation, and more. The main types of preprocessor directives include:</p>
+
+			<h3>1. <code>#include</code>: File Inclusion</h3>
+			<p>The <code>#include</code> directive is used to include the contents of a file or header at the point where the directive appears. This is commonly used to include standard library headers or user-defined headers.</p>
+			<pre><code>
+		#include &lt;stdio.h&gt;  // Includes the Standard Input Output header
+		#include "myheader.h"  // Includes a user-defined header file
+			</code></pre>
+			<p>In the first example, the angle brackets (<code>&lt;&gt;</code>) are used to include standard library headers, while in the second example, double quotes (<code>""</code>) are used for user-defined headers.</p>
+
+			<h3>2. <code>#define</code>: Macro Definition</h3>
+			<p>The <code>#define</code> directive is used to define macros, which are symbolic names or constants that are replaced by a specified value or code fragment throughout the code.</p>
+			<pre><code>
+		#define PI 3.14159
+		#define SQUARE(x) ((x) * (x))
+
+		int main() {
+			double radius = 5.0;
+			double area = PI * SQUARE(radius);
+			printf("Area of the circle: %f\n", area);
+			return 0;
+		}
+			</code></pre>
+			<p>In this example, <code>PI</code> is defined as a constant, and <code>SQUARE(x)</code> is a macro function that calculates the square of a number.</p>
+
+			<h3>3. Conditional Compilation Directives</h3>
+			<p>Conditional compilation directives allow the compiler to compile specific portions of code based on certain conditions. These include <code>#ifdef</code>, <code>#ifndef</code>, <code>#if</code>, <code>#else</code>, <code>#elif</code>, and <code>#endif</code>.</p>
+
+			<h4>a. <code>#ifdef</code> and <code>#ifndef</code></h4>
+			<p><code>#ifdef</code> checks if a macro is defined, and if so, includes the subsequent code block. Conversely, <code>#ifndef</code> includes the code block if the macro is not defined.</p>
+			<pre><code>
+		#include &lt;stdio.h&gt;
+
+		#define FEATURE_ENABLED
+
+		int main() {
+			#ifdef FEATURE_ENABLED
+				printf("Feature is enabled.\n");
+			#else
+				printf("Feature is disabled.\n");
+			#endif
+			return 0;
+		}
+			</code></pre>
+			<p>In this example, since <code>FEATURE_ENABLED</code> is defined, the output will be "Feature is enabled."</p>
+
+			<h4>b. <code>#if</code>, <code>#elif</code>, <code>#else</code>, and <code>#endif</code></h4>
+			<p>These directives allow for more complex conditional compilation based on constant expressions.</p>
+			<pre><code>
+		#include &lt;stdio.h&gt;
+
+		#define VERSION 2
+
+		int main() {
+			#if VERSION == 1
+				printf("Version 1\n");
+			#elif VERSION == 2
+				printf("Version 2\n");
+			#else
+				printf("Unknown version\n");
+			#endif
+			return 0;
+		}
+			</code></pre>
+			<p>Here, the output will be "Version 2" since <code>VERSION</code> is defined as 2.</p>
+
+			<h3>4. <code>#undef</code>: Undefining Macros</h3>
+			<p>The <code>#undef</code> directive is used to undefine a previously defined macro.</p>
+			<pre><code>
+		#include &lt;stdio.h&gt;
+
+		#define TEMP 100
+
+		int main() {
+			printf("TEMP before undef: %d\n", TEMP);
+			#undef TEMP
+			// printf("TEMP after undef: %d\n", TEMP); // This would cause a compilation error
+			return 0;
+		}
+			</code></pre>
+			<a href="#" class="back-link">Back to Top</a>
+		</div>
+
+
+		<div id="preprocessor-examples" class="subtopic-content">
+			<h2>Examples of Preprocessor Usage</h2>
+			<p>
+				The C preprocessor offers a range of directives that facilitate code modularity, readability, and conditional compilation. Below are illustrative examples demonstrating the practical applications of various preprocessor directives.
+			</p>
+
+			<h3>1. Including Standard Header Files</h3>
+			<p>
+				The <code>#include</code> directive is used to include standard or user-defined header files into a program. This allows access to various library functions and macros.
+			</p>
+			<pre><code>
+		#include &lt;stdio.h&gt; // Includes the Standard Input Output header file
+
+		int main() {
+			printf("Hello, World!\n");
+			return 0;
+		}
+			</code></pre>
+			<p>
+				In this example, the <code>stdio.h</code> header file is included to utilize the <code>printf</code> function for output.
+			</p>
+
+			<h3>2. Defining Constants Using <code>#define</code></h3>
+			<p>
+				The <code>#define</code> directive allows the creation of symbolic constants or macros, enhancing code readability and maintainability.
+			</p>
+			<pre><code>
+		#include &lt;stdio.h&gt;
+		#define PI 3.14159 // Defines a constant for PI
+
+		int main() {
+			printf("Value of PI: %f\n", PI);
+			return 0;
+		}
+			</code></pre>
+			<p>
+				Here, <code>PI</code> is defined as 3.14159, and any occurrence of <code>PI</code> in the code is replaced with this value during preprocessing.
+			</p>
+
+			<h3>3. Conditional Compilation with <code>#ifdef</code> and <code>#endif</code></h3>
+			<p>
+				Conditional compilation directives allow the compiler to include or exclude parts of the code based on specific conditions, which is particularly useful for debugging or platform-specific code.
+			</p>
+			<pre><code>
+		#include &lt;stdio.h&gt;
+		#define DEBUG // Comment this line to disable debug mode
+
+		int main() {
+			printf("Program is running.\n");
+			#ifdef DEBUG
+				printf("Debug mode is enabled.\n");
+			#endif
+			return 0;
+		}
+			</code></pre>
+			<p>
+				In this example, the message "Debug mode is enabled." is printed only if <code>DEBUG</code> is defined.
+			</p>
+
+			<h3>4. Undefining a Macro with <code>#undef</code></h3>
+			<p>
+				The <code>#undef</code> directive is used to undefine a previously defined macro.
+			</p>
+			<pre><code>
+		#include &lt;stdio.h&gt;
+		#define TEMP 25
+
+		int main() {
+			printf("Temperature: %d°C\n", TEMP);
+			#undef TEMP
+			// printf("Temperature: %d°C\n", TEMP); // This would cause an error as TEMP is undefined
+			return 0;
+		}
+			</code></pre>
+			<p>
+				After the <code>#undef TEMP</code> directive, the macro <code>TEMP</code> is undefined and cannot be used unless redefined.
+			</p>
+
+			<h3>5. Using <code>#if</code>, <code>#elif</code>, <code>#else</code>, and <code>#endif</code> for Conditional Compilation</h3>
+			<p>
+				These directives allow for more complex conditional compilation scenarios.
+			</p>
+			<pre><code>
+		#include &lt;stdio.h&gt;
+		#define VERSION 2
+
+		int main() {
+			#if VERSION == 1
+				printf("Version 1\n");
+			#elif VERSION == 2
+				printf("Version 2\n");
+			#else
+				printf("Unknown Version\n");
+			#endif
+			return 0;
+		}
+			</code></pre>
+			<p>
+				Depending on the value of <code>VERSION</code>, different blocks of code are compiled.
+			</p>
+
+			<h3>6. Preventing Multiple Inclusions with Include Guards</h3>
+			<p>
+				Include guards prevent a header file from being included multiple times, which can cause errors.
+			</p>
+			<pre><code>
+		// File: myheader.h
+		#ifndef MYHEADER_H
+		#define MYHEADER_H
+
+		// Declarations
+
+		#endif // MYHEADER_H
+			</code></pre>
+			<p>
+				The above construct ensures that the contents of <code>myheader.h</code> are included only once.
+			</p>
+
+			<h3>7. Using <code>#pragma</code> Directives</h3>
+			<p>
+				The <code>#pragma</code> directive offers machine-specific or operating system-specific features.
+			</p>
+			<pre><code>
+		#include &lt;stdio.h&gt;
+		#pragma message("Compiling " __FILE__)
+
+		int main() {
+			printf("Hello, World!\n");
+			return 0;
+		}
+			</code></pre>
+			<p>
+				This will display a compilation message indicating the file being compiled.
+			</p>
+
+			<h3>Visual Representation of Preprocessor Workflow</h3>
+			<p>
+				The following diagram illustrates the workflow of the C preprocessor:
+			</p>
+			
+			<a href="#" class="back-link">Back to Top</a>
+		</div>
+
+
+
+        </div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const sidebarLinks = document.querySelectorAll('.sidebar ul li a');
+            const subtopicContents = document.querySelectorAll('.subtopic-content');
+
+            window.onload = function () {
+                const first = document.querySelector('a[href="#strings-declaration"]');
+                if (first) first.click();
+            };
+
+            sidebarLinks.forEach(link => {
+                link.addEventListener('click', function (event) {
+                    event.preventDefault();
+                    const targetId = this.getAttribute('href').substring(1);
+
+                    sidebarLinks.forEach(l => l.classList.remove('active'));
+                    subtopicContents.forEach(content => content.classList.remove('active'));
+
+                    this.classList.add('active');
+
+                    const targetEl = document.getElementById(targetId);
+                    if (targetEl) targetEl.classList.add('active');
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>

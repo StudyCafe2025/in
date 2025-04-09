@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cayley-Hamilton & Matrix Topics</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      font-family: 'Poppins', Arial, sans-serif;
+      background-color: #f0f2f5;
+      color: #333;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .header {
+      background-color: #343a40;
+      color: white;
+      padding: 20px 0;
+      text-align: center;
+      width: 100%;
+    }
+
+    .container {
+      display: flex;
+      max-width: 1200px;
+      width: 95%;
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      margin: 20px auto;
+    }
+
+    .sidebar {
+      background-color: #f8f9fa;
+      padding: 20px;
+      border-right: 1px solid #dee2e6;
+      width: 280px;
+      flex-shrink: 0;
+    }
+
+    .sidebar ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .sidebar li a {
+      display: block;
+      padding: 12px 18px;
+      text-decoration: none;
+      color: #495057;
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+      margin-bottom: 8px;
+      cursor: pointer;
+    }
+
+    .sidebar li a:hover,
+    .sidebar li a.active {
+      background-color: #e9ecef;
+      color: #007bff;
+    }
+
+    .main-content {
+      padding: 30px;
+      flex-grow: 1;
+    }
+
+    .main-content h2 {
+      color: #343a40;
+      font-size: 2.2em;
+      margin-bottom: 15px;
+    }
+
+    .main-content h3 {
+      color: #343a40;
+      font-size: 1.6em;
+      margin-top: 20px;
+      margin-bottom: 10px;
+    }
+
+    .main-content p,
+    .main-content li {
+      color: #495057;
+      font-size: 1.1em;
+      line-height: 1.8;
+    }
+
+    .main-content ul,
+    .main-content ol {
+      padding-left: 25px;
+      margin-bottom: 20px;
+    }
+
+    .video-box {
+      margin: 20px 0;
+      padding: 10px;
+      background-color: #f9f9f9;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      text-align: center;
+    }
+
+    .video-box iframe {
+      width: 100%;
+      height: 360px;
+      border: none;
+      border-radius: 8px;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1> Quadratic forms of matrices</h1>
+  </div>
+
+  <div class="container">
+    <div class="sidebar">
+      <ul>
+        <li><a href="#cayley">Cayley-Hamilton Theorem</a></li>
+        <li><a href="#inverse">Inverse & Powers via C-H</a></li>
+        <li><a href="#diagonalization">Diagonalization</a></li>
+        <li><a href="#quadratic">Quadratic Forms</a></li>
+        <li><a href="#canonical">Canonical Form (Orthogonal Transform)</a></li>
+      </ul>
+    </div>
+
+    <div class="main-content">
+      <div id="cayley">
+        <h2>Cayley-Hamilton Theorem</h2>
+        <p>The Cayley-Hamilton theorem states that every square matrix satisfies its own characteristic equation.</p>
+        <p>If you substitute the matrix into its characteristic polynomial, the result is the zero matrix.</p>
+
+        <h3>Characteristic Polynomial:</h3>
+        <p>For a square matrix A, the characteristic polynomial is: <strong>p(x) = det(xI - A)</strong></p>
+
+        <h3>Theorem Statement:</h3>
+        <p>If p(x) is the characteristic polynomial of A, then <strong>p(A) = 0</strong>.</p>
+
+        <h3>Example (2x2 Matrix):</h3>
+        <p>If A = [[a, b], [c, d]], then p(x) = x² - (a+d)x + (ad - bc), and substituting A gives:</p>
+        <p><strong>A² - (a+d)A + (ad-bc)I = 0</strong></p>
+
+        <div class="video-box">
+          <iframe src="https://www.youtube.com/embed/PCO6y793jz4" allowfullscreen></iframe>
+        </div>
+      </div>
+
+      <div id="inverse">
+        <h2>Using C-H to Find Inverse and Powers</h2>
+        <ol>
+          <li>Find the characteristic polynomial: det(λI - A)</li>
+          <li>Apply C-H: p(A) = 0</li>
+          <li>Solve for A⁻¹ using: A³ + aA² + bA + cI = 0 → isolate A⁻¹</li>
+        </ol>
+        <p>Higher powers like A⁴ can be computed as combinations of A², A, and I.</p>
+
+        <h3>Example:</h3>
+        <p>Given p(λ) = λ² - 5λ + 6, then:</p>
+        <p><strong>A² - 5A + 6I = 0 → A⁻¹ = (-A + 5I)/6</strong></p>
+
+        <div class="video-box">
+          <iframe src="https://www.youtube.com/embed/8BEv1mQpJNU" allowfullscreen></iframe>
+        </div>
+      </div>
+
+      <div id="diagonalization">
+        <h2>Diagonalization of a Matrix</h2>
+        <p>Diagonalization transforms a matrix A into a diagonal matrix D such that:</p>
+        <p><strong>A = PDP⁻¹</strong>, where P is a matrix of eigenvectors.</p>
+
+        <ol>
+          <li>Find eigenvalues and eigenvectors</li>
+          <li>Construct P and D</li>
+          <li>Verify A = PDP⁻¹</li>
+        </ol>
+
+        <p>Used for simplifying matrix powers: <strong>Aⁿ = PDⁿP⁻¹</strong></p>
+
+        <div class="video-box">
+          <iframe src="https://www.youtube.com/embed/05tJyiBy0eY" allowfullscreen></iframe>
+        </div>
+      </div>
+
+      <div id="quadratic">
+        <h2>Quadratic Forms & Their Nature</h2>
+        <p>A quadratic form is of the type: <strong>Q(x) = xᵀAx</strong></p>
+        <p>It is classified based on its eigenvalues:</p>
+        <ul>
+          <li><strong>Positive Definite:</strong> All eigenvalues positive</li>
+          <li><strong>Negative Definite:</strong> All negative</li>
+          <li><strong>Indefinite:</strong> Mixed signs</li>
+        </ul>
+
+        <div class="video-box">
+          <iframe src="https://www.youtube.com/embed/1GFIy2_lH1Y" allowfullscreen></iframe>
+        </div>
+      </div>
+
+      <div id="canonical">
+        <h2>Reducing to Canonical Form via Orthogonal Transformation</h2>
+        <p>Steps:</p>
+        <ol>
+          <li>Represent Q(x) as xᵀAx with symmetric A</li>
+          <li>Find eigenvalues/eigenvectors</li>
+          <li>Form orthogonal matrix P</li>
+          <li>Transform: <strong>Q(x) = yᵀDy</strong> where D is diagonal</li>
+        </ol>
+
+        <p>This eliminates cross terms and yields canonical form: λ₁y₁² + λ₂y₂² + ...</p>
+
+        <div class="video-box">
+          <iframe src="https://www.youtube.com/embed/GCtDvZLsG4Q" allowfullscreen></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

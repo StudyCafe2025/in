@@ -1,0 +1,1633 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>C Programming and Problem Solving</title>
+    <style>
+        body {
+            font-family: 'Poppins', Arial, sans-serif;
+            background-color: #f0f2f5;
+            color: #333;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo {
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            object-fit: cover;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            /* Green background */
+            color: white;
+            /* White text */
+            text-decoration: none;
+            /* Remove underline */
+            font-weight: bold;
+            border-radius: 6px;
+            /* Rounded corners */
+            transition: background-color 0.3s, transform 0.2s ease-in-out;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            /* Soft shadow */
+        }
+
+        .back-link:hover {
+            background-color: #45a049;
+            /* Slightly darker on hover */
+            transform: translateY(-2px);
+            /* Slight lift effect */
+        }
+
+        .back-link:active {
+            transform: scale(0.98);
+            /* Click feedback */
+        }
+
+        .header {
+            background-color: #343a40;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            width: 100%;
+            margin-bottom: 20px;
+        }
+
+        .container {
+            display: flex;
+            max-width: 1200px;
+            width: 95%;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            margin: 20px auto;
+        }
+
+        .pseudocode-image {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 20px auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            transition: transform 0.3s ease;
+        }
+
+        .pseudocode-image:hover {
+            transform: scale(1.02);
+        }
+
+        .sidebar {
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-right: 1px solid #dee2e6;
+            width: 280px;
+            flex-shrink: 0;
+        }
+
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .sidebar li a {
+            display: block;
+            padding: 12px 18px;
+            text-decoration: none;
+            color: #495057;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+            margin-bottom: 8px;
+            cursor: pointer;
+        }
+
+        .sidebar li a:hover,
+        .sidebar li a.active {
+            background-color: #e9ecef;
+            color: #007bff;
+        }
+
+        .sidebar .download-btn {
+            display: block;
+            background-color: #007bff;
+            color: white;
+            padding: 14px 18px;
+            text-decoration: none;
+            border-radius: 5px;
+            text-align: center;
+            margin-top: 25px;
+            transition: background-color 0.3s ease;
+        }
+
+        .sidebar .download-btn:hover {
+            background-color: #0056b3;
+        }
+
+        .main-content {
+            padding: 30px;
+            flex-grow: 1;
+        }
+
+        .main-content h1 {
+            color: #343a40;
+            margin-bottom: 15px;
+            font-size: 2.2em;
+        }
+
+        .main-content p {
+            color: #495057;
+            line-height: 1.8;
+            margin-bottom: 20px;
+            font-size: 1.1em;
+        }
+
+        .main-content h2 {
+            color: #343a40;
+            margin-top: 25px;
+            margin-bottom: 10px;
+            font-size: 1.6em;
+        }
+
+        .main-content ul {
+            padding-left: 25px;
+            margin-bottom: 20px;
+            list-style-type: disc;
+            color: #495057;
+            font-size: 1.1em;
+        }
+
+        .main-content ul li {
+            margin-bottom: 8px;
+        }
+
+        .topic-content,
+        .subtopic-content {
+            display: none;
+        }
+
+        .topic-content.active,
+        .subtopic-content.active {
+            display: block;
+        }
+
+        .sidebar ul ul {
+            margin-left: 20px;
+            margin-top: 5px;
+        }
+
+        .sidebar ul ul li a {
+            font-size: 0.9em;
+        }
+
+        pre code {
+            background-color: #f0f0f0;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+            display: block;
+        }
+
+        .topic-section h2 {
+            margin-bottom: #333;
+            color: #333;
+        }
+
+        ol {
+            padding-left: 25px;
+            margin-bottom: 20px;
+        }
+
+        ol li {
+            margin-bottom: 8px;
+        }
+
+        .image-container {
+            text-align: center;
+            /* Center-align the image */
+            margin: 20px auto;
+            /* Add spacing around the container */
+            padding: 10px;
+            max-width: 1000px;
+            /* Optional: limit image container width */
+            background-color: #f9f9f9;
+            /* Light background for contrast */
+            border: 1px solid #ccc;
+            /* Subtle border */
+            border-radius: 10px;
+            /* Rounded corners */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            /* Soft shadow */
+        }
+
+        .image-container img {
+            max-width: 100%;
+            /* Responsive width */
+            height: auto;
+            /* Maintain aspect ratio */
+            border-radius: 8px;
+            /* Slight rounding of the image itself */
+            display: inline-block;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="header">
+
+        <h1>Unit 2: Introduction to decision control statements and Arrays</h1>
+    </div>
+    <div class="container">
+        <div class="sidebar">
+            <div id="problem-solving">
+                <div class="topic-section">
+                    <h2>Decision Control Statements</h2>
+                    <ul>
+                        <li><a href="#selective-statements">Selective Statements</a></li>
+                        <li><a href="#looping-statements">Looping Statements</a></li>
+                        <li><a href="#nested-statements">Nested Statements</a></li>
+                        <li><a href="#jumping-statements">Jumping Statements</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div id="introduction-to-c">
+                <div class="topic-section">
+                    <h2>Arrays</h2>
+                    <ul>
+                        <li><a href="#arrays-introduction">Introduction to Arrays</a></li>
+                        <li><a href="#arrays-declaration-initialization">Declaration and Initialization of Arrays</a></li>
+                        <li><a href="#arrays-accessing-storing">Accessing and Storing Array Elements</a></li>
+                        <li><a href="#arrays-searching">Searching Algorithms</a></li>
+                        <li><a href="#arrays-sorting">Sorting Algorithms</a></li>
+                        <li><a href="#arrays-multidimensional">Multidimensional Arrays</a></li>
+                        <li><a href="#arrays-matrix-operations">Matrix Operations (Addition, Subtraction, Multiplication)</a></li>
+                    </ul>
+                </div>
+                <a href="https://drive.google.com/file/d/19wdNDg1Fttz67atma5HdtiL2W6bNkg0j/view?usp=drive_link"
+                    class="download-btn">Download PDF</a>
+            </div>
+        </div>
+
+        <div class="main-content">
+			<div id="selective-statements" class="subtopic-content">
+				<h2>Selective Statements</h2>
+				<p>
+					Selective statements, also known as conditional statements, allow a program to make decisions and execute different blocks of code based on whether certain conditions are true or false. In C, these include <code>if</code>, <code>if...else</code>, <code>else if</code>, and <code>switch</code>.
+				</p>
+
+				<h3>1. <code>if</code> Statement</h3>
+				<p>The <code>if</code> statement checks a condition and executes a block of code if the condition is true.</p>
+				<pre><code>
+			#include &lt;stdio.h&gt;
+
+			int main() {
+				int number = 10;
+
+				if (number > 0) {
+					printf("The number is positive.\n");
+				}
+
+				return 0;
+			}
+				</code></pre>
+
+				<h3>2. <code>if...else</code> Statement</h3>
+				<p>Used when there are two conditions to handle: one for true, one for false.</p>
+				<pre><code>
+			int number = -5;
+
+			if (number > 0) {
+				printf("Positive number");
+			} else {
+				printf("Non-positive number");
+			}
+				</code></pre>
+
+				<h3>3. <code>else if</code> Ladder</h3>
+				<p>The <code>else if</code> ladder allows you to check multiple conditions in sequence.</p>
+				<pre><code>
+			int number = 0;
+
+			if (number > 0) {
+				printf("Positive");
+			} else if (number < 0) {
+				printf("Negative");
+			} else {
+				printf("Zero");
+			}
+				</code></pre>
+
+				<h3>4. <code>switch</code> Statement</h3>
+				<p>The <code>switch</code> statement selects one of many blocks of code to be executed based on a variable’s value.</p>
+				<pre><code>
+			int day = 3;
+
+			switch(day) {
+				case 1: printf("Monday"); break;
+				case 2: printf("Tuesday"); break;
+				case 3: printf("Wednesday"); break;
+				default: printf("Invalid day");
+			}
+				</code></pre>
+
+				<h3>Visual Examples:</h3>
+				<div class="image-container">
+					<img src="https://www.circuitstoday.com/wp-content/uploads/2012/09/selection_structure_modified.png" alt="If-Else Flowchart">
+				</div>
+
+				<div class="image-container">
+					<img src="https://ecomputernotes.com/images/flowchart-of-switch-case-in-c.png" alt="Switch Statement Flowchart">
+				</div>
+
+				<h3>When to Use:</h3>
+				<ul>
+					<li><strong>Use <code>if</code>, <code>if...else</code>, <code>else if</code>:</strong> when evaluating ranges, comparisons, or multiple unrelated conditions.</li>
+					<li><strong>Use <code>switch</code>:</strong> when evaluating a single variable against multiple fixed values (like menu options or days of the week).</li>
+				</ul>
+
+				<a href="#" class="back-link">Back to Top</a>
+			</div>
+
+
+			<div id="looping-statements" class="subtopic-content">
+				<h2>Looping Statements</h2>
+				<p>
+					Looping statements enable a program to repeatedly execute a block of code as long as a specified condition is true. In C, there are three primary types of loops: <code>for</code>, <code>while</code>, and <code>do...while</code>.
+				</p>
+
+				<h3>1. <code>for</code> Loop</h3>
+				<p>
+					The <code>for</code> loop is used when the number of iterations is known beforehand. It consists of three parts: initialization, condition, and increment/decrement.
+				</p>
+				<pre><code>
+			#include &lt;stdio.h&gt;
+
+			int main() {
+				for (int i = 1; i &lt;= 5; i++) {
+					printf("%d\n", i);
+				}
+				return 0;
+			}
+				</code></pre>
+				<p><strong>Output:</strong></p>
+				<pre><code>
+			1
+			2
+			3
+			4
+			5
+				</code></pre>
+				<p>
+					<strong>Flowchart of <code>for</code> Loop:</strong>
+				</p>
+				<div class="image-container">
+					<img src="https://www.programiz.com/sites/tutorial2program/files/for-loop.jpg" alt="For Loop Flowchart">
+				</div>
+
+				<h3>2. <code>while</code> Loop</h3>
+				<p>
+					The <code>while</code> loop is used when the number of iterations is not known in advance and depends on a condition. The loop continues as long as the condition remains true.
+				</p>
+				<pre><code>
+			#include &lt;stdio.h&gt;
+
+			int main() {
+				int i = 1;
+				while (i &lt;= 5) {
+					printf("%d\n", i);
+					i++;
+				}
+				return 0;
+			}
+				</code></pre>
+				<p><strong>Output:</strong></p>
+				<pre><code>
+			1
+			2
+			3
+			4
+			5
+				</code></pre>
+				<p>
+					<strong>Flowchart of <code>while</code> Loop:</strong>
+				</p>
+				<div class="image-container">
+					<img src="https://cdn.programiz.com/sites/tutorial2program/files/javascript-while-loop.png" alt="While Loop Flowchart">
+				</div>
+
+				<h3>3. <code>do...while</code> Loop</h3>
+				<p>
+					The <code>do...while</code> loop is similar to the <code>while</code> loop, but it guarantees that the code block executes at least once before checking the condition.
+				</p>
+				<pre><code>
+			#include &lt;stdio.h&gt;
+
+			int main() {
+				int i = 1;
+				do {
+					printf("%d\n", i);
+					i++;
+				} while (i &lt;= 5);
+				return 0;
+			}
+				</code></pre>
+				<p><strong>Output:</strong></p>
+				<pre><code>
+			1
+			2
+			3
+			4
+			5
+				</code></pre>
+				<p>
+					<strong>Flowchart of <code>do...while</code> Loop:</strong>
+				</p>
+				<div class="image-container">
+					<img src="https://www.programiz.com/sites/tutorial2program/files/do-while-loop.jpg" alt="Do While Loop Flowchart">
+				</div>
+
+				<h3>Choosing the Appropriate Loop:</h3>
+				<ul>
+					<li><strong>Use <code>for</code> loop:</strong> When the number of iterations is predetermined.</li>
+					<li><strong>Use <code>while</code> loop:</strong> When the number of iterations is not known and depends on a condition evaluated before the loop body.</li>
+					<li><strong>Use <code>do...while</code> loop:</strong> When the loop body must execute at least once, with the condition evaluated after the loop body.</li>
+				</ul>
+
+				<a href="#" class="back-link">Back to Top</a>
+			</div>
+			<div id="nested-statements" class="subtopic-content">
+				<h2>Nested Statements</h2>
+				<p>
+					Nested statements involve placing one control structure, such as an <code>if</code> statement or a loop, inside another. This allows for more complex decision-making and iterative processes within a program.
+				</p>
+
+				<h3>1. Nested <code>if</code> Statements</h3>
+				<p>
+					A nested <code>if</code> statement is an <code>if</code> statement placed inside another <code>if</code> or <code>else</code> block. This structure is useful when multiple conditions need to be evaluated sequentially.
+				</p>
+
+				<h4>Example: Determining Number Properties</h4>
+				<pre><code>
+			#include &lt;stdio.h&gt;
+
+			int main() {
+				int number = 15;
+
+				if (number > 0) {
+					if (number % 2 == 0) {
+						printf("The number is positive and even.\n");
+					} else {
+						printf("The number is positive and odd.\n");
+					}
+				} else {
+					if (number == 0) {
+						printf("The number is zero.\n");
+					} else {
+						printf("The number is negative.\n");
+					}
+				}
+
+				return 0;
+			}
+				</code></pre>
+				<p><strong>Output:</strong></p>
+				<pre><code>
+			The number is positive and odd.
+				</code></pre>
+				<p>
+					<strong>Flowchart of Nested <code>if</code> Statement:</strong>
+				</p>
+				<div class="image-container">
+					<img src="https://www.researchgate.net/profile/Jeyakodi-Gopal/publication/282785406/figure/fig1/AS:669955842572289@1536751743377/The-flowchart-of-the-Nested-if-statement.png" alt="Nested if Statement Flowchart">
+				</div>
+
+				<h3>2. Nested Loops</h3>
+				<p>
+					Nested loops occur when a loop is placed inside another loop. The inner loop completes all its iterations for each iteration of the outer loop. This structure is commonly used for working with multidimensional arrays or generating patterns.
+				</p>
+
+				<h4>Example: Multiplication Table</h4>
+				<pre><code>
+			#include &lt;stdio.h&gt;
+
+			int main() {
+				for (int i = 1; i &lt;= 3; i++) {
+					for (int j = 1; j &lt;= 3; j++) {
+						printf("%d x %d = %d\n", i, j, i * j);
+					}
+					printf("\n");
+				}
+				return 0;
+			}
+				</code></pre>
+				<p><strong>Output:</strong></p>
+				<pre><code>
+			1 x 1 = 1
+			1 x 2 = 2
+			1 x 3 = 3
+
+			2 x 1 = 2
+			2 x 2 = 4
+			2 x 3 = 6
+
+			3 x 1 = 3
+			3 x 2 = 6
+			3 x 3 = 9
+				</code></pre>
+				<p>
+					<strong>Flowchart of Nested Loops:</strong>
+				</p>
+				<div class="image-container">
+					<img src="https://scaler.com/topics/images/flowchart-of-nested-loop-in-c.webp" alt="Nested Loops Flowchart">
+				</div>
+
+				<h3>3. Nested <code>if</code> Statements within Loops</h3>
+				<p>
+					Combining nested <code>if</code> statements within loops allows for complex condition evaluations during each iteration. This is particularly useful in scenarios like filtering data based on multiple criteria.
+				</p>
+
+				<h4>Example: Filtering Even Numbers in a Range</h4>
+				<pre><code>
+			#include &lt;stdio.h&gt;
+
+			int main() {
+				for (int i = 1; i &lt;= 10; i++) {
+					if (i % 2 == 0) {
+						if (i % 3 == 0) {
+							printf("%d is divisible by both 2 and 3.\n", i);
+						} else {
+							printf("%d is divisible by 2 but not by 3.\n", i);
+						}
+					} else {
+						printf("%d is not divisible by 2.\n", i);
+					}
+				}
+				return 0;
+			}
+				</code></pre>
+				<p><strong>Output:</strong></p>
+				<pre><code>
+			1 is not divisible by 2.
+			2 is divisible by 2 but not by 3.
+			3 is not divisible by 2.
+			4 is divisible by 2 but not by 3.
+			5 is not divisible by 2.
+			6 is divisible by both 2 and 3.
+			7 is not divisible by 2.
+			8 is divisible by 2 but not by 3.
+			9 is not divisible by 2.
+			10 is divisible by 2 but not by 3.
+				</code></pre>
+
+				<h3>Best Practices for Using Nested Statements</h3>
+				<ul>
+					<li><strong>Maintain Readability:</strong> Avoid excessive nesting to keep the code understandable. Refactor code into functions if necessary.</li>
+					<li><strong>Use Comments:</strong> Clearly comment on the purpose of each control structure, especially when nesting is involved.</li>
+					<li><strong>Consistent Indentation:</strong> Properly indent code to visually represent the nesting, enhancing readability.</li>
+					<li><strong>Evaluate Logic:</strong> Ensure that the nested structures are logically necessary and that simpler constructs wouldn't suffice.</li>
+				</ul>
+
+				<a href="#" class="back-link">Back to Top</a>
+			</div>
+
+
+            <div id="jumping-statements" class="subtopic-content">
+                <h2>Jumping Statements</h2>
+                <p>
+                    Jumping statements transfer program control to another part of the program, bypassing the normal sequential execution.
+                </p>
+                <h4>Types of Jump Statements in C</h4>
+                <ul>
+                    <li><b>break:</b> The `break` statement exits or terminates the loop or switch statement.</li>
+                    <li><b>continue:</b> The `continue` statement skips the rest of the current iteration and jumps to the next iteration of the loop.</li>
+                    <li><b>goto:</b> The `goto` statement transfers program control to a labeled statement within the same function.</li>
+                    <li><b>return:</b> The `return` statement terminates the execution of a function and returns a value to the caller.</li>
+                </ul>
+
+                <h5>Break Statement Example</h5>
+				
+				<div class="image-container">
+					<img src="https://www.programiz.com/sites/tutorial2program/files/c-break-statement.jpg" alt="Nested Loops Flowchart">
+				</div>
+                <pre><code class="language-c">
+#include &lt;stdio.h&gt;
+
+int main() {
+    int i;
+    for (i = 1; i &lt;= 10; i++) {
+        if (i == 6) {
+            break;
+        }
+        printf("%d ", i);
+    }
+    return 0;
+}
+                </code></pre>
+
+                <h5>Continue Statement Example</h5>
+				<div class="image-container">
+					<img src="https://cdn.educba.com/academy/wp-content/uploads/2019/11/Continue-Statement-in-C-main.png" alt="Nested Loops Flowchart">
+				</div>
+                <pre><code class="language-c">
+#include &lt;stdio.h&gt;
+
+int main() {
+    int i;
+    for (i = 1; i &lt;= 10; i++) {
+        if (i == 6) {
+            continue;
+        }
+        printf("%d ", i);
+    }
+    return 0;
+}
+                </code></pre>
+
+                <h5>Goto Statement Example</h5>
+				<div class="image-container">
+					<img src="https://www.alphacodingskills.com/c/img/c-goto.PNG" alt="Nested Loops Flowchart">
+				</div>
+                <pre><code class="language-c">
+#include &lt;stdio.h&gt;
+
+int main() {
+    char c;
+
+    printf("Enter a character (a-z or A-Z): ");
+    scanf("%c", &c);
+
+    if (c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u' ||
+        c == 'A' || c == 'E' || c == 'I' || c == 'O' || c == 'U') {
+        goto vowel;
+    } else {
+        goto consonant;
+    }
+
+vowel:
+    printf("%c is a vowel.\n", c);
+    goto end;
+
+consonant:
+    printf("%c is a consonant.\n", c);
+
+end:
+    return 0;
+}
+                </code></pre>
+
+                <h5>Return Statement</h5>
+                <p>The return statement in C is used to terminate the execution of a function and return a value to the caller.</p>
+            </div>
+
+			<div id="arrays-introduction" class="subtopic-content">
+				<h2>Introduction to Arrays</h2>
+				<p>
+					An array in C is a fixed-size collection of similar data items stored in contiguous memory locations. It's used to store a collection of primitive data types such as <code>int</code>, <code>char</code>, <code>float</code>, etc., as well as derived and user-defined data types. Arrays provide a convenient way to manage and manipulate sets of related data.
+				</p>
+
+				<h3>One-Dimensional Arrays</h3>
+				<p>
+					A one-dimensional array is a list of elements identified by a single subscript or index. Each element in the array can be accessed using its index, starting from 0 up to the array's size minus one.
+				</p>
+
+				<h4>Declaration of an Array</h4>
+				<p>
+					In C, arrays are declared by specifying the data type of the elements, the name of the array, and the number of elements it can hold.
+				</p>
+				<p><strong>Syntax:</strong></p>
+				<pre><code>datatype arrayname[size];</code></pre>
+				<p><strong>Example:</strong></p>
+				<pre><code>int marks[5];</code></pre>
+				<p>
+					This declares an array named <code>marks</code> that can hold 5 integers.
+				</p>
+
+				<h4>Initialization of an Array</h4>
+				<p>
+					Arrays can be initialized at the time of declaration by enclosing the initial values in curly braces.
+				</p>
+				<p><strong>Example:</strong></p>
+				<pre><code>int marks[5] = {85, 90, 78, 92, 88};</code></pre>
+				<p>
+					If the number of initializers is less than the size of the array, the remaining elements are initialized to 0 by default.
+				</p>
+				<p><strong>Example:</strong></p>
+				<pre><code>int marks[5] = {85, 90}; // Initializes the first two elements to 85 and 90, and the rest to 0</code></pre>
+
+				<h4>Accessing Array Elements</h4>
+				<p>
+					Array elements are accessed using their index, with the first element at index 0.
+				</p>
+				<p><strong>Example:</strong></p>
+				<pre><code>#include &lt;stdio.h&gt;
+
+			int main() {
+				int marks[5] = {85, 90, 78, 92, 88};
+				printf("First mark: %d\n", marks[0]); // Outputs: First mark: 85
+				printf("Third mark: %d\n", marks[2]); // Outputs: Third mark: 78
+				return 0;
+			}</code></pre>
+
+				<h4>Modifying Array Elements</h4>
+				<p>
+					You can modify the value of an array element by assigning a new value to it using its index.
+				</p>
+				<p><strong>Example:</strong></p>
+				<pre><code>marks[2] = 80; // Changes the third element to 80</code></pre>
+
+				<h4>Looping Through an Array</h4>
+				<p>
+					Loops are commonly used to iterate through arrays for accessing or modifying each element.
+				</p>
+				<p><strong>Example:</strong></p>
+				<pre><code>#include &lt;stdio.h&gt;
+
+			int main() {
+				int marks[5] = {85, 90, 78, 92, 88};
+				for (int i = 0; i &lt; 5; i++) {
+					printf("Mark %d: %d\n", i + 1, marks[i]);
+				}
+				return 0;
+			}</code></pre>
+				<p><strong>Output:</strong></p>
+				<pre><code>Mark 1: 85
+			Mark 2: 90
+			Mark 3: 78
+			Mark 4: 92
+			Mark 5: 88</code></pre>
+
+				<h4>Visual Representation of Array in Memory</h4>
+				<p>
+					The following diagram illustrates how the array <code>marks[5] = {85, 90, 78, 92, 88}</code> is stored in contiguous memory locations:
+				</p>
+				<div class="image-container">
+					<img src="https://media.geeksforgeeks.org/wp-content/uploads/20240405101013/Memory-Representation-of-Array-%281%29.webp" alt="Array Memory Representation">
+				</div>
+
+				<h3>Advantages of Using Arrays</h3>
+				<ul>
+					<li><strong>Efficient Data Management:</strong> Arrays allow storing multiple elements of the same type using a single identifier, making data management more efficient.</li>
+					<li><strong>Ease of Iteration:</strong> Arrays facilitate easy iteration over elements using loops, enabling efficient data processing.</li>
+					<li><strong>Random Access:</strong> Arrays provide constant-time access to elements using their index, allowing quick retrieval and modification.</li>
+				</ul>
+
+				<h3>Limitations of Arrays</h3>
+				<ul>
+					<li><strong>Fixed Size:</strong> The size of an array must be defined at the time of declaration and cannot be changed during runtime.</li>
+					<li><strong>Homogeneous Data:</strong> Arrays can only store elements of the same data type.</li>
+					<li><strong>No Built-in Bounds Checking:</strong> Accessing an index outside the declared range can lead to undefined behavior.</li>
+				</ul>
+
+				<a href="#" class="back-link">Back to Top</a>
+			</div>
+
+			<div id="arrays-declaration-initialization" class="subtopic-content">
+				<h2>Declaration and Initialization of Arrays</h2>
+				<p>
+					In C, an array is a collection of elements of the same data type stored in contiguous memory locations. Declaring and initializing arrays properly is fundamental to utilizing them effectively in programs.
+				</p>
+
+				<h3>Declaration of Arrays</h3>
+				<p>
+					To declare an array, specify the data type of its elements, the array name, and the number of elements it will contain.
+				</p>
+				<p><strong>Syntax:</strong></p>
+				<pre><code>datatype arrayname[size];</code></pre>
+				<p><strong>Example:</strong></p>
+				<pre><code>int numbers[5];</code></pre>
+				<p>
+					This declares an array named <code>numbers</code> that can hold 5 integers.
+				</p>
+
+				<h3>Initialization of Arrays</h3>
+				<p>
+					Arrays can be initialized at the time of declaration by providing a comma-separated list of values enclosed in curly braces.
+				</p>
+				<p><strong>Syntax:</strong></p>
+				<pre><code>datatype arrayname[size] = {value1, value2, ..., valueN};</code></pre>
+				<p><strong>Example:</strong></p>
+				<pre><code>int ranks[5] = {2, 4, 6, 8, 10};</code></pre>
+				<p>
+					This initializes the <code>ranks</code> array with the values 2, 4, 6, 8, and 10.
+				</p>
+
+				<h3>Partial Initialization</h3>
+				<p>
+					If fewer values than the specified size are provided, the remaining elements are automatically initialized to zero.
+				</p>
+				<p><strong>Example:</strong></p>
+				<pre><code>int scores[5] = {90, 85};</code></pre>
+				<p>
+					Here, <code>scores[0]</code> is 90, <code>scores[1]</code> is 85, and the rest are 0.
+				</p>
+
+				<h3>Omitting the Size during Initialization</h3>
+				<p>
+					When initializing an array at the time of declaration, you can omit the size, and the compiler will determine it based on the number of initial values provided.
+				</p>
+				<p><strong>Example:</strong></p>
+				<pre><code>float temperatures[] = {36.5, 37.0, 36.8};</code></pre>
+				<p>
+					The <code>temperatures</code> array will have a size of 3.
+				</p>
+
+				<h3>Initializing All Elements to Zero</h3>
+				<p>
+					To initialize all elements of an array to zero, you can provide a single zero in the initializer list.
+				</p>
+				<p><strong>Example:</strong></p>
+				<pre><code>char letters[10] = {0};</code></pre>
+				<p>
+					This sets all 10 elements of the <code>letters</code> array to the null character '\0'.
+				</p>
+
+				<h3>Visual Representation of Array in Memory</h3>
+				<p>
+					The following diagram illustrates how the array <code>ranks[5] = {2, 4, 6, 8, 10}</code> is stored in contiguous memory locations:
+				</p>
+
+				<h3>Best Practices</h3>
+				<ul>
+					<li><strong>Consistent Initialization:</strong> Always initialize arrays to avoid undefined behavior due to uninitialized elements.</li>
+					<li><strong>Bounds Awareness:</strong> Ensure that you do not access elements outside the defined range of the array to prevent runtime errors.</li>
+					<li><strong>Use Meaningful Names:</strong> Choose descriptive names for arrays to enhance code readability and maintainability.</li>
+				</ul>
+
+				<a href="#" class="back-link">Back to Top</a>
+			</div>
+
+
+			<div id="arrays-accessing-storing" class="subtopic-content">
+				<h2>Accessing and Storing Array Elements</h2>
+				<p>
+					In C, arrays are used to store multiple values of the same data type in contiguous memory locations. Accessing and modifying these elements efficiently is fundamental to effective programming.
+				</p>
+
+				<h3>Accessing Array Elements</h3>
+				<p>
+					Array elements are accessed using the array subscript operator <code>[]</code> with the index of the desired element. It's important to note that array indexing in C starts from 0, meaning the first element is at index 0, the second at index 1, and so on.
+				</p>
+				<p><strong>Syntax:</strong></p>
+				<pre><code>arrayname[index];</code></pre>
+				<p><strong>Example:</strong></p>
+				<pre><code>int marks[5] = {85, 90, 78, 92, 88};
+			int first_mark = marks[0]; // Accesses the first element, which is 85
+			int third_mark = marks[2]; // Accesses the third element, which is 78</code></pre>
+
+				<h3>Modifying Array Elements</h3>
+				<p>
+					You can modify the value of an array element by assigning a new value to it using its index.
+				</p>
+				<p><strong>Example:</strong></p>
+				<pre><code>marks[1] = 95; // Changes the second element from 90 to 95</code></pre>
+
+				<h3>Looping Through an Array</h3>
+				<p>
+					To process each element of an array, loops are commonly used. The <code>for</code> loop is particularly useful for this purpose.
+				</p>
+				<p><strong>Example Program:</strong></p>
+				<pre><code class="language-c">#include &lt;stdio.h&gt;
+
+			int main() {
+				int i, a[5] = {10, 20, 30, 40, 50};
+				for (i = 0; i &lt; 5; i++) {
+					printf("%d\\t", a[i]);
+				}
+				return 0;
+			}</code></pre>
+				<p><strong>Output:</strong></p>
+				<pre><code>10    20    30    40    50</code></pre>
+
+				<a href="#" class="back-link">Back to Top</a>
+			</div>
+
+
+			<div id="arrays-searching" class="subtopic-content">
+				<h2>Searching Algorithms</h2>
+				<p>
+					Searching algorithms are fundamental methods used to find the position of a specific element within a data structure. Two primary searching techniques are:
+				</p>
+				<ul>
+					<li><strong>Linear Search</strong></li>
+					<li><strong>Binary Search</strong></li>
+				</ul>
+
+				<h3>Linear Search</h3>
+				<p>
+					Linear search, also known as sequential search, is a straightforward method for finding an element in a collection. It involves examining each element sequentially until the desired element is found or the entire collection has been traversed.
+				</p>
+				<p><strong>Characteristics:</strong></p>
+				<ul>
+					<li>Simplicity: Easy to implement.</li>
+					<li>No prerequisite: Works on both sorted and unsorted data.</li>
+					<li>Performance: Time complexity is O(n), where n is the number of elements.</li>
+				</ul>
+				<p><strong>Pseudocode:</strong></p>
+				<pre><code>
+			procedure linear_search(array, size, target):
+				for index from 0 to size - 1:
+					if array[index] == target:
+						return index
+				return -1
+				</code></pre>
+				<p><strong>Example Program in C:</strong></p>
+				<pre><code class="language-c">
+			#include &lt;stdio.h&gt;
+
+			int linear_search(int arr[], int size, int target) {
+				for (int i = 0; i &lt; size; i++) {
+					if (arr[i] == target) {
+						return i; // Element found at index i
+					}
+				}
+				return -1; // Element not found
+			}
+
+			int main() {
+				int data[] = {10, 20, 30, 40, 50};
+				int target = 30;
+				int size = sizeof(data) / sizeof(data[0]);
+				int index = linear_search(data, size, target);
+				if (index != -1) {
+					printf("Element found at index: %d\n", index);
+				} else {
+					printf("Element not found.\n");
+				}
+				return 0;
+			}
+				</code></pre>
+				<p><strong>Output:</strong></p>
+				<pre><code>
+			Element found at index: 2
+				</code></pre>
+				<div class="image-container">
+					<img src="https://utkarsh1504.github.io/DSA-Java/static/e3fa513b23c9d1e51f3c6f58ef6a9bfc/3096d/linear-search.png" alt="Linear Search Visualization">
+				</div>
+
+				<h3>Binary Search</h3>
+				<p>
+					Binary search is an efficient algorithm for finding an element in a sorted array by repeatedly dividing the search interval in half. It compares the target value to the middle element of the array; if they are not equal, the half in which the target cannot lie is eliminated, and the search continues on the remaining half until the target value is found or the search interval is empty.
+				</p>
+				<p><strong>Characteristics:</strong></p>
+				<ul>
+					<li>Efficiency: Faster than linear search for large datasets.</li>
+					<li>Prerequisite: Requires the data to be sorted.</li>
+					<li>Performance: Time complexity is O(log n), where n is the number of elements.</li>
+				</ul>
+				<p><strong>Pseudocode:</strong></p>
+				<pre><code>
+			procedure binary_search(sorted_array, size, target):
+				low = 0
+				high = size - 1
+				while low ≤ high:
+					mid = (low + high) / 2
+					if sorted_array[mid] == target:
+						return mid
+					else if sorted_array[mid] &lt; target:
+						low = mid + 1
+					else:
+						high = mid - 1
+				return -1
+				</code></pre>
+				<p><strong>Example Program in C:</strong></p>
+				<pre><code class="language-c">
+			#include &lt;stdio.h&gt;
+
+			int binary_search(int arr[], int size, int target) {
+				int low = 0, high = size - 1;
+				while (low &lt;= high) {
+					int mid = low + (high - low) / 2;
+					if (arr[mid] == target) {
+						return mid; // Element found at index mid
+					} else if (arr[mid] &lt; target) {
+						low = mid + 1;
+					} else {
+						high = mid - 1;
+					}
+				}
+				return -1; // Element not found
+			}
+
+			int main() {
+				int data[] = {10, 20, 30, 40, 50};
+				int target = 30;
+				int size = sizeof(data) / sizeof(data[0]);
+				int index = binary_search(data, size, target);
+				if (index != -1) {
+					printf("Element found at index: %d\n", index);
+				} else {
+					printf("Element not found.\n");
+				}
+				return 0;
+			}
+				</code></pre>
+				<p><strong>Output:</strong></p>
+				<pre><code>
+			Element found at index: 2
+				</code></pre>
+				<div class="image-container">
+					<img src="https://media.geeksforgeeks.org/wp-content/uploads/20220309171621/BinarySearch.png" alt="Binary Search Visualization">
+				</div>
+
+				<h3>Comparison Between Linear and Binary Search</h3>
+				<table>
+					<tr>
+						<th>Aspect</th>
+						<th>Linear Search</th>
+						<th>Binary Search</th>
+					</tr>
+					<tr>
+						<td>Data Requirement</td>
+						<td>Can operate on unsorted data</td>
+						<td>Requires sorted data</td>
+					</tr>
+					<tr>
+						<td>Time Complexity</td>
+						<td>O(n)</td>
+						<td>O(log n)</td>
+					</tr>
+					<tr>
+						<td>Best Use Case</td>
+						<td>Small or unsorted datasets</td>
+						<td>Large and sorted datasets</td>
+					</tr>
+					<tr>
+						<td>Implementation Complexity</td>
+						<td>Simpler</td>
+						<td>More complex</td>
+					</tr>
+				</table>    <p>
+					Both linear and binary search algorithms are vital tools in programming. Linear search is easy to implement and works on unsorted data, but it's less efficient for large datasets. Binary search is much faster, but it requires sorted data. Choosing the right search algorithm depends on the nature and size of the data you're working with.
+				</p>
+
+				<a href="#" class="back-link">Back to Top</a>
+			</div>
+			 
+			<div id="arrays-sorting" class="subtopic-content">
+				<h2>Sorting Algorithms</h2>
+				<p>
+					Sorting algorithms are methods used to arrange data in a particular order, such as ascending or descending. Two fundamental sorting techniques are:
+				</p>
+				<ul>
+					<li><strong>Selection Sort</strong></li>
+					<li><strong>Bubble Sort</strong></li>
+				</ul>
+
+				<h3>Selection Sort</h3>
+				<p>
+					Selection sort is a simple comparison-based algorithm that divides the array into a sorted and an unsorted region. It repeatedly selects the smallest (or largest) element from the unsorted region and moves it to the end of the sorted region.
+				</p>
+				<p><strong>Characteristics:</strong></p>
+				<ul>
+					<li>In-place sort: Requires a constant amount O(1) of additional memory.</li>
+					<li>Time Complexity: O(n²) for best, average, and worst cases.</li>
+					<li>Not stable: Does not preserve the relative order of equal elements.</li>
+				</ul>
+				<p><strong>Pseudocode:</strong></p>
+				<pre><code>
+			procedure selection_sort(array, size):
+				for i from 0 to size - 1:
+					min_index = i
+					for j from i + 1 to size:
+						if array[j] < array[min_index]:
+							min_index = j
+					if min_index != i:
+						swap(array[i], array[min_index])
+				</code></pre>
+				<p><strong>Example Program in C:</strong></p>
+				<pre><code class="language-c">
+			#include &lt;stdio.h&gt;
+
+			void selection_sort(int arr[], int size) {
+				int i, j, min_index, temp;
+				for (i = 0; i &lt; size - 1; i++) {
+					min_index = i;
+					for (j = i + 1; j &lt; size; j++) {
+						if (arr[j] &lt; arr[min_index]) {
+							min_index = j;
+						}
+					}
+					if (min_index != i) {
+						temp = arr[i];
+						arr[i] = arr[min_index];
+						arr[min_index] = temp;
+					}
+				}
+			}
+
+			int main() {
+				int data[] = {29, 10, 14, 37, 13};
+				int size = sizeof(data) / sizeof(data[0]);
+				selection_sort(data, size);
+				printf("Sorted array: ");
+				for (int i = 0; i &lt; size; i++) {
+					printf("%d ", data[i]);
+				}
+				printf("\n");
+				return 0;
+			}
+				</code></pre>
+				<p><strong>Output:</strong></p>
+				<pre><code>
+			Sorted array: 10 13 14 29 37
+				</code></pre>
+				<div class="image-container">
+					<img src="https://www.swtestacademy.com/wp-content/uploads/2021/11/selection-sort-Selection-Sort-1.drawio-1.png" alt="Selection Sort Visualization">
+				</div>
+
+				<h3>Bubble Sort</h3>
+				<p>
+					Bubble sort is a straightforward algorithm that repeatedly steps through the list, compares adjacent elements, and swaps them if they are in the wrong order. This process continues until the list is sorted.
+				</p>
+				<p><strong>Characteristics:</strong></p>
+				<ul>
+					<li>In-place sort: Requires a constant amount O(1) of additional memory.</li>
+					<li>Time Complexity: O(n²) in the average and worst cases; O(n) in the best case when the array is already sorted.</li>
+					<li>Stable: Preserves the relative order of equal elements.</li>
+				</ul>
+				<p><strong>Pseudocode:</strong></p>
+				<pre><code>
+			procedure bubble_sort(array, size):
+				for i from 0 to size - 1:
+					for j from 0 to size - i - 1:
+						if array[j] > array[j + 1]:
+							swap(array[j], array[j + 1])
+				</code></pre>
+				<p><strong>Example Program in C:</strong></p>
+				<pre><code class="language-c">
+			#include &lt;stdio.h&gt;
+
+			void bubble_sort(int arr[], int size) {
+				int i, j, temp;
+				for (i = 0; i &lt; size - 1; i++) {
+					for (j = 0; j &lt; size - i - 1; j++) {
+						if (arr[j] &gt; arr[j + 1]) {
+							temp = arr[j];
+							arr[j] = arr[j + 1];
+							arr[j + 1] = temp;
+						}
+					}
+				}
+			}
+
+			int main() {
+				int data[] = {29, 10, 14, 37, 13};
+				int size = sizeof(data) / sizeof(data[0]);
+				bubble_sort(data, size);
+				printf("Sorted array: ");
+				for (int i = 0; i &lt; size; i++) {
+					printf("%d ", data[i]);
+				}
+				printf("\n");
+				return 0;
+			}
+				</code></pre>
+				<p><strong>Output:</strong></p>
+				<pre><code>
+			Sorted array: 10 13 14 29 37
+				</code></pre>
+				<div class="image-container">
+					<img src="https://www.swtestacademy.com/wp-content/uploads/2021/11/bubble-sort-1.png" alt="Bubble Sort Visualization">
+				</div>
+
+				<h3>Comparison Between Selection Sort and Bubble Sort</h3>
+				<table>
+					<tr>
+						<th>Aspect</th>
+						<th>Selection Sort</th>
+						<th>Bubble Sort</th>
+					</tr>
+					<tr>
+						<td>Time Complexity (Best)</td>
+						<td>O(n²)</td>
+						<td>O(n)</td>
+					</tr>
+					<tr>
+						<td>Time Complexity (Average)</td>
+						<td>O(n²)</td>
+						<td>O(n²)</td>
+					</tr>
+					<tr>
+						<td>Time Complexity (Worst)</td>
+						<td>O(n²)</td>
+						<td>O(n²)</td>
+					</tr>
+					<tr>
+						<td>Space Complexity</td>
+						<td>O(1)</td>
+						<td>O(1)</td>
+					</tr>
+					<tr>
+						<td>Stability</td>
+						<td>Not Stable</td>            <td>Stable</td>
+					</tr>
+					<tr>
+						<td>Number of Swaps</td>
+						<td>Minimum</td>
+						<td>Maximum (in worst case)</td>
+					</tr>
+					<tr>
+						<td>Use Case</td>
+						<td>Good when swaps are expensive</td>
+						<td>Good when array is almost sorted</td>
+					</tr>
+				</table>
+
+				<a href="#" class="back-link">Back to Top</a>
+			</div>
+
+		<div id="arrays-multidimensional" class="subtopic-content">
+			<h2>Multidimensional Arrays</h2>
+			<p>
+				In C programming, arrays with more than one dimension are known as multidimensional arrays. The most commonly used are two-dimensional (2D) and three-dimensional (3D) arrays. These arrays are particularly useful for representing complex data structures like matrices, tables, or spatial data.
+			</p>
+
+			<h3>Two-Dimensional Arrays</h3>
+			<p>
+				A two-dimensional array is essentially an array of arrays, where data is stored in rows and columns, similar to a table or matrix.
+			</p>
+			<p><strong>Declaration:</strong></p>
+			<pre><code class="language-c">
+			dataType arrayName[rowSize][columnSize];
+			</code></pre>
+			<p><strong>Example:</strong></p>
+			<pre><code class="language-c">
+			int matrix[3][4];
+			</code></pre>
+			<p>
+				In this example, <code>matrix</code> is a 2D array with 3 rows and 4 columns, capable of storing 12 integer elements.
+			</p>
+			<p><strong>Initialization:</strong></p>
+			<pre><code class="language-c">
+			int matrix[3][4] = {
+				{1, 2, 3, 4},
+				{5, 6, 7, 8},
+				{9, 10, 11, 12}
+			};
+			</code></pre>
+			<p>
+				This initializes the 2D array with specified values for each element.
+			</p>
+			<p><strong>Accessing Elements:</strong></p>
+			<p>
+				Elements in a 2D array are accessed using row and column indices, both starting from 0.
+			</p>
+			<pre><code class="language-c">
+			int value = matrix[1][2]; // Accesses the element in the 2nd row and 3rd column
+			</code></pre>
+			<p><strong>Example Program:</strong></p>
+			<pre><code class="language-c">
+			#include &lt;stdio.h&gt;
+
+			int main() {
+				int matrix[3][4] = {
+					{1, 2, 3, 4},
+					{5, 6, 7, 8},
+					{9, 10, 11, 12}
+				};
+
+				// Displaying the 2D array
+				for (int i = 0; i &lt; 3; i++) {
+					for (int j = 0; j &lt; 4; j++) {
+						printf("%d ", matrix[i][j]);
+					}
+					printf("\n");
+				}
+
+				return 0;
+			}
+			</code></pre>
+			<p><strong>Output:</strong></p>
+			<pre><code>
+			1 2 3 4
+			5 6 7 8
+			9 10 11 12
+			</code></pre>
+			<div class="image-container">
+				<img src="https://www.programiz.com/sites/tutorial2program/files/two-dimensional-array_0.jpg" alt="Two-Dimensional Array Visualization">
+			</div>
+
+			<h3>Three-Dimensional Arrays</h3>
+			<p>
+				A three-dimensional array adds another dimension, allowing data to be stored in multiple layers, akin to a cube.
+			</p>
+			<p><strong>Declaration:</strong></p>
+			<pre><code class="language-c">
+			dataType arrayName[size1][size2][size3];
+			</code></pre>
+			<p><strong>Example:</strong></p>
+			<pre><code class="language-c">
+			int cube[2][3][4];
+			</code></pre>
+			<p>
+				Here, <code>cube</code> is a 3D array with 2 layers, each containing a 3x4 matrix, capable of storing 24 integer elements.
+			</p>
+			<p><strong>Initialization:</strong></p>
+			<pre><code class="language-c">
+			int cube[2][3][4] = {
+				{
+					{1, 2, 3, 4},
+					{5, 6, 7, 8},
+					{9, 10, 11, 12}
+				},
+				{
+					{13, 14, 15, 16},
+					{17, 18, 19, 20},
+					{21, 22, 23, 24}
+				}
+			};
+			</code></pre>
+			<p>
+				This initializes the 3D array with specified values for each element.
+			</p>
+			<p><strong>Accessing Elements:</strong></p>
+			<p>
+				Elements in a 3D array are accessed using three indices: layer, row, and column, all starting from 0.
+			</p>
+			<pre><code class="language-c">
+			int value = cube[1][2][3]; // Accesses the element in the 2nd layer, 3rd row, and 4th column
+			</code></pre>
+			<p><strong>Example Program:</strong></p>
+			<pre><code class="language-c">
+			#include &lt;stdio.h&gt;
+
+			int main() {
+				int cube[2][3][4] = {
+					{
+						{1, 2, 3, 4},
+						{5, 6, 7, 8},
+						{9, 10, 11, 12}
+					},
+					{
+						{13, 14, 15, 16},
+						{17, 18, 19, 20},
+						{21, 22, 23, 24}
+					}
+				};
+
+				// Displaying the 3D array
+				for (int i = 0; i &lt; 2; i++) {
+					printf("Layer %d:\n", i + 1);
+					for (int j = 0; j &lt; 3; j++) {
+						for (int k = 0; k &lt; 4; k++) {
+							printf("%d ", cube[i][j][k]);
+						}
+						printf("\n");
+					}
+					printf("\n");
+				}
+
+				return 0;
+			}
+			</code></pre>
+			<p><strong>Output:</strong></p>
+			<pre><code>    Layer 1:
+			1 2 3 4
+			5 6 7 8
+			9 10 11 12
+
+			Layer 2:
+			13 14 15 16
+			17 18 19 20
+			21 22 23 24
+			</code></pre>
+
+			<h3>Benefits of Multidimensional Arrays</h3>
+			<ul>
+				<li><strong>Tabular Representation:</strong> Ideal for representing rows and columns like tables, matrices, and grids.</li>
+				<li><strong>Compact Storage:</strong> Stores multiple values in a single variable, improving memory organization.</li>
+				<li><strong>Access Flexibility:</strong> Allows direct access to elements using indices.</li>
+			</ul>
+
+			<h3>Limitations</h3>
+			<ul>
+				<li><strong>Fixed Size:</strong> Once declared, the size of the array cannot be changed at runtime.</li>
+				<li><strong>Complexity:</strong> As dimensions increase, the logic and readability of accessing elements become more complex.</li>
+			</ul>
+
+
+			<a href="#" class="back-link">Back to Top</a>
+		</div>
+
+			<div id="arrays-matrix-operations" class="subtopic-content">
+				<h2>Matrix Operations</h2>
+				<p>
+					In C programming, matrices are represented using two-dimensional arrays. Performing operations such as addition, subtraction, and multiplication on matrices involves manipulating these arrays according to specific mathematical rules.
+				</p>
+
+				<h3>Matrix Addition</h3>
+				<p>
+					Matrix addition involves adding corresponding elements of two matrices to form a new matrix. This operation requires both matrices to have the same dimensions.
+				</p>
+				<p><strong>Formula:</strong></p>
+				<pre><code>
+				C[i][j] = A[i][j] + B[i][j]
+				</code></pre>
+				<p><strong>Example Program:</strong></p>
+				<pre><code class="language-c">
+				#include &lt;stdio.h&gt;
+
+				// Function to add two matrices
+				void addMatrices(int rows, int cols, int A[rows][cols], int B[rows][cols], int C[rows][cols]) {
+					for (int i = 0; i &lt; rows; i++) {
+						for (int j = 0; j &lt; cols; j++) {
+							C[i][j] = A[i][j] + B[i][j];
+						}
+					}
+				}
+
+				// Function to display a matrix
+				void displayMatrix(int rows, int cols, int matrix[rows][cols]) {
+					for (int i = 0; i &lt; rows; i++) {
+						for (int j = 0; j &lt; cols; j++) {
+							printf("%d ", matrix[i][j]);
+						}
+						printf("\n");
+					}
+				}
+
+				int main() {
+					int A[2][2] = {{1, 2}, {3, 4}};
+					int B[2][2] = {{5, 6}, {7, 8}};
+					int C[2][2];
+
+					addMatrices(2, 2, A, B, C);
+
+					printf("Resultant Matrix after Addition:\n");
+					displayMatrix(2, 2, C);
+
+					return 0;
+				}
+				</code></pre>
+				<p><strong>Output:</strong></p>
+				<pre><code>
+				Resultant Matrix after Addition:
+				6 8
+				10 12
+				</code></pre>
+
+				<h3>Matrix Subtraction</h3>
+				<p>
+					Matrix subtraction involves subtracting corresponding elements of one matrix from another to form a new matrix. Like addition, this operation requires both matrices to have the same dimensions.
+				</p>
+				<p><strong>Formula:</strong></p>
+				<pre><code>
+				C[i][j] = A[i][j] - B[i][j]
+				</code></pre>
+				<p><strong>Example Program:</strong></p>
+				<pre><code class="language-c">
+				#include &lt;stdio.h&gt;
+
+				// Function to subtract two matrices
+				void subtractMatrices(int rows, int cols, int A[rows][cols], int B[rows][cols], int C[rows][cols]) {
+					for (int i = 0; i &lt; rows; i++) {
+						for (int j = 0; j &lt; cols; j++) {
+							C[i][j] = A[i][j] - B[i][j];
+						}
+					}
+				}
+
+				int main() {
+					int A[2][2] = {{5, 6}, {7, 8}};
+					int B[2][2] = {{1, 2}, {3, 4}};
+					int C[2][2];
+
+					subtractMatrices(2, 2, A, B, C);
+
+					printf("Resultant Matrix after Subtraction:\n");
+					displayMatrix(2, 2, C);
+
+					return 0;
+				}
+				</code></pre>
+				<p><strong>Output:</strong></p>
+				<pre><code>
+				Resultant Matrix after Subtraction:
+				4 4
+				4 4
+				</code></pre>
+
+				<h3>Matrix Multiplication</h3>
+				<p>
+					Matrix multiplication involves multiplying rows of the first matrix with columns of the second matrix and summing the products. The number of columns in the first matrix must equal the number of rows in the second matrix for this operation to be valid.
+				</p>
+				<p><strong>Formula:</strong></p>
+				<pre><code>
+				C[i][j] = Σ (A[i][k] * B[k][j]) for all k
+				</code></pre>
+				<p><strong>Example Program:</strong></p>
+				<pre><code class="language-c">
+				#include &lt;stdio.h&gt;
+
+				// Function to multiply two matrices
+				void multiplyMatrices(int r1, int c1, int A[r1][c1], int r2, int c2, int B[r2][c2], int C[r1][c2]) {
+					for (int i = 0; i &lt; r1; i++) {
+						for (int j = 0; j &lt; c2; j++) {
+							C[i][j] = 0;
+							for (int k = 0; k &lt; c1; k++) {
+								C[i][j] += A[i][k] * B[k][j];
+							}
+						}
+					}
+				}
+
+				int main() {
+					int A[2][3] = {{1, 2, 3}, {4, 5, 6}};
+					int B[3][2] = {{7, 8}, {9, 10}, {11, 12}};
+					int C[2][2];
+
+					multiplyMatrices(2, 3, A, 3, 2, B, C);
+
+					printf("Resultant Matrix after Multiplication:\n");
+					displayMatrix(2, 2, C);
+
+					return 0;
+				}
+				</code></pre>
+				<p><strong>    <p><strong>Output:</strong></p>
+				<pre><code>
+			Resultant Matrix after Multiplication:
+			58 64
+			139 154
+				</code></pre>
+
+				<h3>Summary of Matrix Operations</h3>
+				<ul>
+					<li><strong>Addition and Subtraction:</strong> Require matrices to be of the same dimensions.</li>
+					<li><strong>Multiplication:</strong> The number of columns in the first matrix must equal the number of rows in the second matrix.</li>
+					<li><strong>Applications:</strong> Widely used in scientific computing, graphics, AI, and data processing.</li>
+				</ul>
+
+				<h3>Common Mistakes to Avoid</h3>
+				<ul>
+					<li>Trying to add or subtract matrices of different sizes.</li>
+					<li>Multiplying matrices without matching row/column dimensions.</li>
+					<li>Incorrect loop bounds leading to segmentation faults or garbage values.</li>
+				</ul>
+
+				<a href="#" class="back-link">Back to Top</a>
+			</div>
+
+ 
+
+        </div>
+    </div>
+    <script>
+      	document.addEventListener('DOMContentLoaded', function() {
+      		const sidebarLinks = document.querySelectorAll('.sidebar ul li a');
+      		const topicContents = document.querySelectorAll('.topic-content');
+      		const subtopicContents = document.querySelectorAll('.subtopic-content');
+
+      		window.onload = function() {
+      			document.querySelector('a[href="#selective-statements"]').click();
+      		};
+
+      		sidebarLinks.forEach(link => {
+      			link.addEventListener('click', function(event) {
+      				event.preventDefault();
+      				const targetId = this.getAttribute('href').substring(1);
+
+      				sidebarLinks.forEach(l => l.classList.remove('active'));
+      				topicContents.forEach(content => content.classList.remove('active'));
+      				subtopicContents.forEach(content => content.classList.remove('active'));
+
+      				this.classList.add('active');
+
+      				if (document.getElementById(targetId)) {
+      					document.getElementById(targetId).classList.add('active');
+      				}
+
+      				if (targetId.includes('-')) {
+      					document.getElementById(targetId.split('-')[0]).classList.add('active');
+      				}
+      			});
+      		});
+      	});
+    </script>
+</body>
+
+</html>

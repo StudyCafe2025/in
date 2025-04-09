@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Advanced Calculus Topics</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      font-family: 'Poppins', Arial, sans-serif;
+      background-color: #f0f2f5;
+      color: #333;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .header {
+      background-color: #343a40;
+      color: white;
+      padding: 20px 0;
+      text-align: center;
+      width: 100%;
+    }
+    .container {
+      display: flex;
+      max-width: 1200px;
+      width: 95%;
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      margin: 20px auto;
+    }
+    .sidebar {
+      background-color: #f8f9fa;
+      padding: 20px;
+      border-right: 1px solid #dee2e6;
+      width: 280px;
+      flex-shrink: 0;
+    }
+    .sidebar ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .sidebar li a {
+      display: block;
+      padding: 12px 18px;
+      text-decoration: none;
+      color: #495057;
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+      margin-bottom: 8px;
+      cursor: pointer;
+    }
+    .sidebar li a:hover,
+    .sidebar li a.active {
+      background-color: #e9ecef;
+      color: #007bff;
+    }
+    .main-content {
+      padding: 30px;
+      flex-grow: 1;
+    }
+    .main-content h2 {
+      color: #343a40;
+      font-size: 2.2em;
+      margin-bottom: 15px;
+    }
+    .main-content h3 {
+      color: #343a40;
+      font-size: 1.6em;
+      margin-top: 20px;
+      margin-bottom: 10px;
+    }
+    .main-content p,
+    .main-content li {
+      color: #495057;
+      font-size: 1.1em;
+      line-height: 1.8;
+    }
+    .main-content ul,
+    .main-content ol {
+      padding-left: 25px;
+      margin-bottom: 20px;
+    }
+    .video-box {
+      margin: 20px 0;
+      padding: 10px;
+      background-color: #f9f9f9;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      text-align: center;
+    }
+    .video-box iframe {
+      width: 100%;
+      height: 360px;
+      border: none;
+      border-radius: 8px;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1> Mean Value Theorems & Multivariable calculus</h1>
+  </div>
+  <div class="container">
+    <div class="sidebar">
+      <ul>
+        <li><a href="#taylor">Taylor & Maclaurin</a></li>
+        <li><a href="#partial">Partial Derivatives</a></li>
+        <li><a href="#total">Total Derivatives</a></li>
+        <li><a href="#chain">Chain Rule</a></li>
+        <li><a href="#maxmin">Maxima & Minima</a></li>
+        <li><a href="#lagrange">Lagrange Multipliers</a></li>
+      </ul>
+    </div>
+    <div class="main-content">
+      <div id="taylor">
+        <h2>Taylor's and Maclaurin's Theorems</h2>
+        <p>Taylor's Theorem approximates functions near a point a using derivatives. Maclaurin's Theorem is the special case where a = 0.</p>
+        <h3>Formula:</h3>
+        <p><strong>P<sub>n</sub>(x) = f(a) + f'(a)(x-a) + f''(a)(x-a)<sup>2</sup>/2! + ... + f<sup>(n)</sup>(a)(x-a)<sup>n</sup>/n!</strong></p>
+        <h3>Maclaurin:</h3>
+        <p>Same formula with a = 0. Used for functions like sin(x), e<sup>x</sup>, etc.</p>
+        <h3>Example:</h3>
+        <p>Maclaurin for sin(x): <strong>x - x<sup>3</sup>/6</strong></p>
+        <div class="video-box">
+          <iframe src="https://www.youtube.com/embed/SX6SMQ4EDyA" allowfullscreen></iframe>
+        </div>
+      </div>
+
+      <div id="partial">
+        <h2>Partial Derivatives</h2>
+        <p>Measures rate of change of multivariable functions with respect to one variable, keeping others constant.</p>
+        <h3>Example:</h3>
+        <p>f(x, y) = x<sup>2</sup> + 2xy + y<sup>2</sup></p>
+        <p>&#8706;f/&#8706;x = 2x + 2y, &#8706;f/&#8706;y = 2x + 2y</p>
+        <div class="video-box">
+          <iframe src="https://www.youtube.com/embed/m1nL-ns2dMk" allowfullscreen></iframe>
+        </div>
+      </div>
+
+      <div id="total">
+        <h2>Total Derivatives</h2>
+        <p>Captures how a multivariable function changes when all variables change simultaneously.</p>
+        <h3>Formula:</h3>
+        <p>dz/dt = (&#8706;z/&#8706;x)(dx/dt) + (&#8706;z/&#8706;y)(dy/dt)</p>
+        <div class="video-box">
+          <iframe src="https://www.youtube.com/embed/x88TqYdbH4Y" allowfullscreen></iframe>
+        </div>
+      </div>
+
+      <div id="chain">
+        <h2>Chain Rule</h2>
+        <p>Used to differentiate composite functions.</p>
+        <h3>Example:</h3>
+        <p>g(x) = ln(sin x) → g'(x) = (1/sin x)(cos x) = cot x</p>
+        <div class="video-box">
+          <iframe src="https://www.youtube.com/embed/XipB_uEexf0" allowfullscreen></iframe>
+        </div>
+      </div>
+
+      <div id="maxmin">
+        <h2>Maxima and Minima</h2>
+        <p>To find critical points: Set partial derivatives to zero, then apply second derivative test using D = f<sub>xx</sub>f<sub>yy</sub> - (f<sub>xy</sub>)<sup>2</sup></p>
+        <div class="video-box">
+          <iframe src="https://www.youtube.com/embed/NpR91wexqHA" allowfullscreen></iframe>
+        </div>
+      </div>
+
+      <div id="lagrange">
+        <h2>Lagrange Multipliers</h2>
+        <p>Used to find local maxima/minima of functions with constraints. Solve the system: &#8711;f = &#955;&#8711;g and g(x, y, z) = 0</p>
+        <h3>Example:</h3>
+        <p>Minimize f(x, y, z) = x<sup>2</sup> + y<sup>2</sup> + z<sup>2</sup> given x + y + z = 1</p>
+        <div class="video-box">
+          <iframe src="https://www.youtube.com/embed/tPjYd3vwmkw" allowfullscreen></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

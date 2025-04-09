@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Programming - OOP Concepts</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 0;
+        }
+        .header {
+            background-color: #343a40;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+        .container {
+            display: flex;
+            max-width: 1200px;
+            margin: 20px auto;
+            background: white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .sidebar {
+            width: 300px;
+            background: #f1f1f1;
+            padding: 20px;
+        }
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+        }
+        .sidebar li {
+            margin-bottom: 10px;
+        }
+        .sidebar a {
+            text-decoration: none;
+            color: #333;
+            display: block;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .sidebar a:hover {
+            background-color: #ddd;
+        }
+        .main-content {
+            flex: 1;
+            padding: 30px;
+        }
+        h2 {
+            color: #2c3e50;
+        }
+        pre, code {
+            background-color: #f4f4f4;
+            padding: 10px;
+            display: block;
+            overflow-x: auto;
+            border-left: 4px solid #007bff;
+        }
+        ul, ol {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <h1>Object-Oriented Programming in Python</h1>
+    </div>
+    <div class="container">
+        <div class="sidebar">
+            <ul>
+                <li><a href="#oop">Introduction to OOP</a></li>
+                <li><a href="#class">Class</a></li>
+                <li><a href="#encapsulation">Encapsulation</a></li>
+                <li><a href="#inheritance">Inheritance</a></li>
+                <li><a href="#subclasses">Defining Subclasses</a></li>
+                <li><a href="#polymorphism">Polymorphism</a></li>
+            </ul>
+        </div>
+        <div class="main-content">
+            <section id="oop">
+                <h2>Introduction to Object-Oriented Programming</h2>
+                <p>Object-Oriented Programming (OOP) is based on objects that contain both data (attributes) and functions (methods). It allows modular, reusable, and maintainable code.</p>
+            </section>
+
+            <section id="class">
+                <h2>Class</h2>
+                <p>A class is a blueprint for creating objects. It defines attributes and methods common to all objects of that type.</p>
+                <pre><code>class Car:
+    def __init__(self, color, model):
+        self.color = color
+        self.model = model
+
+    def drive(self):
+        print(f"The {self.color} {self.model} is driving.")
+
+my_car = Car("Red", "Tesla Model 3")
+my_car.drive()</code></pre>
+            </section>
+
+            <section id="encapsulation">
+                <h2>Encapsulation</h2>
+                <p>Encapsulation means restricting direct access to some of an object’s components, usually using private variables and public methods.</p>
+                <pre><code>class BankAccount:
+    def __init__(self, balance):
+        self.__balance = balance  # private variable
+
+    def deposit(self, amount):
+        if amount > 0:
+            self.__balance += amount
+
+    def withdraw(self, amount):
+        if 0 < amount <= self.__balance:
+            self.__balance -= amount
+
+    def get_balance(self):
+        return self.__balance
+
+account = BankAccount(1000)
+account.deposit(500)
+print("Current Balance:", account.get_balance())</code></pre>
+            </section>
+
+            <section id="inheritance">
+                <h2>Inheritance</h2>
+                <p>Inheritance enables one class to acquire properties and methods from another class. The new class is called a subclass or derived class.</p>
+                <pre><code>class Animal:
+    def __init__(self, name):
+        self.name = name
+
+    def speak(self):
+        print(f"{self.name} makes a sound")
+
+class Dog(Animal):
+    def speak(self):
+        print(f"{self.name} barks")
+
+d = Dog("Buddy")
+d.speak()</code></pre>
+                <h4>Types of Inheritance:</h4>
+                <ul>
+                    <li><strong>Single Inheritance</strong></li>
+<pre><code>class A:
+    def greet(self):
+        print("Hello from A")
+
+class B(A):
+    pass
+
+b = B()
+b.greet()</code></pre>
+                    <li><strong>Multiple Inheritance</strong></li>
+<pre><code>class Father:
+    def hobby(self):
+        print("Fishing")
+
+class Mother:
+    def hobby(self):
+        print("Painting")
+
+class Child(Father, Mother):
+    pass
+
+c = Child()
+c.hobby()  # Output: Fishing</code></pre>
+                    <li><strong>Multilevel Inheritance</strong></li>
+<pre><code>class Grandparent:
+    def history(self):
+        print("History of the family")
+
+class Parent(Grandparent):
+    pass
+
+class Child(Parent):
+    pass
+
+c = Child()
+c.history()</code></pre>
+                    <li><strong>Hierarchical Inheritance</strong></li>
+<pre><code>class Vehicle:
+    def start(self):
+        print("Vehicle started")
+
+class Car(Vehicle):
+    pass
+
+class Bike(Vehicle):
+    pass
+
+c = Car()
+b = Bike()
+c.start()
+b.start()</code></pre>
+                    <li><strong>Hybrid Inheritance</strong></li>
+<pre><code>class A:
+    def feature(self):
+        print("Feature A")
+
+class B(A):
+    pass
+
+class C(A):
+    pass
+
+class D(B, C):
+    pass
+
+d = D()
+d.feature()</code></pre>
+                </ul>
+            </section>
+
+            <section id="subclasses">
+                <h2>Defining Subclasses in Python</h2>
+                <p>Subclasses are defined by placing the parent class in parentheses.</p>
+                <pre><code>class Animal:
+    def speak(self):
+        print("Animal speaks")
+
+class Dog(Animal):
+    def speak(self):
+        print("Dog barks")
+
+class Cat(Animal):
+    def speak(self):
+        print("Cat meows")
+
+animals = [Dog(), Cat()]
+for animal in animals:
+    animal.speak()</code></pre>
+            </section>
+
+            <section id="polymorphism">
+                <h2>Polymorphism</h2>
+                <p>Polymorphism allows different object types to be treated through a common interface, often using method overriding or duck typing.</p>
+                <pre><code>class Shape:
+    def area(self):
+        pass
+
+class Circle(Shape):
+    def area(self):
+        return 3.14 * 7 * 7
+
+class Square(Shape):
+    def area(self):
+        return 4 * 4
+
+shapes = [Circle(), Square()]
+for shape in shapes:
+    print("Area:", shape.area())</code></pre>
+                <h4>Uses of Polymorphism:</h4>
+                <ul>
+                    <li>Code Reusability</li>
+                    <li>Simplifies Code</li>
+                    <li>Supports Inheritance and Method Overriding</li>
+                    <li>Used in Duck Typing</li>
+                </ul>
+                <pre><code>class File:
+    def read(self):
+        print("Reading data from a file")
+
+class Network:
+    def read(self):
+        print("Reading data from a network")
+
+def read_source(source):
+    source.read()
+
+read_source(File())
+read_source(Network())</code></pre>
+            </section>
+        </div>
+    </div>
+</body>
+
+</html>

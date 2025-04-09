@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>Study Cafe</title>
+    <style>
+       body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 10%;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .logo {
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            object-fit: cover;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+        }
+        header h1 {
+            margin: 0;
+            font-size: 26px;
+        }
+        nav.nav-menu {
+            background-color: transparent;
+            padding: 0;
+            box-shadow: none;
+        }
+        nav.nav-menu ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            gap: 25px;
+        }
+        nav.nav-menu ul li a {
+            text-decoration: none;
+            color: #ddd;
+            font-size: 16px;
+            font-weight: 500;
+            padding: 10px 15px;
+            border-radius: 6px;
+            transition: color 0.3s ease, background-color 0.3s ease;
+        }
+        nav.nav-menu ul li a:hover {
+            color: white;
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+        nav.nav-menu ul li a:focus {
+            outline: 2px solid #fff;
+        }
+        nav.nav-menu ul li a.selected {
+            color: white;
+            font-weight: 600;
+        }
+        nav.nav-menu ul li ul {
+            display: none;
+            position: absolute;
+            background-color: #333;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            border-radius: 4px;
+            padding: 10px 0;
+            z-index: 10;
+            min-width: 150px;
+        }
+        nav.nav-menu ul li:hover ul {
+            display: block;
+        }
+        nav.nav-menu ul li ul li {
+            width: 100%;
+        }
+        nav.nav-menu ul li ul li a {
+            padding: 10px 20px;
+            display: block;
+            white-space: nowrap;
+        }
+        nav.nav-menu ul li ul li a:hover {
+            background-color: #444;
+        }
+        @media (max-width: 768px) {
+            header {
+                padding: 15px 5%;
+            }
+            nav.nav-menu ul {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+            nav.nav-menu ul li {
+                margin: 0;
+            }
+            nav.nav-menu ul li a {
+                padding: 10px 20px;
+            }
+            nav.nav-menu ul li ul {
+                position: static;
+                box-shadow: none;
+                border-radius: 0;
+                padding: 0;
+                background-color: transparent;
+            }
+            nav.nav-menu ul li ul li a {
+                padding-left: 30px;
+            }
+            nav.nav-menu ul li:hover ul {
+                display: block;
+            }
+        }
+        .hero {
+            background-color: #008CBA;
+            color: white;
+            text-align: center;
+            padding: 60px 20px;
+            margin-bottom: 30px;
+            border-bottom-left-radius: 15px;
+            border-bottom-right-radius: 15px;
+        }
+        .hero h2 {
+            font-size: 2.8rem;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+        }
+        .hero p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin: 20px;
+            flex-grow: 1;
+            width: 90%;
+            max-width: 1200px;
+            margin: 20px auto;
+        }
+
+        .card {
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin: 10px;
+            padding: 20px;
+            text-align: center;
+            width: 200px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .card h3 {
+            color: #008CBA;
+            margin-bottom: 10px;
+        }
+
+        .card button {
+            background-color: #008CBA;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background-color 0.3s;
+        }
+
+        .card button:hover {
+            background-color: #008CBA;
+        }
+
+        footer {
+            background: #333;
+            color: #fff;
+            text-align: center;
+            padding: 1rem 0;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .social-links a {
+            color: #fff;
+            margin: 0 0.5rem;
+            font-size: 1.2rem;
+            transition: color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: #007bff;
+        }
+
+        @media (max-width: 768px) {
+            nav.nav-menu ul {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            nav.nav-menu ul li ul {
+                position: static;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo-container">
+            <img src="https://github.com/AbdulAzizes04/skills-github-pages/blob/main/.github/WhatsApp%20Image%202025-01-01%20at%2022.11.52_7937caa6.jpg?raw=true" alt="Study Cafe Logo" class="logo">
+            <h1>STUDY CAFE</h1>
+        </div>
+        <nav class="nav-menu">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="first-year.html">1ST YEAR</a></li>
+                <li>
+                    <a href="branch.html">2ND YEAR ▼</a>
+                    <ul>
+                        <li><a href="secondcse.html" id="cse">CSE</a></li>
+                        <li><a href="secondaids.html" id="aids">AI&DS</a></li>
+                        <li><a href="secondaiml.html" id="aiml">AI&ML</a></li>
+                        <li><a href="secondds.html" id="ds">CSE(DS)</a></li>
+                        <li><a href="secondai.html" id="ai">CSE(AI)</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="branch1.html">3RD YEAR ▼</a>
+                    <ul>
+                        <li><a href="thirdcse.html" id="cse">CSE</a></li>
+                        <li><a href="thirdaids.html" id="aids">AI&DS</a></li>
+                        <li><a href="thirdaiml.html" id="aiml">AI&ML</a></li>
+                        <li><a href="thirdds.html" id="ds">CSE(DS)</a></li>
+                        <li><a href="thirdai.html" id="ai">CSE(AI)</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="branch2.html">4TH YEAR ▼</a>
+                    <ul>
+                        <li><a href="fourthcse.html" id="cse">CSE</a></li>
+                        <li><a href="fourthaids.html" id="aids">AI&DS</a></li>
+                        <li><a href="fourthaiml.html" id="aiml">AI&ML</a></li>
+                        <li><a href="fourthds.html" id="ds">CSE(DS)</a></li>
+                        <li><a href="fourthai.html" id="ai">CSE(AI)</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="hero">
+        <h2>Welcome to Third Year Engineering</h2>
+        <p>Explore your chosen branch and access resources for your second year of engineering studies.</p>
+    </div>
+
+    <div class="container">
+        <div class="card" id="COMPUTER SCIENCE">
+            <h3>Computer Science Engineering</h3>
+            <a href="thirdcse.html"><button>View</button></a>
+        </div>
+        <div class="card" id="AI&DS">
+            <h3>Artificial Intelligence & Data Science</h3>
+            <a href="thirdaids.html"><button>View</button></a>
+        </div>
+        <div class="card" id="AI&ML">
+            <h3>Artificial Intelligence & Machine Learning</h3>
+            <a href="thirdaiml.html"><button>View</button></a>
+        </div>
+        <div class="card" id="CSE(DS)">
+            <h3>Computer Science Engineering (Data Science)</h3>
+            <a href="thirdds.html"><button>View</button></a>
+        </div>
+        <div class="card" id="CSE(AI)">
+            <h3>Computer Science Engineering (Artificial Intelligence)</h3>
+            <a href="thirdai.html"><button>View</button></a>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2025 Study Cafe | All Rights Reserved</p>
+            <div class="social-links">
+                <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+                <a href="#" target="_blank"><i class="fab fa-linkedin"></i></a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

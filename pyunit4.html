@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Text File Handling</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 0;
+        }
+
+        .header {
+            background-color: #343a40;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .container {
+            display: flex;
+            max-width: 1200px;
+            margin: 20px auto;
+            background: white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .sidebar {
+            width: 300px;
+            background: #f1f1f1;
+            padding: 20px;
+        }
+
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .sidebar li {
+            margin-bottom: 10px;
+        }
+
+        .sidebar a {
+            text-decoration: none;
+            color: #333;
+            display: block;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        .sidebar a:hover {
+            background-color: #ddd;
+        }
+
+        .main-content {
+            flex: 1;
+            padding: 30px;
+        }
+
+        h2 {
+            color: #2c3e50;
+        }
+
+        pre,
+        code {
+            background-color: #f4f4f4;
+            padding: 10px;
+            display: block;
+            overflow-x: auto;
+            border-left: 4px solid #007bff;
+        }
+
+        ul,
+        ol {
+            margin-bottom: 20px;
+        }
+
+        table {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+        }
+
+        table,
+        th,
+        td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <h1>Python Text File Handling</h1>
+    </div>
+    <div class="container">
+        <div class="sidebar">
+            <ul>
+                <li><a href="#text-file">Text File</a></li>
+                <li><a href="#using-text-files">Using Text Files</a></li>
+                <li><a href="#string-processing">String Processing</a></li>
+                <li><a href="#exception-handling">Exception Handling</a></li>
+            </ul>
+        </div>
+        <div class="main-content">
+            <section id="text-file">
+                <h2>1. Text File</h2>
+                <p>
+                    <b>Definition :</b>A text file is a file that contains readable characters (like letters, numbers, and
+                    symbols).
+                    These are saved with a .txt extension and are used for storing data in plain text format.
+                </p>
+                <p>
+                    <b>➤ Description:</b><br>
+                    A text file is a simple file that contains text without any special formatting (like bold, italic,
+                    etc.).
+                    The contents can be viewed and edited using any text editor. Python treats text files as sequences of
+                    characters.
+                </p>
+                <p>
+                    <b>➤ Characteristics:</b><br>
+                    Usually have extensions like .txt, .csv, .log<br>
+                    Store data in plain, human-readable format<br>
+                    Useful for storing logs, configuration settings, and exported data
+                </p>
+                <p><b>➤ Example:</b></p>
+                <pre><code># Create and write to a text file
+file = open("sample.txt", "w")
+file.write("Welcome to Python file handling!")
+file.close()</code></pre>
+
+                <p><b>Example :</b></p>
+                <pre><code># Writing to a text file
+with open("example.txt", "w") as file:
+    file.write("Hello, world!")</code></pre>
+            </section>
+
+            <section id="using-text-files">
+                <h2>2. Using Text Files</h2>
+                <p>
+                    You can perform operations like reading, writing, and appending using built-in functions in Python.
+                    Python provides built-in functions to interact with files: open(), read(), write(), close()
+                </p>
+                <p><b>➤ File Modes:</b></p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Mode</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>'r'</td>
+                            <td>Read (default)</td>
+                        </tr>
+                        <tr>
+                            <td>'w'</td>
+                            <td>Write (overwrite)</td>
+                        </tr>
+                        <tr>
+                            <td>'a'</td>
+                            <td>Append</td>
+                        </tr>
+                        <tr>
+                            <td>'r+'</td>
+                            <td>Read and Write</td>
+                        </tr>
+                        <tr>
+                            <td>'b'</td>
+                            <td>Binary mode (e.g. 'rb')</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p><b>a. Reading a file:</b></p>
+                <pre><code>with open("example.txt", "r") as file:
+    content = file.read()
+    print(content)</code></pre>
+                <p><b>➤ Examples:</b></p>
+                <pre><code>Reading from a file:
+with open("sample.txt", "r") as f:
+    print(f.read())  # Reads entire content
+Writing to a file:
+with open("sample.txt", "w") as f:
+    f.write("Overwriting the file content.")
+Appending to a file:
+with open("sample.txt", "a") as f:
+    f.write("\nAppended text.")
+Reading line by line:
+with open("sample.txt", "r") as f:
+    for line in f:
+        print(line.strip())  # removes \n</code></pre>
+                <p><b>b. Appending to a file:</b></p>
+                <pre><code>with open("example.txt", "a") as file:
+    file.write("\nThis is a new line.")</code></pre>
+                <p><b>c. Writing to a file (overwrites content):</b></p>
+                <pre><code>with open("example.txt", "w") as file:
+    file.write("New content")</code></pre>
+            </section>
+
+            <section id="string-processing">
+                <h2>3. String Processing</h2>
+                <p>
+                    Involves manipulating strings read from or written to text files.
+                    Once you read content from a file, it is stored as a string.
+                    You can use string methods to manipulate it.
+                    Useful for data cleaning or formatting.
+                </p>
+                <p><b>➤ Common String Methods:</b></p>
+                <ul>
+                    <li>.strip() – removes whitespace/newlines</li>
+                    <li>.lower() / .upper() – changes case</li>
+                    <li>.split() – splits a string into a list</li>
+                    <li>.replace(old, new) – replaces substrings</li>
+                </ul>
+                <p><b>Example :</b></p>
+                <pre><code>with open("example.txt", "r") as file:
+    for line in file:
+        line = line.strip()          # Removes extra spaces and newline characters
+        words = line.split()         # Splits line into list of words
+        print(words)</code></pre>
+                <p><b>➤ Example:</b></p>
+                <pre><code>with open("data.txt", "r") as f:
+    for line in f:
+        clean = line.strip()
+        words = clean.split()
+        print("Words:", words)</code></pre>
+                <p><b>➤ Real-world use:</b></p>
+                <p>Reading and analyzing logs, filtering data, formatting reports, etc.</p>
+            </section>
+
+            <section id="exception-handling">
+                <h2>4. Exception Handling</h2>
+                <p>
+                    Used to handle errors that may occur while working with files (e.g., file not found, permission
+                    denied).
+                    Exception handling ensures your program doesn’t crash if something goes wrong during file operations.
+                </p>
+                <p><b>➤ Common File Exceptions:</b></p>
+                <ul>
+                    <li>FileNotFoundError: File doesn’t exist</li>
+                    <li>PermissionError: No permission to read/write</li>
+                    <li>IOError: General input/output error</li>
+                </ul>
+                <p><b>Example :</b></p>
+                <pre><code>try:
+    with open("nonexistent.txt", "r") as file:
+        content = file.read()
+except FileNotFoundError:
+    print("The file was not found.")
+except IOError:
+    print("An error occurred while reading the file.")</code></pre>
+                <p><b>➤ Example:</b></p>
+                <pre><code>try:
+    with open("missing.txt", "r") as f:
+        content = f.read()
+except FileNotFoundError:
+    print("File not found. Please check the name.")
+except IOError:
+    print("An I/O error occurred.")
+finally:
+    print("Execution completed.")</code></pre>
+                <p><b>➤ Why it's important:</b></p>
+                <p>Prevents abrupt program termination<br>
+                    Helps in debugging<br>
+                    Improves user experience
+                </p>
+            </section>
+        </div>
+    </div>
+</body>
+
+</html>
